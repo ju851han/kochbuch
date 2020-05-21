@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/niceview',function() {
-    return view('myview');
+Route::get('/users',function(){
+    return view('users');
+});
+
+Route::get('/rezepte',function(){
+    return view('rezepte');
 });
 
 Auth::routes();
