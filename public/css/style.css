@@ -1,0 +1,298 @@
+/****************************************
+Reset der Default-Einstellung vom Browser
+****************************************/
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+/****************************************
+Allgemeine Einstellungen
+****************************************/
+.center {
+    text-align: center;
+}
+
+body {
+    background-color: white;
+    font-family: Garamond, Georgia, serif;
+    font-variant: normal;
+    text-align: justify;
+    line-height: 1;
+    color: black;
+}
+
+a {
+    color: orangered;
+}
+/*https://www.w3schools.com/css/css_link.asp*/
+a:visited{
+    color: darkred;
+}
+
+a:hover {
+    color: orange;
+}
+
+a:active{
+    color: red;
+}
+
+/* TODO a:visited https://wiki.selfhtml.org/wiki/CSS/Selektoren/Pseudoklasse/any-link,_link,_visited
+a i -> visited, hover
+nav a -> hover visited
+*/
+
+.a_noformat {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+}
+
+a i {
+    font-size: 1.25em;
+    margin-top: 10px;
+}
+
+.a_noformat:visited{
+    color: black;
+}
+
+a i:hover{
+    color: darkred;
+}
+
+i {
+    font-size: 2em;
+}
+
+.i_dot {
+    padding: 10px;
+    border: 1px solid rgb(252, 232, 175);
+    border-radius: 100px;
+    background-color: orange;
+    margin-bottom: 10px;
+}
+
+h1,
+h2 {
+    font-weight: bolder;
+    text-shadow: 3px 3px 10px grey;
+    padding: 40px 0px 20px 0px;
+}
+
+h1,
+h2,
+h3 {
+    padding: 20px 10px 0px 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: red;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3,
+h4 {
+
+    text-align: left;
+    font-weight: bold;
+
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+p {
+    padding: 20px 10px;
+}
+
+q {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    text-align: center;
+    padding: 20px;
+    display: block;
+    color: red;
+    quotes: none;
+    font-size: 1.5em;
+}
+
+/****************************************
+Header
+****************************************/
+header,
+figure {
+    display: inline-block;
+    height: 215px;
+    overflow: hidden;
+}
+
+#img-header-background {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.koch {
+    height: 150px;
+    width: auto;
+    position: absolute;
+    top: 65px;
+    right: 0%;
+    z-index: 2;
+}
+
+.augen_offen {
+    display: none;
+}
+
+/*https://www.tutorialrepublic.com/faq/how-to-change-image-on-hover-with-css.php*/
+.koch_animation:hover .augen_offen {
+    display: inline;
+}
+
+#header-ueberschrift {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.75em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px darkred;
+    /*Schriftart Umriss https://www.html-seminar.de/outline-schrift-ueber-text-shadow.htm */
+    position: absolute;
+    z-index: 3;
+    /*Zentriert Text in der Mitte von der Seite:
+    https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element */
+    top: 115px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+/****************************************
+Navbar
+****************************************/
+nav {
+    background: rgb(22, 22, 105);
+    background: linear-gradient(to bottom, rgba(22, 22, 105, 1) 38%, rgba(14, 26, 72, 1) 84%);
+    position: relative;
+    top: -5px;
+    width: 100%;
+}
+
+nav li{ /*TODO eventuell rauslöschen, weil nicht mehr benötigt*/
+    display: inline-blocK;
+    margin: 10px 1%;
+    text-decoration: none;
+}
+
+.a_nav {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    white-space: nowrap; /*kein Zeilenumbruch erlaubt */
+}
+
+/****************************************
+Main
+****************************************/
+
+main {
+    position: relative;
+    max-width: 100%;
+}
+
+#willkommen {
+    font-size: 2.5em;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    text-shadow: -1px -1px 1px black;
+    color: red;
+}
+
+section {
+    padding-top: 20px;
+}
+
+aside {
+    margin: 20px;
+    border: 2px black dashed;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+aside p {
+    padding-top: 10px;
+}
+
+
+#anwendungsfall h4 {
+    display: inline;
+}
+
+#anwendungsfall p {
+    display: inline;
+}
+
+#anwendungsfall section {
+    padding: 20px 10px;
+}
+
+em {
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+
+table {
+    margin: auto;
+    /* margin: auto; zentriert Tabelle */
+}
+
+.tbl_hauptfunktionen td p {
+    font-size: 0.45em;
+}
+
+
+.background {
+    background-color: rgb(252, 232, 175);
+}
+
+.background2ndSection section:nth-child(2n+1) {
+    /*Jedes 2. Element wird formatiert
+    https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+    background-color: rgb(252, 232, 175);
+}
+
+label {
+    padding: 20px 10px 20px 10px; /*TODO */
+}
+
+input {
+    margin: 10px 10px;
+}
+
+/****************************************
+Footer
+******************************************/
+footer {
+    text-align: left;
+    background-color: lightgray;
+    background: linear-gradient(to bottom, grey 5%, lightgrey 100%);
+    /*https://www.bestcssbuttongenerator.com/*/
+    padding: 5px;
+}
+
+footer a {
+    font-size: 1em;
+    padding: 0px 5px;
+}
