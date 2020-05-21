@@ -1,100 +1,183 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Kochbuch, Rezepte, Rezeptsuche, Einkaufsliste, Wochenkochplan, Kochplan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Julia Hansi">
+    <title>Willkommen - Kochbuch</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Stylesheet -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <figure>
+        <div class="koch_animation">
+            <img class="koch zwinkert" src="img/Koch.png" alt="Koch"/>
+            <img class="koch augen_offen" src="img/Koch_Augen_offen.png" alt="Koch"/> <!-- TODO als PNG -->
+        </div>
+        <img id="img-header-background" src="img/Arbeitsflaeche.jpeg" alt="Arbeitsfläche"/>
+        <h1 id="header-ueberschrift">Kochbuch</h1>
 
-        <title>Laravel</title>
+    </figure>
+</header>
+<nav class="navbar navbar-expand-md navbar-dark"><!--navbar navbar-expand-md navbar-light bg-white shadow-sm-->
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login')) <!-- Template Instructions gekennzeichnet mit @  -->
-                <div class="top-right links">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto">
+                @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <li class="nav-item"><a class="a_nav nav-link text-white" href="{{ url('/home') }}">Home</a>
+                        </li>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <li class="nav-item"><a class="a_nav nav-link text-white" href="{{ route('login') }}">Login</a>
+                        </li>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <li class="nav-item"><a class="a_nav nav-link text-white" href="{{ route('register') }}">Registierung</a>
+                            </li>
                         @endif
                     @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+                @endif
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="#">Rezepte</a></li>
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="#hauptfunktionalitäten">Hauptfunktionalitäten</a>
+                </li>
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="#anwendungsfall">Wofür & wozu?</a></li>
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="#über-uns">Über Uns</a></li>
+            </ul>
         </div>
-    </body>
+    </div>
+</nav>
+<main>
+    <section>
+        <h2 id="willkommen" class="center">Herzlich Willkommen</h2>
+        <p>Sie sind auf der Suche nach einem digitalen Kochbuch zur Verwaltung von Rezepten mit Wochenkochplan,
+            Einkaufsliste uvm.? Dann sind Sie hier richtig! Egal, ob Hobbykoch oder blutiger Kochanfänger. Hier ist
+            für jeden etwas dabei. Es dreht sich alles rundum das Kochen.</p>
+    </section>
+    <section id="hauptfunktionalitäten" class="background">
+        <h2 class="center">Welche Leistungen werden angeboten?</h2>
+
+        <table class="tbl_hauptfunktionen center">
+            <tr>
+                <td>
+                    <a class="a_noformat" href="#kochbuch"><i class="fa fa-book i_dot"></i></a>
+                </td>
+                <td>
+                    <a class="a_noformat" href="#suchfunktion"><i class="fa fa-search i_dot"></i></a>
+                </td>
+                <td>
+                    <a class="a_noformat" href="#wochenkochplan"><i class="fas fa-calendar-week i_dot"></i></a>
+                </td>
+                <td>
+                    <a class="a_noformat" href="#einkaufsliste"><i class="fas fa-list-alt i_dot"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="a_noformat" href="#kochbuch">
+                        <p>Kochbuch</p>
+                    </a>
+                </td>
+                <td>
+                    <a class="a_noformat" href="#suchfunktion">
+                        <p>Suchfunktion<br>für Rezepte</p>
+                    </a>
+                </td>
+                <td>
+                    <a class="a_noformat" href="#wochenkochplan">
+                        <p>Wochenkochplan</p>
+                    </a>
+                </td>
+                <td>
+                    <a class="a_noformat" href="#einkaufsliste">
+                        <p>Einkaufsliste</p>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="anwendungsfall" class="background2ndSection">
+        <h2 class="center">Wofür ist ein digitales Kochbuch gut?</h2>
+        <section id="kochbuch">
+            <div class="center">
+                <i class="fa fa-book i_dot"></i>
+            </div>
+            <h4>Rezept verloren?</h4>
+            <p> Ausgeschnittene Rezepte von Zeitschriften sind plötzlich verschwunden, das Lieblingsrezept ist nicht
+                auffindbar und die herausgesuchten Online-Rezepte sind offline. Kennen Sie diese Probleme? Um sich
+                diesen Ärger zu entgehen, können Sie sich einfach hier Ihre Rezepte in ein <em>digitales
+                    Kochbuch</em> archivieren. Im Inhaltsverzeichnis können die Rezepte einfach und problemlos
+                jederzeit abgerufen werden.</p>
+        </section>
+        <section id="suchfunktion">
+            <div class="center">
+                <i class="fa fa-search i_dot"></i>
+            </div>
+            <h4>Gegen Lebensmittelverschwendung & Ideenlosigkeit.</h4>
+            <p> Für die Resteverwertung kann mithilfe der <em>Suchfunktion</em> für die übrig gebliebene Zutat ein
+                Rezept, in der sie verarbeitet werden kann, gefunden werden. Ebenso können Sie in unserer
+                Rezepte-Übersicht gerne nach neuen Rezeptideen einfach nur schmökern oder auch die Rezepte nach
+                Zeit, Kosten und Kategorien filtern.</p>
+        </section>
+        <section id="wochenkochplan">
+            <div class="center">
+                <i class="fas fa-calendar-week i_dot"></i>
+            </div>
+            <h4>Organisiert durch die Woche kochen.</h4>
+            <p> Damit Sie nicht der Hunger plagen muss und Sie lange herumüberlegen, was Sie am besten kochen, gibt
+                es einen <em>Wochenkochplan</em>. In diesem können Sie ganz einfach einstellen, an welchen Tag Sie
+                welches Rezept kochen möchten. Anhand dessen wird automatisch eine Einkaufsliste generiert.</p>
+        </section>
+        <section id="einkaufsliste">
+            <div class="center">
+                <i class="fas fa-list-alt i_dot"></i>
+            </div>
+            <h4>Strukturiert einkaufen.</h4>
+            <p> Sie stehen vor dem Regal im Lebensmittelmarkt und es fällt Ihnen einfach nicht ein, welches Produkt
+                Sie einkaufen wollten. Kennen Sie diese Situation? Den Ärger können Sie sich zukünftig mithilfe der
+                strukturierten <em>Einkaufsliste</em>, eine gruppierte Check-Liste ist, ersparen. Dadurch wird ein
+                schnelles Einkaufen ermöglicht, ohne dass eine Zutat vergessen wird.</p>
+        </section>
+    </section>
+    <aside>
+        <h3>Haben wir Ihr Interesse geweckt?</h3>
+        <p>Registrieren Sie sich kostenlos und nutzen Sie die zahlreichen Vorteile dieser Web-Applikation. <a
+                    href="{{ route('register') }}">Hier</a> geht es zur Registrierung. </p>
+    </aside>
+    <section id="über-uns">
+        <h2 class="center">Über Uns</h2>
+        <p>
+            Unser Ziel ist es, eine benutzerfreundliche und intuitive Web-Applikation bereitzustellen, und geben
+            unser Bestes dieses zu erreichen. Wir wollen damit einen Mehrwert für das Kocherlebnis für Köche aller
+            Art (sei es blutige Kochanfänger, Hobbyköche oder Experimentierfreudige) bieten. Dabei gehen aber auch
+            Themen wie Nachhaltigkeit und Innovation bei uns nicht unter.
+        </p>
+    </section>
+    <aside>
+        <h3>Haben Sie Fragen oder wollen Sie uns ein Feedback geben?</h3>
+        <p>Gerne sind wir über das <a href="#">Kontaktformular</a> für Sie erreichbar.</p>
+    </aside>
+    <q> Wir wünschen Ihnen viel Spaß beim Kochen!<br>Bon Appétit!</q>
+</main>
+<footer>
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Kontakt</a>
+    <a href="#">FAQ</a>
+</footer>
+</body>
 </html>
