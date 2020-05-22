@@ -262,6 +262,22 @@ table {
     font-size: 0.45em;
 }
 
+.thead_orangered{
+    background: linear-gradient(top,  #FF4500,  #AA2A0A);
+    background: -ms-linear-gradient(top,  #FF4500,  #AA2A0A);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FF4500), to(#AA2A0A));
+    background: -moz-linear-gradient(top,  #FF4500,  #AA2A0A);
+    border: solid 1px #6D6D6D;    box-shadow: 2px 2px 3px #666666;
+    -webkit-box-shadow: 2px 2px 3px #666666;
+    -moz-box-shadow: 2px 2px 3px #666666;
+    color: white;
+    font-weight: bold;
+}
+.background2ndTR tr:nth-child(2n+1) {
+    /*Jedes 2. Element wird formatiert
+    https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+    background-color: rgb(252, 232, 175);
+}
 
 .background {
     background-color: rgb(252, 232, 175);
