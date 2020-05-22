@@ -8,14 +8,14 @@
         @endphp
 
         <table class="table">
-            <thead>
+            <thead class="thead_orangered">
             <tr>
                 <th>Name</th>
                 <th>E-Mail</th>
                 <!--TODO Rolle-->
             </tr>
             </thead>
-            <tbody>
+            <tbody class="background2ndTR">
             @foreach ($rows as $u)
                 <tr>
                     <td> {{  $u->name }} </td>
