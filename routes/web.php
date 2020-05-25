@@ -25,6 +25,11 @@ Route::get('/rezepte',function(){
     return view('rezepte');
 });
 
+Route::get('/kochbuecher',function(){
+    return view('kochbuecher');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
