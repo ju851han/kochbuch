@@ -180,16 +180,15 @@ figure {
 Navbar
 ****************************************/
 nav {
-    background: rgb(22, 22, 105);
     background: linear-gradient(to bottom, rgba(22, 22, 105, 1) 38%, rgba(14, 26, 72, 1) 84%);
-    position: relative;
     top: -5px;
     width: 100%;
 }
 
-nav li{ /*TODO eventuell rauslöschen, weil nicht mehr benötigt*/
+
+nav li{
     display: inline-blocK;
-    margin: 10px 1%;
+    margin: 5px 1%;
     text-decoration: none;
 }
 
