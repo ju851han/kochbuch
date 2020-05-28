@@ -4,7 +4,7 @@
     <section>
         <h2>Kochbücher</h2>
         @php
-            $rows = DB::select('SELECT name,email FROM USERS');
+            $rows = DB::select('SELECT kid,kname FROM KOCHBUECHER');
         @endphp
 
         <table class="table">
