@@ -23,10 +23,9 @@ Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index')
 
 
 /****TODO Routes for Rezepte **************************************************************************/
+// Show all Rezepte
+Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 
-Route::get('/rezepte',function(){
-    return view('rezepte');
-});
 
 /****TODO Routes for Zutaten **************************************************************************/
 // Show all Zutaten
