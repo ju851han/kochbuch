@@ -3,10 +3,6 @@
 @section('content')
     <section>
         <h2>Kochbücher</h2>
-        @php
-            $rows = DB::select('SELECT kid,kname FROM KOCHBUECHER');
-        @endphp
-
         <table class="table">
             <thead class="thead_orangered">
             <tr>
@@ -15,7 +11,7 @@
             </tr>
             </thead>
             <tbody class="background2ndTR">
-            @foreach ($rows as $k)
+            @foreach ($kochbuecher as $k)
                 <tr>
                     <td> {{  $k->kid }} </td>
                     <td> {{  $k->kname }}</td>
