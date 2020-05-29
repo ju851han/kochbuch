@@ -14,16 +14,16 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Stylesheet -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
     <figure>
         <div class="koch_animation">
-            <img class="koch zwinkert" src="img/Koch.png" alt="Koch"/>
-            <img class="koch augen_offen" src="img/Koch_Augen_offen.png" alt="Koch"/>
+            <img class="koch zwinkert" src="{{ asset('img/Koch.png') }}" alt="Koch"/>
+            <img class="koch augen_offen" src="{{ asset('img/Koch_Augen_offen.png') }}" alt="Koch"/>
         </div>
-        <img id="img-header-background" src="img/Arbeitsflaeche.jpeg" alt="Arbeitsfläche"/>
+        <img id="img-header-background" src="{{ asset('img/Arbeitsflaeche.jpeg') }}" alt="Arbeitsfläche"/>
         <h1 id="header-ueberschrift">Kochbuch</h1>
 
     </figure>
