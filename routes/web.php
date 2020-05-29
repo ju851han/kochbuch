@@ -14,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 /****TODO Routes for Users **************************************************************************/
-
-Route::get('/users',function(){
-    return view('users');
-});
+//Show all Users
+Route::get('/users','UserController@index')->name('users');
 
 /****TODO Routes for Kochbuecher **************************************************************************/
 // Show all Kochbuecher
 Route::get('/kochbuecher',function(){
     return view('kochbuecher');
 });
-
 
 /****TODO Routes for Rezepte **************************************************************************/
 
