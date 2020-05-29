@@ -15,7 +15,6 @@
         </tr>
         </thead>
         <tbody class="background2ndTR">
-        <tr>
         @foreach ($rows as $r)
             <tr>
                 <td> {{  $r->rname }} </td>
