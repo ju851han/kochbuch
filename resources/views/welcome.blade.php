@@ -21,7 +21,7 @@
     <figure>
         <div class="koch_animation">
             <img class="koch zwinkert" src="img/Koch.png" alt="Koch"/>
-            <img class="koch augen_offen" src="img/Koch_Augen_offen.png" alt="Koch"/> <!-- TODO als PNG -->
+            <img class="koch augen_offen" src="img/Koch_Augen_offen.png" alt="Koch"/>
         </div>
         <img id="img-header-background" src="img/Arbeitsflaeche.jpeg" alt="Arbeitsfläche"/>
         <h1 id="header-ueberschrift">Kochbuch</h1>
@@ -52,7 +52,7 @@
                         @endif
                     @endauth
                 @endif
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="#">Rezepte</a></li>
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="/rezepte">Rezepte</a></li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="#hauptfunktionalitäten">Hauptfunktionalitäten</a>
                 </li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="#anwendungsfall">Wofür & wozu?</a></li>
