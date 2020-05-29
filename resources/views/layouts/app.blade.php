@@ -37,8 +37,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="#">Kochbücher</a></li> <!--TODO update href-->
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="#">Rezepte</a></li>
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="/kochbuecher">Kochbücher</a></li>
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="/rezepte">Rezepte</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
