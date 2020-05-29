@@ -19,9 +19,8 @@ Route::get('/users','UserController@index')->name('users');
 
 /****TODO Routes for Kochbuecher **************************************************************************/
 // Show all Kochbuecher
-Route::get('/kochbuecher',function(){
-    return view('kochbuecher');
-});
+Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index');
+
 
 /****TODO Routes for Rezepte **************************************************************************/
 
