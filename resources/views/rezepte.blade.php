@@ -6,7 +6,7 @@
         $rows = DB::select('SELECT rname, kategorie, zeit, kostenjeportion FROM REZEPTE');
     @endphp
     <table class="table">
-        <thead>
+        <thead class="thead_orangered">
         <tr>
             <th>Rezept Name</th>
             <th>Kategorien</th>
