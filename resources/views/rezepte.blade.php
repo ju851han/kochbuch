@@ -3,7 +3,7 @@
 @section('content')
     <h2>Rezepte Übersicht</h2>
     @php
-        $rows = DB::select('SELECT rname,zeit, kostenjeportion, kategorie FROM USERS');
+        $rows = DB::select('SELECT rname, kategorie, zeit, kostenjeportion FROM REZEPTE');
     @endphp
     <table class="table">
         <thead>
