@@ -80,13 +80,13 @@ h1,
 h2 {
     font-weight: bolder;
     text-shadow: 3px 3px 10px grey;
-    padding: 40px 0px 20px 0px;
+    padding: 40px 0 20px 0;
 }
 
 h1,
 h2,
 h3 {
-    padding: 20px 10px 0px 10px;
+    padding: 20px 10px 0 10px;
 }
 
 h1 {
@@ -145,7 +145,7 @@ figure {
     width: auto;
     position: absolute;
     top: 65px;
-    right: 0%;
+    right: 0;
     z-index: 2;
 }
 
@@ -199,6 +199,7 @@ nav li{
     letter-spacing: 1px;
     word-spacing: 2px;
     white-space: nowrap; /*kein Zeilenumbruch erlaubt */
+    /*border-bottom: 1px solid white; TODO lassen oder nicht?*/
 }
 
 /****************************************
@@ -308,5 +309,5 @@ footer {
 
 footer a {
     font-size: 1em;
-    padding: 0px 5px;
+    padding: 0 5px;
 }
