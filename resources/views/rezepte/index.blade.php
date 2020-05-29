@@ -2,9 +2,6 @@
 
 @section('content')
     <h2>Rezepte Übersicht</h2>
-    @php
-        $rows = DB::select('SELECT rname, kategorie, zeit, kostenjeportion FROM REZEPTE');
-    @endphp
     <table class="table">
         <thead class="thead_orangered">
         <tr>
@@ -15,7 +12,7 @@
         </tr>
         </thead>
         <tbody class="background2ndTR">
-        @foreach ($rows as $r)
+        @foreach ($rezepte as $r)
             <tr>
                 <td> {{  $r->rname }} </td>
                 <td> {{  $r->kategorie }}</td>
