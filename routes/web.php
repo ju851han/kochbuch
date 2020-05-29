@@ -34,11 +34,11 @@ Route::get('/rezepte',function(){
 
 /****TODO Routes for Zutaten **************************************************************************/
 // Show all Zutaten
-Route::get('/zutaten',function(){
-    return view('zutaten');
-});
-//Route::get('/zutaten','ZutatenController@index')->name('zutaten.index');
+Route::get('/zutaten','ZutatenController@index')->name('zutaten.index');
 
+//Add Zutat
+Route::get('/zutaten/create','ZutatenController@create')->name('zutaten.create');
+Route::post('/zutaten','ZutatenController@store')->name('zutaten.store');
 
 /****Remaining Routes **************************************************************************/
 
