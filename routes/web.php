@@ -13,22 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/****TODO Routes for Users **************************************************************************/
 
 Route::get('/users',function(){
     return view('users');
 });
 
-Route::get('/rezepte',function(){
-    return view('rezepte');
-});
-
+/****TODO Routes for Kochbuecher **************************************************************************/
+// Show all Kochbuecher
 Route::get('/kochbuecher',function(){
     return view('kochbuecher');
 });
 
+
+/****TODO Routes for Rezepte **************************************************************************/
+
+Route::get('/rezepte',function(){
+    return view('rezepte');
+});
+
+/****TODO Routes for Zutaten **************************************************************************/
+// Show all Zutaten
+Route::get('/zutaten',function(){
+    return view('zutaten');
+});
+//Route::get('/zutaten','ZutatenController@index')->name('zutaten.index');
+
+
+/****Remaining Routes **************************************************************************/
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
