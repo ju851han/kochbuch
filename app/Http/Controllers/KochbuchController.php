@@ -17,6 +17,24 @@ class KochbuchController extends Controller
         return view('kochbuecher/index')->with('kochbuecher', $rows);
     }
 
+    /**
+     * Shows a form to create a new Kochbuch
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('kochbuecher/create');
+    }
 
+    /**
+     * Saved the new Kochbuch
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function store(Request $request){
+        $rows = DB::insert('insert into KOCHBUECHER(kName,erstelltam, aktualisiertam) values (?, NOW(), NOW())', [$request->kName]);
+        return redirect()->action('KochbuchController@index');
+    }
 
 }
