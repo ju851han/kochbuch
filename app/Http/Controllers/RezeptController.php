@@ -17,6 +17,24 @@ class RezeptController extends Controller
         return view('rezepte/index')->with('rezepte', $rows);
     }
 
+    /**
+     * Shows a form to create a new Rezept
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('rezepte/create');
+    }
 
+    /**
+     * Saved the new Rezept
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function store(Request $request){
+        $rows = DB::insert('insert into REZEPTE(rName, zubereitung, kategorie, zeit, kostenjePortion) values (?, ?, ?, ?, ?)', [$request->rName, $request->zubereitung, $request->kategorie, $request->zeit, $request->kostenjePortion]);
+        return redirect()->action('RezeptController@index');
+    }
 
 }
