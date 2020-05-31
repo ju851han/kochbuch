@@ -29,6 +29,9 @@ Route::post('/kochbuecher','KochbuchController@store')->name('kochbuecher.store'
 // Show all Rezepte
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 
+// Add Rezept
+Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create');
+Route::post('/rezepte','RezeptController@store')->name('rezepte.store');
 
 /****TODO Routes for Zutaten **************************************************************************/
 // Show all Zutaten
