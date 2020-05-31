@@ -39,6 +39,21 @@ class ZutatenController extends Controller
     }
 
     /**
+     * @param $zName
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function show($zName)
+    {
+        $rows = DB::select('SELECT zName, mengeneinheit, kostenJeEinheit, produktgruppe FROM ZUTATEN WHERE zName= ?', [$zName]);
+        if (count($rows)>0) {
+            $zutat = $rows[0];
+        }
+        return view('zutaten/show')->with('z',$zutat);
+    }
+
+
+    /**
      * Shows the update form for Zutat
      * @param $zName
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
