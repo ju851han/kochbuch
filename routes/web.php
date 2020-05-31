@@ -37,6 +37,11 @@ Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create');
 Route::post('/rezepte','RezeptController@store')->name('rezepte.store');
 
+//Update Rezept
+Route::get('rezepte/{rID}/edit','RezeptController@edit')->name('rezepte.edit');
+Route::post('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.update');
+
+
 /****TODO Routes for Zutaten **************************************************************************/
 // Show all Zutaten
 Route::get('/zutaten','ZutatenController@index')->name('zutaten.index');
