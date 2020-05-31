@@ -41,6 +41,10 @@ Route::get('/zutaten','ZutatenController@index')->name('zutaten.index');
 Route::get('/zutaten/create','ZutatenController@create')->name('zutaten.create');
 Route::post('/zutaten','ZutatenController@store')->name('zutaten.store');
 
+//Update Zutat
+Route::get('zutaten/{zName}/edit','ZutatenController@edit')->name('zutaten.edit');
+Route::post('/zutaten/{zName}/update','ZutatenController@update')->name('zutaten.update');
+
 /****Remaining Routes **************************************************************************/
 
 Route::get('/', function () {
