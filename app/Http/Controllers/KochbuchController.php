@@ -37,4 +37,29 @@ class KochbuchController extends Controller
         return redirect()->action('KochbuchController@index');
     }
 
+    /**
+     * Shows the update form for Kochbuch
+     * @param $zName
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($kID)
+    {
+        $rows = DB::select('SELECT kID,kName FROM KOCHBUECHER WHERE kID= ?', [$kID]);
+        if (count($rows)>0) {
+            $kochbuch = $rows[0];
+        }
+        return view('kochbuecher/edit')->with('k',$kochbuch);
+    }
+
+    /**
+     * Updates the Kochbuch
+     * @param Request $request
+     * @param $zName
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $kID)
+    {
+        $rows = DB::update('update KOCHBUECHER SET kName=? WHERE  kID=?', [$request->kName, $kID]);
+        return redirect()->action('KochbuchController@show',['kid' => $kID]);
+    }
 }
