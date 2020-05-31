@@ -25,6 +25,10 @@ Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index')
 Route::get('/kochbuecher/create','KochbuchController@create')->name('kochbuecher.create');
 Route::post('/kochbuecher','KochbuchController@store')->name('kochbuecher.store');
 
+//Update Kochbuch
+Route::get('kochbuecher/{kID}/edit','KochbuchController@edit')->name('kochbuecher.edit');
+Route::post('/kochbuecher/{kID}/update','KochbuchController@update')->name('kochbuecher.update');
+
 /****TODO Routes for Rezepte **************************************************************************/
 // Show all Rezepte
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
