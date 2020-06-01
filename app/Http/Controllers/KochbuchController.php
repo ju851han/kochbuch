@@ -38,8 +38,22 @@ class KochbuchController extends Controller
     }
 
     /**
+     * @param $kid
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function show($kid)
+    {
+        $rows = DB::select('SELECT kID, kName, erstelltam, aktualisiertam FROM KOCHBUECHER WHERE kID= ?', [$kid]);
+        if (count($rows)>0) {
+            $kochbuch = $rows[0];
+        }
+        return view('kochbuecher/show')->with('k',$kochbuch);
+    }
+
+    /**
      * Shows the update form for Kochbuch
-     * @param $zName
+     * @param $kID
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($kID)
@@ -54,7 +68,7 @@ class KochbuchController extends Controller
     /**
      * Updates the Kochbuch
      * @param Request $request
-     * @param $zName
+     * @param $kID
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $kID)
