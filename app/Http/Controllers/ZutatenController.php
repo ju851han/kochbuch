@@ -39,6 +39,7 @@ class ZutatenController extends Controller
     }
 
     /**
+     * Shows one Zutat
      * @param $zName
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
