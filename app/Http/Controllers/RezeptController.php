@@ -13,7 +13,7 @@ class RezeptController extends Controller
      */
     public function index()
     {
-        $rows = DB::select('SELECT rname, kategorie, zeit, kostenjeportion FROM REZEPTE');
+        $rows = DB::select('SELECT rName, kategorie, zeit, kostenjePortion FROM REZEPTE');
         return view('rezepte/index')->with('rezepte', $rows);
     }
 
@@ -38,8 +38,21 @@ class RezeptController extends Controller
     }
 
     /**
+     * Shows one Rezept
+     * @param $rid
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($rID)
+    {
+        $rows = DB::select('SELECT rID, rName, zubereitung, kategorie, zeit, kostenjePortion FROM REZEPTE WHERE rID= ?', [$rID]);
+        if (count($rows)>0) {
+            $rezept = $rows[0];
+        }
+        return view('rezepte/show')->with('r',$rezept);
+    }
+    /**
      * Shows the update form for Rezept
-     * @param $zName
+     * @param $rID
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($rID)
@@ -54,7 +67,7 @@ class RezeptController extends Controller
     /**
      * Updates the Rezept
      * @param Request $request
-     * @param $zName
+     * @param $rID
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $rID)
