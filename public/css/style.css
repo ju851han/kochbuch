@@ -114,6 +114,13 @@ p {
     padding: 20px 10px;
 }
 
+label{
+    padding: 20px 10px 0 10px;
+}
+input{
+    padding: 0 10px;
+}
+
 q {
     font-family: 'Oleo Script Swash Caps', cursive;
     text-align: center;
@@ -251,7 +258,6 @@ em {
     letter-spacing: 2px;
 }
 
-
 table {
     margin: auto;
     /* margin: auto; zentriert Tabelle */
@@ -287,14 +293,80 @@ table {
     https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
     background-color: rgb(252, 232, 175);
 }
-
-label {
-    padding: 20px 10px 20px 10px; /*TODO */
+/****************************************
+Buttons
+****************************************/
+.normalbtn {
+    box-shadow: 0 1px 0 0 #fff6af;
+    background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+    border-radius:6px;
+    border:1px solid #ffaa22;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family: Arial, serif;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0 1px 0 #ffee66;
+}
+.normalbtn:hover {
+    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+}
+.normalbtn:active {
+    position:relative;
+    top:1px;
 }
 
-input {
-    margin: 10px 10px;
+.finishbtn {
+    box-shadow: 0 1px 0 0 #9acc85;
+    background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+    border-radius:6px;
+    border:1px solid #3b6e22;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial, serif;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0 1px 0 #92b879;
 }
+.finishbtn:hover {
+    background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+}
+.finishbtn:active {
+    position:relative;
+    top:1px;
+}
+
+
+.abortbtn {
+    box-shadow: 0 1px 0 0 #8a2a21;
+    background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+     border-radius:6px;
+    border:1px solid #d02718;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Arial, serif;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0 1px 0 #810e05;
+}
+.abortbtn:hover {
+    background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+  }
+.abortbtn:active {
+    position:relative;
+    top:1px;
+}
+
+
 
 /****************************************
 Footer
