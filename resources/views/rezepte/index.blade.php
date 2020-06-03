@@ -14,10 +14,10 @@
         <tbody class="background2ndTR">
         @foreach ($rezepte as $r)
             <tr>
-                <td> {{  $r->rname }} </td>
+                <td> {{  $r->rName }} </td>
                 <td> {{  $r->kategorie }}</td>
                 <td> {{  $r->zeit }}</td>
-                <td> {{  $r->kostenjeportion }}</td>
+                <td> {{  $r->kostenjePortion }}</td>
             </tr>
         @endforeach
         </tbody>
