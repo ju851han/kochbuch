@@ -38,6 +38,7 @@ class KochbuchController extends Controller
     }
 
     /**
+     * Shows one Kochbuch
      * @param $kid
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
