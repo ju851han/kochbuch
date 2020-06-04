@@ -77,4 +77,16 @@ class KochbuchController extends Controller
         $rows = DB::update('update KOCHBUECHER SET kName=? WHERE  kID=?', [$request->kName, $kID]);
         return redirect()->action('KochbuchController@show',['kid' => $kID]);
     }
+    /**
+     * Remove the specified Kochbuch from DB.
+     * @param  int  $kID
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($kID)
+    {
+
+        $rows = DB::delete('delete from KOCHBUECHER where kID=?', [$kID]);
+
+        return redirect()->action('KochbuchController@index');
+
 }
