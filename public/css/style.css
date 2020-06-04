@@ -24,58 +24,6 @@ body {
     color: black;
 }
 
-a {
-    color: orangered;
-}
-/*https://www.w3schools.com/css/css_link.asp*/
-a:visited{
-    color: darkred;
-}
-
-a:hover {
-    color: orange;
-}
-
-a:active{
-    color: red;
-}
-
-/* TODO a:visited https://wiki.selfhtml.org/wiki/CSS/Selektoren/Pseudoklasse/any-link,_link,_visited
-a i -> visited, hover
-nav a -> hover visited
-*/
-
-.a_noformat {
-    text-decoration: none;
-    color: black;
-    font-size: 1.5em;
-}
-
-a i {
-    font-size: 1.25em;
-    margin-top: 10px;
-}
-
-.a_noformat:visited{
-    color: black;
-}
-
-a i:hover{
-    color: darkred;
-}
-
-i {
-    font-size: 2em;
-}
-
-.i_dot {
-    padding: 10px;
-    border: 1px solid rgb(252, 232, 175);
-    border-radius: 100px;
-    background-color: orange;
-    margin-bottom: 10px;
-}
-
 h1,
 h2 {
     font-weight: bolder;
@@ -257,10 +205,16 @@ em {
     font-style: italic;
     letter-spacing: 2px;
 }
-
+/****************************************
+Table
+****************************************/
 table {
-    margin: auto;
-    /* margin: auto; zentriert Tabelle */
+    margin: auto; /* margin: auto; zentriert Tabelle */
+    border: 1px lightgray solid;
+}
+
+.tbl_kochbuecher td{
+    padding: auto 10px; /*TODO*/
 }
 
 .tbl_hauptfunktionen td p {
@@ -278,6 +232,10 @@ table {
     color: white;
     font-weight: bold;
 }
+
+/****************************************
+Background Formatting
+****************************************/
 .background2ndTR tr:nth-child(2n+1) {
     /*Jedes 2. Element wird formatiert
     https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
@@ -293,9 +251,77 @@ table {
     https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
     background-color: rgb(252, 232, 175);
 }
+
+/****************************************
+Anchor Elements
+****************************************/
+/*https://www.w3schools.com/css/css_link.asp*/
+a {
+    color: orangered;
+}
+
+a:visited{
+    color: darkred;
+}
+
+a:hover {
+    color: orange;
+}
+
+a:active{
+    color: red;
+}
+
+.a_noformat {
+    text-decoration: none;
+    color: black;
+    font-size: 1em;
+}
+
+.a_noformat:visited{
+    color: black;
+}
+
+/* TODO a:visited https://wiki.selfhtml.org/wiki/CSS/Selektoren/Pseudoklasse/any-link,_link,_visited
+a i -> visited, hover
+nav a -> hover visited
+*/
+
+a i:hover{
+    color: darkred;
+}
+
+
+i {
+    font-size: 2em;
+}
+
+.i_dot {
+    padding: 10px;
+    border: 1px solid rgb(252, 232, 175);
+    border-radius: 100px;
+    background-color: orange;
+    margin-bottom: 10px;
+}
+
 /****************************************
 Buttons
 ****************************************/
+
+.btn_i{
+    font-size: 1em;
+}
+
+button{
+    font-family: Arial, serif;
+    font-size: 120%;
+    font-weight:bold;
+    padding: 4px 4px;
+    margin: 0 10px;
+}
+
+
+
 .normalbtn {
     box-shadow: 0 1px 0 0 #fff6af;
     background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
@@ -304,11 +330,6 @@ Buttons
     display:inline-block;
     cursor:pointer;
     color:#333333;
-    font-family: Arial, serif;
-    font-size:15px;
-    font-weight:bold;
-    padding:6px 24px;
-    text-decoration:none;
     text-shadow:0 1px 0 #ffee66;
 }
 .normalbtn:hover {
@@ -327,12 +348,7 @@ Buttons
     display:inline-block;
     cursor:pointer;
     color:#ffffff;
-    font-family:Arial, serif;
-    font-size:15px;
-    font-weight:bold;
-    padding:6px 24px;
-    text-decoration:none;
-    text-shadow:0 1px 0 #92b879;
+   text-shadow:0 1px 0 #92b879;
 }
 .finishbtn:hover {
     background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
@@ -351,11 +367,6 @@ Buttons
     display:inline-block;
     cursor:pointer;
     color:#ffffff;
-    font-family: Arial, serif;
-    font-size:15px;
-    font-weight:bold;
-    padding:6px 24px;
-    text-decoration:none;
     text-shadow:0 1px 0 #810e05;
 }
 .abortbtn:hover {
