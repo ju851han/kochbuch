@@ -32,6 +32,9 @@ Route::get('/kochbuecher/{kID}','KochbuchController@show')->name('kochbuecher.sh
 Route::get('kochbuecher/{kID}/edit','KochbuchController@edit')->name('kochbuecher.edit');
 Route::post('/kochbuecher/{kID}/update','KochbuchController@update')->name('kochbuecher.update');
 
+//Delete Kochbuch
+Route::get('/kochbuecher/{kID}/destroy/','KochbuchController@destroy')->name('kochbuecher.destroy');
+
 /****TODO Routes for Rezepte **************************************************************************/
 // Show all Rezepte
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
