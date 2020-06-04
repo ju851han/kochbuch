@@ -13,7 +13,7 @@ class KochbuchController extends Controller
      */
     public function index()
     {
-        $rows = DB::select('SELECT kid,kname FROM KOCHBUECHER');
+        $rows = DB::select('SELECT kID,kName FROM KOCHBUECHER');
         return view('kochbuecher/index')->with('kochbuecher', $rows);
     }
 
@@ -78,7 +78,7 @@ class KochbuchController extends Controller
         return redirect()->action('KochbuchController@show',['kid' => $kID]);
     }
     /**
-     * Remove the specified Kochbuch from DB.
+     * Delete the specified Kochbuch from DB.
      * @param  int  $kID
      * @return \Illuminate\Http\Response
      */
