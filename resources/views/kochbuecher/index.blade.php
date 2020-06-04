@@ -3,7 +3,7 @@
 @section('content')
     <section>
         <h2><i class="fa fa-book"></i> Kochbücher</h2>
-        <table class="table">
+        <table class="table tbl_kochbuecher">
             <thead class="thead_orangered">
             <tr>
                 <th>Kochbuch-Nr.</th>
@@ -16,12 +16,12 @@
                 <tr>
                     <td> {{  $k->kID }} </td>
                     <td> {{  $k->kName }}</td>
-                    <td> <button class="normalbtn"><a href="/kochbuecher/{{$k->kID}}/edit" class="a_noformat" title="Kochbuch bearbeiten"><i class="material-icons">edit</i></a></button>
-                        <button class="normalbtn"><a href="/kochbuecher/{{$k->kID}}/destroy" class="a_noformat" title="Kochbuch löschen"><i class='fas fa-trash-alt'></i></a></button></td>
+                    <td> <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"  title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i></button>
+                        <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"  title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i></button></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <button class="normalbtn"><a  href="kochbuecher/create" class="a_noformat"><i class="material-icons">add_circle</i> Neues Kochbuch erstellen</a></button>
+        <button class="normalbtn" onclick="window.location.href='kochbuecher/create'" ><i class="material-icons btn_i">add_circle</i> Neues Kochbuch erstellen</button>
     </section>
 @endsection
