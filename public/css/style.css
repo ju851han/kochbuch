@@ -218,7 +218,8 @@ table {
 }
 
 .tbl_hauptfunktionen td p {
-    font-size: 0.45em;
+    font-size: 80%;
+    padding: 0 10px 0 10px;
 }
 
 .thead_orangered{
