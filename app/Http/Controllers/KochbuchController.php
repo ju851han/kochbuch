@@ -88,5 +88,5 @@ class KochbuchController extends Controller
         $rows = DB::delete('delete from KOCHBUECHER where kID=?', [$kID]);
 
         return redirect()->action('KochbuchController@index');
-
+    }
 }
