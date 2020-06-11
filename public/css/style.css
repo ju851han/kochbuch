@@ -73,8 +73,8 @@ p {
 label{
     padding: 20px 10px 0 10px;
 }
-input{
-    padding: 0 10px;
+textarea, input{
+    margin: 0 10px;
 }
 
 q {
