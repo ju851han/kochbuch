@@ -43,7 +43,7 @@ Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create');
 Route::post('/rezepte','RezeptController@store')->name('rezepte.store');
 
-//Show Kochbuch
+//Show Rezept
 Route::get('/rezepte/{rID}','RezeptController@show')->name('rezepte.show');
 
 //Update Rezept
