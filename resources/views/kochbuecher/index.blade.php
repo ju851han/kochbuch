@@ -18,7 +18,7 @@
                     <td> {{  $k->kName }}</td>
                     <td>
                         <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}'"
-                                title="Kochbuch bearbeiten"><i class='fas fa-eye btn_i'></i></button>
+                                title="Kochbuch ansehen"><i class='fas fa-eye btn_i'></i></button>
                         <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"
                                 title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i></button>
                         <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"
