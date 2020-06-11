@@ -30,8 +30,6 @@
         <label for="Vegetarisch">Vegetarisch</label>
         <br>
 
-        {{-- https://stackoverflow.com/questions/40112662/i-am-trying-to-concatenate-checkboxes-into-an-sql-statement-in-php/40113698--}}
-        <!--TODO zeitanzeigen-->
         <label for="zeit">Bitte gebe die ungefähre Gesamtzeit in Minuten an, wie lange dein Gericht benötigt?</label>
         <p class="untertitel">(inkl. Zubereitungszeit und Koch-, Back- bzw. Grillzeit)</p>
         <input id="zeit" name="zeit" list="zeiten" type="range" min="15" max="240" step="15"
@@ -69,8 +67,6 @@
         <input type="reset" value="Abbrechen"> <!-- reset = Formulardaten werden gelöscht-->
         <input type="submit" value="Rezept erstellen">
     </form>
-
-    <p>Du bist gerade dabei dein Rezept zu erstellen.</p>
     <script>
         function updateTextInput(val) {
             document.getElementById('textInput').value = val;
