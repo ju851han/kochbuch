@@ -17,7 +17,7 @@
                 <td> {{  $r->rName }} </td>
                 <td> {{  $r->zeit }}</td> {{--TODO Zeit richtig angeben--}}
                 <td> {{  $r->kostenjePortion }} € </td>
-                <td>{{--TODO Buttons formatting--}}
+                <td>
                     <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}'"
                             title="Rezept ansehen"><i class='fas fa-eye btn_i'></i></button>
                     <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
