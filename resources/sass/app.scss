@@ -6,3 +6,405 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//Styles for Kochbuch
+/****************************************
+Reset der Default-Einstellung vom Browser
+****************************************/
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/****************************************
+Allgemeine Einstellungen
+****************************************/
+.center {
+  text-align: center;
+}
+
+body {
+  background-color: $white;
+  font-family: Garamond, Georgia, serif;
+  font-variant: normal;
+  text-align: justify;
+  line-height: 1;
+  color: $black;
+}
+
+h1,
+h2 {
+  font-weight: bolder;
+  text-shadow: 3px 3px 10px $grey;
+  padding: 40px 0 20px 0;
+}
+
+h1,
+h2,
+h3 {
+  padding: 20px 10px 0 10px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: $red;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3,
+h4 {
+
+  text-align: left;
+  font-weight: bold;
+
+}
+
+h3 {
+  font-size: 1.25em;
+}
+#special {
+  font-size: 2.5em;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  text-shadow: -1px -1px 1px $black;
+  color: $red;
+}
+p {
+  padding: 20px 10px;
+}
+.untertitel{
+  font-size: 75%;
+  padding: 0 10px;
+}
+label{
+  padding: 20px 10px 0 10px;
+}
+textarea, input{
+  margin: 0 10px;
+}
+
+q {
+  font-family: 'Oleo Script Swash Caps', cursive;
+  text-align: center;
+  padding: 20px;
+  display: block;
+  color: $red;
+  quotes: none;
+  font-size: 1.5em;
+}
+
+/****************************************
+Header
+****************************************/
+header,
+figure {
+  display: inline-block;
+  height: 215px;
+  overflow: hidden;
+}
+
+#img-header-background {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.koch {
+  height: 150px;
+  width: auto;
+  position: absolute;
+  top: 65px;
+  right: 0;
+  z-index: 2;
+}
+
+.augen_offen {
+  display: none;
+}
+
+/*https://www.tutorialrepublic.com/faq/how-to-change-image-on-hover-with-css.php*/
+.koch_animation:hover .augen_offen {
+  display: inline;
+}
+
+#header-ueberschrift {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.75em;
+  font-weight: bold;
+  color: $white;
+  text-align: center;
+  text-shadow: 0 0 10px $darkred;
+  /*Schriftart Umriss https://www.html-seminar.de/outline-schrift-ueber-text-shadow.htm */
+  position: absolute;
+  z-index: 3;
+  /*Zentriert Text in der Mitte von der Seite:
+  https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element */
+  top: 115px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+/****************************************
+Navbar
+****************************************/
+nav {
+  background: linear-gradient(to bottom, $blue 38%, $midnightblue 84%);
+  top: -5px;
+  width: 100%;
+}
+
+
+nav li{
+  display: inline-block;
+  margin: 5px 1%;
+  text-decoration: none;
+}
+
+.a_nav {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: normal;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  white-space: nowrap; /*kein Zeilenumbruch erlaubt */
+  /*border-bottom: 1px solid white; TODO lassen oder nicht?*/
+}
+
+/****************************************
+Main
+****************************************/
+
+main {
+  position: relative;
+  max-width: 100%;
+}
+
+
+
+section {
+  padding-top: 20px;
+}
+
+aside {
+  margin: 20px;
+  border: 2px $black dashed;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+aside p {
+  padding-top: 10px;
+}
+
+
+#anwendungsfall h4 {
+  display: inline;
+}
+
+#anwendungsfall p {
+  display: inline;
+}
+
+#anwendungsfall section {
+  padding: 20px 10px;
+}
+
+em {
+  font-style: italic;
+  letter-spacing: 2px;
+}
+/****************************************
+Table
+****************************************/
+table {
+  margin: auto; /* margin: auto; zentriert Tabelle */
+  border: 1px $lightgrey solid;
+}
+
+.tbl_kochbuecher td{
+  padding: auto 10px; /*TODO*/
+}
+
+.tbl_hauptfunktionen td p {
+  font-size: 80%;
+  padding: 0 10px 0 10px;
+}
+
+.thead_orangered{
+  background: linear-gradient(top,  $orange,  $darkorange);
+  background: -ms-linear-gradient(top,  $orange,  $darkorange);
+  background: -webkit-gradient(linear, left top, left bottom, from($orange), to($darkorange));
+  background: -moz-linear-gradient(top,  $orange,  $darkorange);
+  border: solid 1px $grey;
+  box-shadow: 2px 2px 3px $grey;
+  -webkit-box-shadow: 2px 2px 3px $grey;
+  -moz-box-shadow: 2px 2px 3px $grey;
+  color: $white;
+  font-weight: bold;
+}
+
+/****************************************
+Background Formatting
+****************************************/
+.background2ndTR tr:nth-child(2n+1) {
+  /*Jedes 2. Element wird formatiert
+  https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+  background-color: $lightyellow;
+}
+
+.background {
+  background-color: $lightyellow;
+}
+
+.background2ndSection section:nth-child(2n+1) {
+  /*Jedes 2. Element wird formatiert
+  https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+  background-color: $lightyellow;
+}
+
+/****************************************
+Anchor Elements
+****************************************/
+/*https://www.w3schools.com/css/css_link.asp*/
+a {
+  color: $orange;
+}
+
+a:visited{
+  color: $darkred;
+}
+
+a:hover {
+  color: $yellow;
+}
+
+a:active{
+  color: $red;
+}
+
+.a_noformat {
+  text-decoration: none;
+  color: $black;
+  font-size: 1em;
+}
+
+.a_noformat:visited{
+  color: $black;
+}
+
+/* TODO a:visited https://wiki.selfhtml.org/wiki/CSS/Selektoren/Pseudoklasse/any-link,_link,_visited
+a i -> visited, hover
+nav a -> hover visited
+*/
+
+a i:hover{
+  color: $darkred;
+}
+
+
+i {
+  font-size: 2em;
+}
+
+.i_dot {
+  padding: 10px;
+  border: 1px solid $lightyellow;
+  border-radius: 100px;
+  background-color: $yellow; /*TODO keine Farbe? */
+  margin-bottom: 10px;
+}
+
+/****************************************
+Buttons
+****************************************/
+/*TODO replace colors with variables*/
+.btn_i{
+  font-size: 1em;
+}
+
+button{
+  font-family: Arial, serif;
+  font-size: 120%;
+  font-weight:bold;
+  padding: 4px 4px;
+  margin: 0 5px;
+}
+
+
+
+.normalbtn {
+  box-shadow: 0 1px 0 0 #fff6af;
+  background:linear-gradient(to bottom, $lightyellow 5%, $yellow 100%);
+  border-radius:6px;
+  border:1px solid #ffaa22;
+  display:inline-block;
+  cursor:pointer;
+  color:#333333;
+  text-shadow:0 1px 0 #ffee66;
+}
+.normalbtn:hover {
+  background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+}
+.normalbtn:active {
+  position:relative;
+  top:1px;
+}
+
+.finishbtn {
+  box-shadow: 0 1px 0 0 #9acc85;
+  background:linear-gradient(to bottom, $green 5%, #68a54b 100%);
+  border-radius:6px;
+  border:1px solid #3b6e22;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  text-shadow:0 1px 0 #92b879;
+}
+.finishbtn:hover {
+  background:linear-gradient(to bottom, $green 5%, #74ad5a 100%);
+}
+.finishbtn:active {
+  position:relative;
+  top:1px;
+}
+
+
+.abortbtn {
+  box-shadow: 0 1px 0 0 #8a2a21;
+  background:linear-gradient(to bottom, $darkred 5%, #f24437 100%);
+  border-radius:6px;
+  border:1px solid #d02718;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  text-shadow:0 1px 0 #810e05;
+}
+.abortbtn:hover {
+  background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+}
+.abortbtn:active {
+  position:relative;
+  top:1px;
+}
+
+
+
+/****************************************
+Footer
+******************************************/
+footer {
+  text-align: left;
+  background: linear-gradient(to bottom, $grey 5%, $lightgrey 100%);
+  /*https://www.bestcssbuttongenerator.com/*/
+  padding: 5px;
+}
+
+footer a {
+  font-size: 1em;
+  padding: 0 5px;
+}
