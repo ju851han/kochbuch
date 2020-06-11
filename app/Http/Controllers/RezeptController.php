@@ -13,7 +13,7 @@ class RezeptController extends Controller
      */
     public function index()
     {
-        $rows = DB::select('SELECT rName, kategorie, zeit, kostenjePortion FROM REZEPTE');
+        $rows = DB::select('SELECT rID, rName, zeit, kostenjePortion FROM REZEPTE');
         return view('rezepte/index')->with('rezepte', $rows);
     }
 
