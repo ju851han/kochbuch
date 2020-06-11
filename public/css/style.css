@@ -150,7 +150,7 @@ nav {
 
 
 nav li{
-    display: inline-blocK;
+    display: inline-block;
     margin: 5px 1%;
     text-decoration: none;
 }
