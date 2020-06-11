@@ -88,7 +88,7 @@
 </nav>
 <main>
     <section>
-        <h2 id="willkommen" class="center">Herzlich Willkommen</h2>
+        <h2 id="special" class="center">Herzlich Willkommen</h2>
         <p>Sie sind auf der Suche nach einem digitalen Kochbuch zur Verwaltung von Rezepten mit Wochenkochplan,
             Einkaufsliste uvm.? Dann sind Sie hier richtig! Egal, ob Hobbykoch oder blutiger Kochanfänger. Hier ist
             für jeden etwas dabei. Es dreht sich alles rundum das Kochen.</p>
