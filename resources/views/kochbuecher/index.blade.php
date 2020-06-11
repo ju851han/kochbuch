@@ -6,7 +6,7 @@
         <table class="table tbl_kochbuecher">
             <thead class="thead_orangered">
             <tr>
-                <th>Kochbuch-Nr.</th>
+                <th>Nr.</th>
                 <th>Name</th>
                 <th></th>
             </tr>
@@ -14,7 +14,7 @@
             <tbody class="background2ndTR">
             @foreach ($kochbuecher as $k)
                 <tr>
-                    <td> {{  $k->kID }} </td>
+                    <td> {{  $k->kID }} </td> {{--TODO i instead of kID -> Sonst sind lücken vorhanden --}}
                     <td> {{  $k->kName }}</td>
                     <td> <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"  title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i></button>
                         <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"  title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i></button></td>
