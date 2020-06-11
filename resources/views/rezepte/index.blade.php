@@ -22,8 +22,6 @@
                             title="Rezept ansehen"><i class='fas fa-eye btn_i'></i></button>
                     <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
                             title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i></button>
-                    <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}/destroy'"
-                            title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i></button>
                 </td>
             </tr>
         @endforeach
