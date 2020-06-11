@@ -57,11 +57,19 @@ h4 {
 h3 {
     font-size: 1.25em;
 }
-
+#special {
+    font-size: 2.5em;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    text-shadow: -1px -1px 1px black;
+    color: red;
+}
 p {
     padding: 20px 10px;
 }
-
+.untertitel{
+    font-size: 75%;
+    padding: 0 10px;
+}
 label{
     padding: 20px 10px 0 10px;
 }
@@ -166,12 +174,7 @@ main {
     max-width: 100%;
 }
 
-#willkommen {
-    font-size: 2.5em;
-    font-family: 'Oleo Script Swash Caps', cursive;
-    text-shadow: -1px -1px 1px black;
-    color: red;
-}
+
 
 section {
     padding-top: 20px;
@@ -227,7 +230,8 @@ table {
     background: -ms-linear-gradient(top,  #FF4500,  #AA2A0A);
     background: -webkit-gradient(linear, left top, left bottom, from(#FF4500), to(#AA2A0A));
     background: -moz-linear-gradient(top,  #FF4500,  #AA2A0A);
-    border: solid 1px #6D6D6D;    box-shadow: 2px 2px 3px #666666;
+    border: solid 1px #6D6D6D;
+    box-shadow: 2px 2px 3px #666666;
     -webkit-box-shadow: 2px 2px 3px #666666;
     -moz-box-shadow: 2px 2px 3px #666666;
     color: white;
