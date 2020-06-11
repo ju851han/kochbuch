@@ -2,18 +2,41 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: Garamond, Georgia, serif;;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
+
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+//Colors for Kochbuch
+$lightyellow: #FCE8AF;
+$yellow: #FFA500;
+$orange: #FF4500;
+$darkorange: #AA2A0A;
+$red: #FF0000;
+$darkred: #8B0000;
+$blue: #161669;
+$midnightblue: #0E1A48;
+$green: #6b8e23;
+$grey: #808080;
+$lightgrey: #D3D3D3;
+$white: #FFFFFF;
+$black: #000000;
+
+//Quelle: https://pikock.github.io/bootstrap-magic/app/index.html#!/editor
+//Theme colors
+$primary: $orange;
+$secondary: $darkorange;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $lightgrey;
+$dark: $grey;
+
