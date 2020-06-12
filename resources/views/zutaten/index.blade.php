@@ -1,25 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Zutaten</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Zutaten Name</th>
-            <th>Kosten je Einheit</th>
-            <th>Mengeneinheit</th>
-            <th>Produktgruppe</th>
-        </tr>
-        </thead>
-        <tbody class="background2ndTR">
-        @foreach ($zutaten as $z)
+    <div class="container">
+        <h2>Zutaten</h2>
+        <table class="table">
+            <thead>
             <tr>
-                <td> {{  $z->zName }} </td>
-                <td> {{  $z->mengeneinheit }}</td>
-                <td> {{  $z->kostenJeEinheit }}</td>
-                <td> {{  $z->produktgruppe }}</td>
+                <th>Zutaten Name</th>
+                <th>Kosten je Einheit</th>
+                <th>Mengeneinheit</th>
+                <th>Produktgruppe</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="background2ndTR">
+            @foreach ($zutaten as $z)
+                <tr>
+                    <td> {{  $z->zName }} </td>
+                    <td> {{  $z->mengeneinheit }}</td>
+                    <td> {{  $z->kostenJeEinheit }}</td>
+                    <td> {{  $z->produktgruppe }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

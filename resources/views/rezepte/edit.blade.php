@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
     <h1>Rezept erstellen</h1>
     <p>Du bist gerade dabei dein Rezept zu erstellen. <br>
         Bitte beschreibe nun die Zubereitungsschritte.</p>
@@ -57,6 +58,7 @@
         <input type="reset" value="Abbrechen"> <!-- reset = Formulardaten werden gelöscht-->
         <input type="submit" value="Bearbeiten">
     </form>
+    </div>
     <script>
         function updateTextInput(val) {
             document.getElementById('textOutput').value = val;

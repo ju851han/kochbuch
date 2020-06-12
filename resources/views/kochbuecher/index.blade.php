@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
+    <div class="container">
         <h2><i class="fa fa-book"></i> Kochbücher</h2>
         <table class="table tbl_kochbuecher">
             <thead class="thead_orangered">
@@ -31,5 +31,5 @@
         <button class="normalbtn" onclick="window.location.href='kochbuecher/create'"><i class="material-icons btn_i">add_circle</i>
             Neues Kochbuch erstellen
         </button>
-    </section>
+    </div>
 @endsection

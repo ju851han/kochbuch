@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
     <h2>Rezept: {{  $r->rName }} </h2>
     <p>Kategorien: {{  $r->kategorie }} | <i class="far fa-clock"></i> Zeit : {{  $r->zeit }} min</p>
     <!-- https://mdbootstrap.com/docs/jquery/forms/search/ -->
@@ -25,4 +26,5 @@
     </table>
     <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
             title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten</button>
+    </div>
 @endsection
