@@ -19,12 +19,11 @@
                        maxlength="125" required>
                 <br>
                 <label for="kostenJeEinheit">Kosten je Einheit</label>
-                <input class="form-control" id="kostenJeEinheit" name="kostenJeEinheit" type="text" minlength="1"
-                       maxlength="125" required>
+                <input class="form-control" id="kostenJeEinheit" name="kostenJeEinheit" type="number" min="0"
+                       step="0.01" required><span>€</span>
                 <br>
                 <label for="produktgruppe">Produktgruppe</label>
-                <input class="form-control" id="produktgruppe" name="produktgruppe" type="Text" minlength="2" required>
-                <!--<input list="produktgruppen" id="produktgruppe" name="produktgruppe" type="text">
+                <input list="produktgruppen" id="produktgruppe" name="produktgruppe" type="text">
                 <datalist id="produktgruppen">
                     <option value="Backwaren"></option>
                     <option value="Fisch&Meeresfrüchte"></option>
@@ -36,7 +35,7 @@
                     <option value="Obst&Gemüse"></option>
                     <option value="Naschsachen&Knabbergebäck"></option>
                     <option value="Tiefkühl"></option>
-                </datalist>-->
+                </datalist>
                 <br>
                 <button href="#" value="Abbrechen">Abbrechen</button>
                 <input type="submit" value="Zutat hinzufügen">
