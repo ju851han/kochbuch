@@ -9,18 +9,18 @@
         <form method="POST" action="/zutaten">
             @csrf
             <label for="zName">Zutat</label>
-            <input id="zName" name="zName" type="text" minlength="2" maxlength="256" required>
+            <input class="form-control" id="zName" name="zName" type="text" minlength="2" maxlength="256" required>
             <br>
             <!-- <label for="Menge">Menge</label>
             <input id="Menge" name="Menge" type="number" min="0.5" max="1000000" required></br></br>-->
             <label for="mengeneinheit">Mengeneinheit</label>
-            <input id="mengeneinheit" name="mengeneinheit" type="text" minlength="1" maxlength="125" required>
+            <input class="form-control" id="mengeneinheit" name="mengeneinheit" type="text" minlength="1" maxlength="125" required>
             <br>
             <label for="kostenJeEinheit">Kosten je Einheit</label>
-            <input id="kostenJeEinheit" name="kostenJeEinheit" type="text" minlength="1" maxlength="125" required>
+            <input class="form-control" id="kostenJeEinheit" name="kostenJeEinheit" type="text" minlength="1" maxlength="125" required>
             <br>
             <label for="produktgruppe">Produktgruppe</label>
-            <input id="produktgruppe" name="produktgruppe" type="Text" minlength="2" required>
+            <input class="form-control" id="produktgruppe" name="produktgruppe" type="Text" minlength="2" required>
             <!--<input list="produktgruppen" id="produktgruppe" name="produktgruppe" type="text">
             <datalist id="produktgruppen">
                 <option value="Backwaren"></option>
