@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <section class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-10 offset-md-1">
                 <h2 id="special" class="center">Herzlich Willkommen</h2>
                 <p>Sie sind auf der Suche nach einem digitalen Kochbuch zur Verwaltung von Rezepten mit Wochenkochplan,
                     Einkaufsliste uvm.? Dann sind Sie hier richtig! Egal, ob Hobbykoch oder blutiger Kochanfänger. Hier
@@ -56,55 +56,62 @@
         </section>
         <section id="anwendungsfall" class="background2ndSection row">
             <h2 class="center col-md-10 offset-md-1">Wofür ist ein digitales Kochbuch gut?</h2>
-            <section id="kochbuch">
-                <div class="center col-md-2 offset-md-5">
-                    <i class="fa fa-book i_dot"></i>
-                </div>
-                <div class="col-md-10 offset-md-1">
-                    <h4>Rezept verloren?</h4>
-                    <p> Ausgeschnittene Rezepte von Zeitschriften sind plötzlich verschwunden, das Lieblingsrezept ist
-                        nicht
-                        auffindbar und die herausgesuchten Online-Rezepte sind offline. Kennen Sie diese Probleme? Um
-                        sich
-                        diesen Ärger zu entgehen, können Sie sich einfach hier Ihre Rezepte in ein <em>digitales
-                            Kochbuch</em> archivieren. Im Inhaltsverzeichnis können die Rezepte einfach und problemlos
-                        jederzeit abgerufen werden.</p>
-                </div>
-            </section>
-            <section id="suchfunktion">
-                <div class="center col-md-2 offset-md-5">
-                    <i class="fa fa-search i_dot"></i>
-                </div>
-                <div class="col-md-10 offset-md-1">
-                    <h4>Gegen Lebensmittelverschwendung & Ideenlosigkeit.</h4>
-                    <p> Für die Resteverwertung kann mithilfe der <em>Suchfunktion</em> für die übrig gebliebene Zutat
-                        ein Rezept, in der sie verarbeitet werden kann, gefunden werden. Ebenso können Sie in unserer
-                        Rezepte-Übersicht gerne nach neuen Rezeptideen einfach nur schmökern oder auch die Rezepte nach
-                        Zeit, Kosten und Kategorien filtern.</p>
+            <section id="kochbuch" class="col-md-12">
+                <div class="row">
+                    <div class="center col-md-2">
+                        <i class="fa fa-book i_dot"></i>
+                    </div>
+                    <div class="col-md-10">
+                        <h4>Rezept verloren?</h4>
+                        <p> Ausgeschnittene Rezepte von Zeitschriften sind plötzlich verschwunden, das Lieblingsrezept
+                            ist nicht auffindbar und die herausgesuchten Online-Rezepte sind offline. Kennen Sie diese
+                            Probleme? Um sich diesen Ärger zu entgehen, können Sie sich einfach hier Ihre Rezepte in ein
+                            <em>digitales Kochbuch</em> archivieren. Im Inhaltsverzeichnis können die Rezepte einfach
+                            und problemlos jederzeit abgerufen werden.</p>
+                    </div>
                 </div>
             </section>
-            <section id="wochenkochplan">
-                <div class="center col-md-2 offset-md-5">
-                    <i class="fas fa-calendar-week i_dot"></i>
-                </div>
-                <div class="col-md-10 offset-md-1">
-                    <h4>Organisiert durch die Woche kochen.</h4>
-                    <p> Damit Sie nicht der Hunger plagen muss und Sie lange herumüberlegen, was Sie am besten kochen,
-                        gibt es einen <em>Wochenkochplan</em>. In diesem können Sie ganz einfach einstellen, an welchen
-                        Tag Sie welches Rezept kochen möchten. Anhand dessen wird automatisch eine Einkaufsliste
-                        generiert.</p>
+            <section id="suchfunktion" class="col-md-12">
+                <div class="row">
+                    <div class="center col-md-2">
+                        <i class="fa fa-search i_dot"></i>
+                    </div>
+                    <div class="col-md-10">
+                        <h4>Gegen Lebensmittelverschwendung & Ideenlosigkeit.</h4>
+                        <p> Für die Resteverwertung kann mithilfe der <em>Suchfunktion</em> für die übrig gebliebene
+                            Zutat ein Rezept, in der sie verarbeitet werden kann, gefunden werden. Ebenso können Sie in
+                            unserer Rezepte-Übersicht gerne nach neuen Rezeptideen einfach nur schmökern oder auch die
+                            Rezepte nach Zeit, Kosten und Kategorien filtern.</p>
+                    </div>
                 </div>
             </section>
-            <section id="einkaufsliste">
-                <div class="center">
-                    <i class="fas fa-list-alt i_dot"></i>
+            <section id="wochenkochplan" class="col-md-12">
+                <div class="row">
+                    <div class="center col-md-2">
+                        <i class="fas fa-calendar-week i_dot"></i>
+                    </div>
+                    <div class="col-md-10">
+                        <h4>Organisiert durch die Woche kochen.</h4>
+                        <p> Damit Sie nicht der Hunger plagen muss und Sie lange herumüberlegen, was Sie am besten
+                            kochen, gibt es einen <em>Wochenkochplan</em>. In diesem können Sie ganz einfach einstellen,
+                            an welchen Tag Sie welches Rezept kochen möchten. Anhand dessen wird automatisch eine
+                            Einkaufsliste generiert.</p>
+                    </div>
                 </div>
-                <div class="col-md-10 offset-md-1">
-                    <h4>Strukturiert einkaufen.</h4>
-                    <p> Sie stehen vor dem Regal im Lebensmittelmarkt und es fällt Ihnen einfach nicht ein, welches
-                        Produkt Sie einkaufen wollten. Kennen Sie diese Situation? Den Ärger können Sie sich zukünftig
-                        mithilfe der strukturierten <em>Einkaufsliste</em>, eine gruppierte Check-Liste ist, ersparen.
-                        Dadurch wird ein schnelles Einkaufen ermöglicht, ohne dass eine Zutat vergessen wird.</p>
+            </section>
+            <section id="einkaufsliste" class="col-md-12">
+                <div class="row">
+                    <div class="center col-md-2">
+                        <i class="fas fa-list-alt i_dot"></i>
+                    </div>
+                    <div class="col-md-10">
+                        <h4>Strukturiert einkaufen.</h4>
+                        <p> Sie stehen vor dem Regal im Lebensmittelmarkt und es fällt Ihnen einfach nicht ein, welches
+                            Produkt Sie einkaufen wollten. Kennen Sie diese Situation? Den Ärger können Sie sich
+                            zukünftig mithilfe der strukturierten <em>Einkaufsliste</em>, eine gruppierte Check-Liste
+                            ist, ersparen. Dadurch wird ein schnelles Einkaufen ermöglicht, ohne dass eine Zutat
+                            vergessen wird.</p>
+                    </div>
                 </div>
             </section>
         </section>
