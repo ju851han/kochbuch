@@ -28,7 +28,7 @@
         <h1 id="header-ueberschrift">Kochbuch</h1>
     </figure>
 </header>
-<nav class="navbar navbar-expand-md navbar-dark sticky-top"><!--navbar navbar-expand-md navbar-light bg-white shadow-sm-->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
