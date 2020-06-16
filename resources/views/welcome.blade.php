@@ -1,9 +1,10 @@
 @extends('layouts.app_unlogged')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid"
+    >
         <section class="row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-xs-10 offset-xs-1 col-md-10 offset-md-1">
                 <h2 id="special" class="center">Herzlich Willkommen</h2>
                 <p>Sie sind auf der Suche nach einem digitalen Kochbuch zur Verwaltung von Rezepten mit Wochenkochplan,
                     Einkaufsliste uvm.? Dann sind Sie hier richtig! Egal, ob Hobbykoch oder blutiger Kochanfänger. Hier
@@ -11,7 +12,7 @@
             </div>
         </section>
         <section id="hauptfunktionalitäten" class="background row">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-xs-10 offset-xs-1 col-md-6 offset-md-3">
                 <h2 class="center">Welche Leistungen werden angeboten?</h2>
 
                 <table class="tbl_hauptfunktionen center">
@@ -55,13 +56,13 @@
             </div>
         </section>
         <section id="anwendungsfall" class="background2ndSection row">
-            <h2 class="center col-md-10 offset-md-1">Wofür ist ein digitales Kochbuch gut?</h2>
-            <section id="kochbuch" class="col-md-12">
+            <h2 class="center col-xs-10 offset-xs-1 col-md-10 offset-md-1">Wofür ist ein digitales Kochbuch gut?</h2>
+            <section id="kochbuch" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-md-2">
+                    <div class="center col-xs-10 offset-xs-1 col-md-1 offset-md-1 order-md-1">
                         <i class="fa fa-book i_dot"></i>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-xs-10 offset-xs-1 col-md-9 order-md-2">
                         <h4>Rezept verloren?</h4>
                         <p> Ausgeschnittene Rezepte von Zeitschriften sind plötzlich verschwunden, das Lieblingsrezept
                             ist nicht auffindbar und die herausgesuchten Online-Rezepte sind offline. Kennen Sie diese
@@ -71,12 +72,12 @@
                     </div>
                 </div>
             </section>
-            <section id="suchfunktion" class="col-md-12">
+            <section id="suchfunktion" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-md-2">
+                    <div class="center col-xs-10 offset-xs-1 col-md-1 order-md-2">
                         <i class="fa fa-search i_dot"></i>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-xs-10 offset-xs-1 col-md-9 offset-md-1 order-md-1">
                         <h4>Gegen Lebensmittelverschwendung & Ideenlosigkeit.</h4>
                         <p> Für die Resteverwertung kann mithilfe der <em>Suchfunktion</em> für die übrig gebliebene
                             Zutat ein Rezept, in der sie verarbeitet werden kann, gefunden werden. Ebenso können Sie in
@@ -85,12 +86,12 @@
                     </div>
                 </div>
             </section>
-            <section id="wochenkochplan" class="col-md-12">
+            <section id="wochenkochplan" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-md-2">
+                    <div class="center col-xs-10 offset-xs-1 col-md-1 offset-md-1 order-md-1">
                         <i class="fas fa-calendar-week i_dot"></i>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-xs-10 offset-xs-1 col-md-9 order-md-2">
                         <h4>Organisiert durch die Woche kochen.</h4>
                         <p> Damit Sie nicht der Hunger plagen muss und Sie lange herumüberlegen, was Sie am besten
                             kochen, gibt es einen <em>Wochenkochplan</em>. In diesem können Sie ganz einfach einstellen,
@@ -99,12 +100,12 @@
                     </div>
                 </div>
             </section>
-            <section id="einkaufsliste" class="col-md-12">
+            <section id="einkaufsliste" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-md-2">
+                    <div class="center col-xs-10 offset-xs-1 col-md-1 order-md-2">
                         <i class="fas fa-list-alt i_dot"></i>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-xs-10 offset-xs-1 col-md-9 offset-md-1 order-md-1">
                         <h4>Strukturiert einkaufen.</h4>
                         <p> Sie stehen vor dem Regal im Lebensmittelmarkt und es fällt Ihnen einfach nicht ein, welches
                             Produkt Sie einkaufen wollten. Kennen Sie diese Situation? Den Ärger können Sie sich
@@ -115,13 +116,14 @@
                 </div>
             </section>
         </section>
-        <aside class="col-md-10 offset-md-1">
-            <h3>Haben wir Ihr Interesse geweckt?</h3>
-            <p>Registrieren Sie sich kostenlos und nutzen Sie die zahlreichen Vorteile dieser Web-Applikation. <a
-                        href="{{ route('register') }}">Hier</a> geht es zur Registrierung. </p>
+        <aside class="row">
+            <div class="col-xs-10 offset-xs-1 col-md-10 offset-md-1">
+                <h3>Haben wir Ihr Interesse geweckt?</h3>
+                <p>Registrieren Sie sich kostenlos und nutzen Sie die zahlreichen Vorteile dieser Web-Applikation. <a
+                            href="{{ route('register') }}">Hier</a> geht es zur Registrierung. </p></div>
         </aside>
         <section id="über-uns row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-xs-10 offset-xs-1 col-md-10 offset-md-1">
                 <h2 class="center">Über Uns</h2>
                 <p>
                     Unser Ziel ist es, eine benutzerfreundliche und intuitive Web-Applikation bereitzustellen, und geben
@@ -131,10 +133,14 @@
                 </p>
             </div>
         </section>
-        <aside class="col-md-10 offset-md-1">
-            <h3>Haben Sie Fragen oder wollen Sie uns ein Feedback geben?</h3>
-            <p>Gerne sind wir über das <a href="#">Kontaktformular</a> für Sie erreichbar.</p>
+        <aside class="row">
+            <div class="col-xs-10 offset-xs-1 col-md-10 offset-md-1">
+                <h3>Haben Sie Fragen oder wollen Sie uns ein Feedback geben?</h3>
+                <p>Gerne sind wir über das <a href="#">Kontaktformular</a> für Sie erreichbar.</p>
+            </div>
         </aside>
-        <q class="col-md-6 offset-md-3"> Wir wünschen Ihnen viel Spaß beim Kochen!<br>Bon Appétit!</q>
+        <div class="row">
+        <q class="col-xs-6 offset-xs-3 col-md-6 offset-md-3"> Wir wünschen Ihnen viel Spaß beim Kochen!<br>Bon Appétit!</q>
+        </div>
     </div>
 @endsection
