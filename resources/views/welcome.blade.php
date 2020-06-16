@@ -59,10 +59,10 @@
             <h2 class="center col-xs-10 offset-xs-1 col-md-10 offset-md-1">Wofür ist ein digitales Kochbuch gut?</h2>
             <section id="kochbuch" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-xs-10 offset-xs-1 col-md-1 offset-md-1 order-md-1">
+                    <div class="center col-xs-9 offset-xs-1 col-md-1 offset-md-1 order-md-1">
                         <i class="fa fa-book i_dot"></i>
                     </div>
-                    <div class="col-xs-10 offset-xs-1 col-md-9 order-md-2">
+                    <div class="col-xs-9 offset-xs-1 col-md-9 order-md-2">
                         <h4>Rezept verloren?</h4>
                         <p> Ausgeschnittene Rezepte von Zeitschriften sind plötzlich verschwunden, das Lieblingsrezept
                             ist nicht auffindbar und die herausgesuchten Online-Rezepte sind offline. Kennen Sie diese
@@ -74,10 +74,10 @@
             </section>
             <section id="suchfunktion" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-xs-10 offset-xs-1 col-md-1 order-md-2">
+                    <div class="center col-xs-9 offset-xs-1 col-md-1 order-md-2">
                         <i class="fa fa-search i_dot"></i>
                     </div>
-                    <div class="col-xs-10 offset-xs-1 col-md-9 offset-md-1 order-md-1">
+                    <div class="col-xs-9 offset-xs-1 col-md-9 offset-md-1 order-md-1">
                         <h4>Gegen Lebensmittelverschwendung & Ideenlosigkeit.</h4>
                         <p> Für die Resteverwertung kann mithilfe der <em>Suchfunktion</em> für die übrig gebliebene
                             Zutat ein Rezept, in der sie verarbeitet werden kann, gefunden werden. Ebenso können Sie in
@@ -88,10 +88,10 @@
             </section>
             <section id="wochenkochplan" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-xs-10 offset-xs-1 col-md-1 offset-md-1 order-md-1">
+                    <div class="center col-xs-9 offset-xs-1 col-md-1 offset-md-1 order-md-1">
                         <i class="fas fa-calendar-week i_dot"></i>
                     </div>
-                    <div class="col-xs-10 offset-xs-1 col-md-9 order-md-2">
+                    <div class="col-xs-9 offset-xs-1 col-md-9 order-md-2">
                         <h4>Organisiert durch die Woche kochen.</h4>
                         <p> Damit Sie nicht der Hunger plagen muss und Sie lange herumüberlegen, was Sie am besten
                             kochen, gibt es einen <em>Wochenkochplan</em>. In diesem können Sie ganz einfach einstellen,
@@ -102,10 +102,10 @@
             </section>
             <section id="einkaufsliste" class="col-xs-10 offset-xs-1 col-md-12">
                 <div class="row">
-                    <div class="center col-xs-10 offset-xs-1 col-md-1 order-md-2">
+                    <div class="center col-xs-9 offset-xs-1 col-md-1 order-md-2">
                         <i class="fas fa-list-alt i_dot"></i>
                     </div>
-                    <div class="col-xs-10 offset-xs-1 col-md-9 offset-md-1 order-md-1">
+                    <div class="col-xs-9 offset-xs-1 col-md-9 offset-md-1 order-md-1">
                         <h4>Strukturiert einkaufen.</h4>
                         <p> Sie stehen vor dem Regal im Lebensmittelmarkt und es fällt Ihnen einfach nicht ein, welches
                             Produkt Sie einkaufen wollten. Kennen Sie diese Situation? Den Ärger können Sie sich
