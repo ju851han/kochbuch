@@ -18,6 +18,7 @@ class CreateZutatsTable extends Migration
             $table->unsignedFloat('kostenjeEinheit');
             $table->string('mengeneinheit',20);
             $table->string('produktgruppe',125);
+            $table->timestamps();
         });
     }
 
