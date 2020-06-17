@@ -78,7 +78,8 @@ class KochbuchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kochbuch $kochbuch
+     * @param Request $request
+     * @param $kID
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $kID)
