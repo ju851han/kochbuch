@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Zutat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ZutatController extends Controller
 {
@@ -23,9 +24,10 @@ class ZutatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,$kid)
+    public function index()
     {
-        //
+        $zutaten = Zutat::all();
+        return view('zutaten/index')->with('zutaten', $zutaten);
     }
 
     /**
@@ -33,9 +35,11 @@ class ZutatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        return view('zutaten/create');
     }
 
     /**
@@ -46,29 +50,55 @@ class ZutatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        /*TODO Validation */
+        $zutat = new Zutat;
+        $zutat->zName= $request->zName;
+        $zutat->kostenJeEinheit= $request->kostenJeEinheit;
+        $zutat->mengeneinheit= $request->mengeneinheit;
+        $zutat->produktgruppe= $request->produktgruppe;
+        $zutat->save();
+
+        return redirect()->action('ZutatController@index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Zutat  $zutat
+     * @param $zName
      * @return \Illuminate\Http\Response
      */
-    public function show(Zutat $zutat)
+    public function show($zName)
     {
-        //
+        /*TODO Später löschen*/
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $zutat = Zutat::find($zName);
+        if(is_null($zutat)){
+            return redirect()->action('ZutatController@index');
+        }
+        return view('zutat/show')->with('z',$zutat);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Zutat  $zutat
+     * @param Request $request
+     * @param $zName
      * @return \Illuminate\Http\Response
      */
-    public function edit(Zutat $zutat)
+    public function edit(Request $request, $zName)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $zutat = Zutat::find($zName);
+        if(is_null($zutat)){
+            return redirect()->action('ZutatController@index');
+        }
+        return view('zutat/edit')->with('r',$zutat);
+
     }
 
     /**
@@ -78,19 +108,35 @@ class ZutatController extends Controller
      * @param  \App\Zutat  $zutat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Zutat $zutat)
+    public function update(Request $request, $zName)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $zutat=Zutat::find($zName);
+        /*TODO Validation */
+        $zutat->kostenjeEinheit= $request->kostenjeEinheit;
+        $zutat->mengeneinheit= $request->mengeneinheit;
+        $zutat->produktgruppe= $request->produktgruppe;
+        $zutat->save();
+        return redirect()->action('ZutatController@show',['zName'=>$zName]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Zutat  $zutat
+     * @param Request $request
+     * @param $zName
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Zutat $zutat)
+    public function destroy(Request $request, $zName)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('admin');*/
+        $zutat = Zutat::find($zName);
+        $zutat->delete();
+        Session::flash('alert-success', 'Rezept '.$zutat->zName.' wurde erfolgreich gelöscht.');
+        return redirect()->action('RezeptController@index');
+
+
     }
 }
