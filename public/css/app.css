@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 
 /*!
@@ -9798,12 +9799,7 @@ body {
 
 h1, h2 {
     font-weight: bolder;
-    text-shadow: 3px 3px 10px grey;
-    padding: 40px 0 20px
-}
-
-h1, h2, h3 {
-    padding: 20px 10px 0
+    text-shadow: 3px 3px 10px grey
 }
 
 h1 {
@@ -9837,15 +9833,7 @@ p {
 
 .untertitel {
     font-size: 75%;
-    padding: 0 10px
-}
-
-label {
-    padding: 20px 10px 0
-}
-
-input, textarea {
-    margin: 0 10px
+    padding: 0
 }
 
 q {
@@ -9927,7 +9915,8 @@ nav li {
 
 main {
     position: relative;
-    max-width: 100%
+    max-width: 100%;
+    padding-bottom: 30px
 }
 
 section {
@@ -9941,11 +9930,23 @@ aside {
     padding: 5px
 }
 
+aside.row {
+    margin: 10px 20px
+}
+
 aside p {
     padding-top: 10px
 }
 
-#anwendungsfall h4, #anwendungsfall p {
+#anwendungsfall h4 {
+    display: inline
+}
+
+#anwendungsfall .row {
+    margin: 10px 20px
+}
+
+#anwendungsfall p {
     display: inline
 }
 
@@ -9958,9 +9959,34 @@ em {
     letter-spacing: 2px
 }
 
+.row {
+    margin: 0
+}
+
+.container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    padding: 0
+}
+
+label {
+    padding: 20px 10px 0 0
+}
+
+label.form-check-label {
+    padding: 0 10px
+}
+
+input.form-check-input {
+    position: static;
+    margin-left: 0
+}
+
 table {
     margin: auto;
     border: 1px solid #d3d3d3
+}
+
+#hauptfunktionalitäten div {
+    padding: 0
 }
 
 .tbl_kochbuecher td {
