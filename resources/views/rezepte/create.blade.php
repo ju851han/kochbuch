@@ -16,7 +16,6 @@
                               required></textarea><br>
                     <br>
                     <!-- TODO mehrere auswahlmöglichkeiten -->
-                    <!-- TODO einfügen class="form-control" -->
                     <label for="kategorie">Wähle die Kategorien aus, zu denen das Rezept passt:</label>
                     <br>
                     <div class="form-check">
