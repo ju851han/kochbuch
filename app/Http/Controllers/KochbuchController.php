@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Kochbuch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class KochbuchController extends Controller
 {
@@ -24,72 +25,108 @@ class KochbuchController extends Controller
      */
     public function index()
     {
-        //
+        $kochbuecher = Kochbuch::all();
+        return view('kochbuecher/index')->with('kochbuecher', $kochbuecher);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        return view('kochbuecher/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+
+        $kochbuch = Kochbuch::create($request->all());
+        /*TODO Validation */
+        return redirect()->action('KochbuchController@index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kochbuch  $kochbuch
+     * @param $kID
      * @return \Illuminate\Http\Response
      */
-    public function show(Kochbuch $kochbuch)
+    public function show($kID)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $kochbuch = Kochbuch::find($kID);
+        if(is_null($kochbuch)){
+            return redirect()->action('KochbuchController@index');
+        }
+        return view('kochbuecher/show')->with('k',$kochbuch);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kochbuch  $kochbuch
+     * @param  \App\Kochbuch $kochbuch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kochbuch $kochbuch)
+    public function edit(Request $request, $kID)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $kochbuch = Kochbuch::find($kID);
+        if(is_null($kochbuch)){
+            return redirect()->action('KochbuchController@index');
+        }
+        return view('kochbuecher/edit')->with('k',$kochbuch);
+
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kochbuch  $kochbuch
+     * @param  \Illuminate\Http\Request $request
+     * @param $kID
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kochbuch $kochbuch)
+    public function update(Request $request, $kID)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $kochbuch=Kochbuch::find($kID);
+        /*TODO Validation */
+        $kochbuch->kName= $request->kName;
+        $kochbuch->save();
+        return redirect()->action('KochbuchController@show',['kID'=>$kID]);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kochbuch  $kochbuch
+     * @param Request $request
+     * @param $kID
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kochbuch $kochbuch)
+    public function destroy(Request $request, $kID)
     {
-        //
+        /*TODO authorized Role wo festzulegen?*/
+        /*     $request->user()->authorizeRole('logged_user');*/
+        $kochbuch = Kochbuch::find($kID);
+        $kochbuch->delete();
+        Session::flash('alert-success', 'Kochbuch '.$kochbuch->kName.' wurde erfolgreich gelöscht.');
+        return redirect()->action('KochbuchController@index');
     }
 }
