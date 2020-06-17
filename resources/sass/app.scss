@@ -36,14 +36,14 @@ h1,
 h2 {
   font-weight: bolder;
   text-shadow: 3px 3px 10px $grey;
-  padding: 40px 0 20px 0;
+  /*padding: 40px 0 20px 0;*/
 }
 
-h1,
+/*h1,
 h2,
 h3 {
   padding: 20px 10px 0 10px;
-}
+}*/
 
 h1 {
   font-size: 2.5em;
@@ -86,9 +86,9 @@ label {
   padding: 20px 10px 0 10px;
 }
 
-textarea, input {
+/*textarea, input {
   margin: 0 10px;
-}
+}*/
 
 q {
   font-family: 'Oleo Script Swash Caps', cursive;
