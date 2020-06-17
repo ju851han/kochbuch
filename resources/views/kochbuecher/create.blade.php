@@ -7,8 +7,11 @@
                 <h2>Kochbuch erstellen</h2>
                 <form method="post" action="/kochbuecher">
                     @csrf
-                    <label for="kName">Name des Kochbuchs:</label>
-                    <input class="form-control" id="kName" name="kName" type="text" minlength="2" required><br>
+                    <div class="form-group">
+                        <label for="kName">Name des Kochbuchs:</label>
+                        <input class="form-control" id="kName" name="kName" type="text" minlength="2" required>
+                    </div>
+                    <br>
                     <input type="reset" class="abortbtn" value="Abbrechen">
                     <!-- reset = Formulardaten werden gelöscht-->
                     <input type="submit" class="finishbtn" value="Kochbuch erstellen">
