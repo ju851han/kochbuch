@@ -8,5 +8,6 @@ class Zutat extends Model
 {
     protected $table =  "zutats";
     protected $fillable = ['zName','kostenjeEinheit','mengeneinheit','produktgruppe'];
+    protected $primaryKey='zName';
 
 }
