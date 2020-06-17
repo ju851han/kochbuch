@@ -20,6 +20,7 @@ class CreateRezeptsTable extends Migration
             $table->integer('zeit');
             $table->unsignedFloat('kostenjePortion');
             $table->string('zubereitung',500);
+            $table->timestamps();
         });
     }
 
