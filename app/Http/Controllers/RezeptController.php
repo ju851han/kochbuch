@@ -126,7 +126,8 @@ class RezeptController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rezept  $rezept
+     * @param Request $request
+     * @param $rID
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request,$rID)
