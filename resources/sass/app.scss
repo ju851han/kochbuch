@@ -79,16 +79,11 @@ p {
 
 .untertitel {
   font-size: 75%;
-  padding: 0 10px;
+  padding: 0;
 }
 
-label {
-  padding: 20px 10px 0 10px;
-}
 
-/*textarea, input {
-  margin: 0 10px;
-}*/
+
 
 q {
   font-family: 'Oleo Script Swash Caps', cursive;
@@ -238,6 +233,22 @@ Grid
 }
 .container-fluid{
   padding: 0;
+}
+/****************************************
+Forms
+****************************************/
+
+label {
+  padding: 20px 10px 0 0;
+}
+
+label.form-check-label {
+  padding: 0 10px;
+}
+
+input.form-check-input{
+  position: static;
+  margin-left: 0;
 }
 
 /****************************************
