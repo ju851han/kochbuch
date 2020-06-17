@@ -54,21 +54,26 @@ Route::get('/rezepte/{rID}','RezeptController@show')->name('rezepte.show');
 Route::get('rezepte/{rID}/edit','RezeptController@edit')->name('rezepte.edit');
 Route::post('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.update');
 
+//Delete Rezept
+Route::get('/rezepte/{rID}/destroy/','RezeptController@destroy')->name('rezepte.destroy');
 
 /****TODO Routes for Zutaten **************************************************************************/
 // Show all Zutaten
-Route::get('/zutaten','ZutatenController@index')->name('zutaten.index');
+Route::get('/zutaten','ZutatController@index')->name('zutaten.index');
 
 // Add Zutat
-Route::get('/zutaten/create','ZutatenController@create')->name('zutaten.create');
-Route::post('/zutaten','ZutatenController@store')->name('zutaten.store');
+Route::get('/zutaten/create','ZutatController@create')->name('zutaten.create');
+Route::post('/zutaten','ZutatController@store')->name('zutaten.store');
 
 //Show Zutat
-Route::get('/zutaten/{zName}','ZutatenController@show')->name('zutaten.show');
+Route::get('/zutaten/{zName}','ZutatController@show')->name('zutaten.show');
 
 //Update Zutat
-Route::get('zutaten/{zName}/edit','ZutatenController@edit')->name('zutaten.edit');
-Route::post('/zutaten/{zName}/update','ZutatenController@update')->name('zutaten.update');
+Route::get('zutaten/{zName}/edit','ZutatController@edit')->name('zutaten.edit');
+Route::post('/zutaten/{zName}/update','ZutatController@update')->name('zutaten.update');
+
+//Delete Zutat
+Route::get('/zutaten/{zName}/destroy/','ZutatController@destroy')->name('zutaten.destroy');
 
 /****Remaining Routes **************************************************************************/
 
