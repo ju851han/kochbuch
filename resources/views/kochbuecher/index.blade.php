@@ -5,7 +5,8 @@
         <div class="row">
             <section class="col-xs-auto col-md-8 offset-md-2">
                 <h2><i class="fa fa-book"></i> Kochbücher</h2>
-                <table class="table tbl_kochbuecher">
+                <br>
+                <table class="table tbl_kochbuecher"> <!-- TODO Formatting -->
                     <thead class="thead_orangered">
                     <tr>
                         <th>Nr.</th>
@@ -31,7 +32,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <button class="normalbtn" onclick="window.location.href='kochbuecher/create'"><i
+                <button class="normalbtn" onclick="window.location.href='/kochbuecher/create'"><i
                             class="material-icons btn_i">add_circle</i>
                     Neues Kochbuch erstellen
                 </button>
