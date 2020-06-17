@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Kochbuch;
+use App\Zutat;
 use Illuminate\Http\Request;
 
-class KochbuchController extends Controller
+class ZutatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class KochbuchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kochbuch  $kochbuch
+     * @param  \App\Zutat  $zutat
      * @return \Illuminate\Http\Response
      */
-    public function show(Kochbuch $kochbuch)
+    public function show(Zutat $zutat)
     {
         //
     }
@@ -52,10 +52,10 @@ class KochbuchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kochbuch  $kochbuch
+     * @param  \App\Zutat  $zutat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kochbuch $kochbuch)
+    public function edit(Zutat $zutat)
     {
         //
     }
@@ -64,10 +64,10 @@ class KochbuchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kochbuch  $kochbuch
+     * @param  \App\Zutat  $zutat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kochbuch $kochbuch)
+    public function update(Request $request, Zutat $zutat)
     {
         //
     }
@@ -75,10 +75,10 @@ class KochbuchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kochbuch  $kochbuch
+     * @param  \App\Zutat  $zutat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kochbuch $kochbuch)
+    public function destroy(Zutat $zutat)
     {
         //
     }
