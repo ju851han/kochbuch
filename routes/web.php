@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //Show all Users
 Route::get('/users','UserController@index')->name('users');
 
+//Delete User
+Route::get('/users/{id}/destroy/','UserController@destroy')->name('users.destroy');
+
+
 /****TODO Routes for Kochbuecher **************************************************************************/
 // Show all Kochbuecher
 Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index');
