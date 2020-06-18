@@ -52,7 +52,6 @@
                         @endif
                     @endauth
                 @endif
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="/rezepte">Rezepte</a></li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="#hauptfunktionalitäten">Hauptfunktionalitäten</a>
                 </li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="#anwendungsfall">Wofür & wozu?</a></li>
