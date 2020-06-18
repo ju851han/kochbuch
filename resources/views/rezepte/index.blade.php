@@ -30,6 +30,10 @@
                     @endforeach
                     </tbody>
                 </table>
+                <button class="normalbtn" onclick="window.location.href='/rezepte/create'"><i
+                            class="material-icons btn_i">add_circle</i>
+                    Neues Rezept erstellen
+                </button>
             </section>
         </div>
     </div>
