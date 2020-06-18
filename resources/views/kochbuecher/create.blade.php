@@ -5,17 +5,22 @@
         <div class="row">
             <section class="col-xs-auto col-md-8 offset-md-2">
                 <h2>Kochbuch erstellen</h2>
-                <form method="post" action="/kochbuecher">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">1. Name eingeben</li>
+                    </ol>
+                </nav>
+                <form method="post" action="/kochbuecher/create_step2_addZutaten">
                     @csrf
                     <div class="form-group">
                         <label for="kName">Name des Kochbuchs:</label>
                         <input class="form-control" id="kName" name="kName" type="text" minlength="2" required>
                     </div>
                     <br>
-                    <input type="reset" class="abortbtn" value="Abbrechen">
+                    <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <!-- reset = Formulardaten werden gelöscht-->
-                    <input type="submit" class="finishbtn" value="Kochbuch erstellen">
-                    {{--TODO add or create rezept--}}
+                    <input type="submit" class="normalbtn btn" value="Nächste">
+                    <input type="submit" class="finishbtn btn" value="Kochbuch erstellen">
                 </form>
             </section>
         </div>
