@@ -19,8 +19,8 @@
                     @foreach ($zutaten as $z)
                         <tr>
                             <td> {{  $z->zName }} </td>
+                            <td> {{  $z->kostenjeEinheit }} €</td>
                             <td> {{  $z->mengeneinheit }}</td>
-                            <td> {{  $z->kostenJeEinheit }}</td>
                             <td> {{  $z->produktgruppe }}</td>
                             <td><button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}'"
                                         title="Zutat ansehen"><i class='fas fa-eye btn_i'></i></button>
