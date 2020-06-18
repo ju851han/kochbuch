@@ -12,6 +12,7 @@
                         <th>Kosten je Einheit</th>
                         <th>Mengeneinheit</th>
                         <th>Produktgruppe</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody class="background2ndTR">
@@ -21,10 +22,18 @@
                             <td> {{  $z->mengeneinheit }}</td>
                             <td> {{  $z->kostenJeEinheit }}</td>
                             <td> {{  $z->produktgruppe }}</td>
+                            <td><button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}'"
+                                        title="Zutat ansehen"><i class='fas fa-eye btn_i'></i></button>
+                                <button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}/edit'"
+                                        title="Zutat bearbeiten"><i class="material-icons btn_i">edit</i></button></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <button class="normalbtn btn" onclick="window.location.href='/zutaten/create'"><i
+                            class="material-icons btn_i">add_circle</i>
+                    Neue Zutat erstellen
+                </button>
             </section>
         </div>
     </div>

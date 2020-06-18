@@ -39,8 +39,8 @@
                         <option value="Tiefkühl"></option>
                     </datalist>
                     <br>
-                    <button href="#" value="Abbrechen">Abbrechen</button>
-                    <input type="submit" value="Zutat hinzufügen">
+                    <input type="reset"   class="abortbtn btn" value="Abbrechen">
+                    <input type="submit" class="normalbtn btn" value="Zutat hinzufügen">
                 </form>
                 <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
             </section>

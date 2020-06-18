@@ -21,16 +21,16 @@
                             <td> {{  $r->zeit }}</td> {{--TODO Zeit richtig angeben--}}
                             <td> {{  $r->kostenjePortion }} €</td>
                             <td>
-                                <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}'"
+                                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$r->rID}}'"
                                         title="Rezept ansehen"><i class='fas fa-eye btn_i'></i></button>
-                                <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
+                                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
                                         title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i></button>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <button class="normalbtn" onclick="window.location.href='/rezepte/create'"><i
+                <button class="normalbtn btn" onclick="window.location.href='/rezepte/create'"><i
                             class="material-icons btn_i">add_circle</i>
                     Neues Rezept erstellen
                 </button>

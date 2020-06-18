@@ -32,7 +32,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <button class="normalbtn" onclick="window.location.href='/kochbuecher/create'"><i
+                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/create'"><i
                             class="material-icons btn_i">add_circle</i>
                     Neues Kochbuch erstellen
                 </button>

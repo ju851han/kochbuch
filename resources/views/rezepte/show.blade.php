@@ -27,7 +27,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <button class="normalbtn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
+                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
                         title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
                 </button>
             </section>

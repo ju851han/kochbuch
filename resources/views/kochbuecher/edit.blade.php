@@ -12,9 +12,9 @@
                         <input class="form-control" id="kName" name="kName" type="text" minlength="2" required
                                value="{{$k->kName}}"><br>
                     </div>
-                    <input type="reset" class="abortbtn" value="Abbrechen">
+                    <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <!-- reset = Formulardaten werden gelöscht-->
-                    <input type="submit" class="normalbtn" value="Bearbeiten">
+                    <input type="submit" class="normalbtn btn" value="Änderungen speichern">
                 </form>
             </section>
         </div>

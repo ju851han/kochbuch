@@ -71,8 +71,8 @@
                                required value="{{$r->kostenjePortion}}">
                     </div>
                     <br>
-                    <input type="reset" value="Abbrechen"> <!-- reset = Formulardaten werden gelöscht-->
-                    <input type="submit" value="Bearbeiten">
+                    <input type="reset" class="abortbtn btn" value="Abbrechen"> <!-- reset = Formulardaten werden gelöscht-->
+                    <input type="submit" class="normalbtn btn" value="Änderungen speichern">
                 </form>
             </section>
         </div>

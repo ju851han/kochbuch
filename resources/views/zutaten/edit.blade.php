@@ -39,8 +39,8 @@
                         <option value="Tiefkühl"></option>
                     </datalist>
                     <br>
-                    <input type="reset" value="Abbrechen">
-                    <input type="submit" value="Änderungen speichern">
+                    <input type="reset"   class="abortbtn btn" value="Abbrechen">
+                    <input type="submit" class="normalbtn btn" value="Änderungen speichern">
                 </form>
             </section>
         </div>

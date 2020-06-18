@@ -35,10 +35,10 @@
                     @endforeach--}}
                     </tbody>
                 </table>
-                <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"
+                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"
                         title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i> Bearbeiten
                 </button>
-                <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"
+                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"
                         title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i> Löschen
                 </button>
             </section>
