@@ -20,31 +20,32 @@
                                   required></textarea><br>
                     </div>
                     <br>
-                    <!-- TODO mehrere auswahlmöglichkeiten -->
-                    <div class="form-group">
+                    <div class="form-group" onchange="kategory()">
                         <label for="kategorie">Wähle die Kategorien aus, zu denen das Rezept passt:</label>
                         <br>
                         <div class="form-check">
-                            <input class="form-check-input" id="Pasta" name="kategorie" type="checkbox" value="Pasta">
+                            <input class="form-check-input" id="Pasta" name="Pasta" type="checkbox" value="Pasta">
                             <label class="form-check-label" for="Pasta">Pasta</label></div>
                         <br>
                         <div class="form-check">
-                            <input class="form-check-input" id="Fleisch" name="kategorie" type="checkbox"
+                            <input class="form-check-input" id="Fleisch" name="Fleisch" type="checkbox"
                                    value="Fleisch">
                             <label class="form-check-label" for="Fleisch">Fleisch</label></div>
                         <br>
                         <div class="form-check">
-                            <input class="form-check-input" id="Fisch" name="kategorie" type="checkbox" value="Fisch">
+                            <input class="form-check-input" id="Fisch" name="Fisch" type="checkbox" value="Fisch">
                             <label class="form-check-label" for="Fisch">Fleisch</label></div>
                         <br>
                         <div class="form-check">
-                            <input class="form-check-input" id="Snacks" name="kategorie" type="checkbox" value="Snacks">
+                            <input class="form-check-input" id="Snacks" name="Snacks" type="checkbox" value="Snacks">
                             <label class="form-check-label" for="Snacks">Snacks</label></div>
                         <br>
                         <div class="form-check">
-                            <input class="form-check-input" id="Vegetarisch" name="kategorie" type="checkbox"
+                            <input class="form-check-input" id="Vegetarisch" name="Vegetarisch" type="checkbox"
                                    value="Vegetarisch">
                             <label class="form-check-label" for="Vegetarisch">Vegetarisch</label></div>
+                        {{--https://stackoverflow.com/questions/16167675/return-the-value-of-a-js-function-and-use-it-as-the-value-for-an-input-button--}}
+                        <input type="hidden" id="kategorie" name="kategorie" value="">
                     </div>
                     <br>
                     <div class="form-group">
@@ -102,5 +103,25 @@
         function updateTextInput(val) {
             document.getElementById('textInput').value = val;
         }
+        function kategory() {
+            var txt = "";
+            if (document.getElementById('Pasta').checked) {
+                txt = txt + " Pasta";
+            }
+            if (document.getElementById('Fisch').checked) {
+                txt = txt + " Fisch";
+            }
+            if (document.getElementById('Fleisch').checked) {
+                txt = txt + " Fleisch";
+            }
+            if (document.getElementById('Snacks').checked) {
+                txt = txt + " Snacks";
+            }
+            if (document.getElementById('Vegetarisch').checked) {
+                txt = txt + " Vegetarisch";
+            }
+            document.getElementById('kategorie').value = txt;
+        }
+
     </script>
 @endsection
