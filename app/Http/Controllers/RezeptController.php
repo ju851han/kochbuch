@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 class RezeptController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance. Only for authorised User the Controller will execute his functions.
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class RezeptController extends Controller
 
 
     /**
-     * Display a listing of the resource.
+     * Shows all Rezepte
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,7 +31,7 @@ class RezeptController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Shows a form to create a new Rezepte
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,9 +43,9 @@ class RezeptController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Saved the new Rezepte in DB
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,11 +54,11 @@ class RezeptController extends Controller
         /*     $request->user()->authorizeRole('logged_user');*/
         /*TODO Validation */
         $rezept = new Rezept;
-        $rezept->rName= $request->rName;
-        $rezept->kategorie= $request->kategorie;
-        $rezept->zeit= $request->zeit;
-        $rezept->kostenjePortion= $request->kostenjePortion;
-        $rezept->zubereitung= $request->zubereitung;
+        $rezept->rName = $request->rName;
+        $rezept->kategorie = $request->kategorie;
+        $rezept->zeit = $request->zeit;
+        $rezept->kostenjePortion = $request->kostenjePortion;
+        $rezept->zubereitung = $request->zubereitung;
         $rezept->save();
 
 
@@ -66,7 +66,7 @@ class RezeptController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Shows one Rezept
      *
      * @param $rID
      * @return \Illuminate\Http\Response
@@ -76,33 +76,33 @@ class RezeptController extends Controller
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $rezept = Rezept::find($rID);
-        if(is_null($rezept)){
+        if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
         }
-        return view('rezepte/show')->with('r',$rezept);
+        return view('rezepte/show')->with('r', $rezept);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Shows a form to update a Rezept
      *
      * @param Request $request
      * @param $rID
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$rID)
+    public function edit(Request $request, $rID)
     {
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $rezept = Rezept::find($rID);
-        if(is_null($rezept)){
+        if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
         }
-        return view('rezepte/edit')->with('r',$rezept);
+        return view('rezepte/edit')->with('r', $rezept);
 
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updates the edited Rezept in DB
      *
      * @param  \Illuminate\Http\Request $request
      * @param $rID
@@ -112,31 +112,31 @@ class RezeptController extends Controller
     {
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
-        $rezept=Rezept::find($rID);
+        $rezept = Rezept::find($rID);
         /*TODO Validation */
-        $rezept->rName= $request->rName;
-        $rezept->kategorie= $request->kategorie;
-        $rezept->zeit= $request->zeit;
-        $rezept->kostenjePortion= $request->kostenjePortion;
-        $rezept->zubereitung= $request->zubereitung;
+        $rezept->rName = $request->rName;
+        $rezept->kategorie = $request->kategorie;
+        $rezept->zeit = $request->zeit;
+        $rezept->kostenjePortion = $request->kostenjePortion;
+        $rezept->zubereitung = $request->zubereitung;
         $rezept->save();
-        return redirect()->action('RezeptController@show',['rID'=>$rID]);
+        return redirect()->action('RezeptController@show', ['rID' => $rID]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Destroy the specified Rezept from DB
      *
      * @param Request $request
      * @param $rID
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$rID)
+    public function destroy(Request $request, $rID)
     {
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('admin');*/
         $rezept = Rezept::find($rID);
         $rezept->delete();
-        Session::flash('alert-success', 'Rezept '.$rezept->rName.' wurde erfolgreich gelöscht.');
+        Session::flash('alert-success', 'Rezept ' . $rezept->rName . ' wurde erfolgreich gelöscht.');
         return redirect()->action('RezeptController@index');
 
     }

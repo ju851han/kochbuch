@@ -19,13 +19,19 @@ class UserController extends Controller
         return view('users')->with('users', $users);
     }
 
-    public function destroy(Request $request,$id)
+    /**
+     * Destroy an User
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Request $request, $id)
     {
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('admin');*/
         $user = User::find($id);
         $user->delete();
-        Session::flash('alert-success', 'Benutzer '.$user->email.' wurde erfolgreich gelöscht.');
+        Session::flash('alert-success', 'Benutzer ' . $user->email . ' wurde erfolgreich gelöscht.');
         return redirect()->action('UserController@index');
 
     }

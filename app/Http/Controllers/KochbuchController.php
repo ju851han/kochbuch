@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 class KochbuchController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance. Only for authorised User the Controller will execute his functions.
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class KochbuchController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Shows all Kochbuecher
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class KochbuchController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Shows a form to create a new Kochbuch
      *
      * @param Request $request
      * @return void
@@ -43,7 +43,7 @@ class KochbuchController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Saved the new Kochbuch in DB
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -59,7 +59,7 @@ class KochbuchController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Shows one Kochbuch
      *
      * @param $kID
      * @return \Illuminate\Http\Response
@@ -69,14 +69,14 @@ class KochbuchController extends Controller
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
-        if(is_null($kochbuch)){
+        if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
         }
-        return view('kochbuecher/show')->with('k',$kochbuch);
+        return view('kochbuecher/show')->with('k', $kochbuch);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Shows a form to update a Kochbuch
      *
      * @param Request $request
      * @param $kID
@@ -87,16 +87,16 @@ class KochbuchController extends Controller
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
-        if(is_null($kochbuch)){
+        if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
         }
-        return view('kochbuecher/edit')->with('k',$kochbuch);
+        return view('kochbuecher/edit')->with('k', $kochbuch);
 
 
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updates the edited Kochbuch in DB
      *
      * @param  \Illuminate\Http\Request $request
      * @param $kID
@@ -106,16 +106,16 @@ class KochbuchController extends Controller
     {
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
-        $kochbuch=Kochbuch::find($kID);
+        $kochbuch = Kochbuch::find($kID);
         /*TODO Validation */
-        $kochbuch->kName= $request->kName;
+        $kochbuch->kName = $request->kName;
         $kochbuch->save();
-        return redirect()->action('KochbuchController@show',['kID'=>$kID]);
+        return redirect()->action('KochbuchController@show', ['kID' => $kID]);
 
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Destroy the specified Kochbuch from DB
      *
      * @param Request $request
      * @param $kID
@@ -127,7 +127,7 @@ class KochbuchController extends Controller
         /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
         $kochbuch->delete();
-        Session::flash('alert-success', 'Kochbuch '.$kochbuch->kName.' wurde erfolgreich gelöscht.');
+        Session::flash('alert-success', 'Kochbuch ' . $kochbuch->kName . ' wurde erfolgreich gelöscht.');
         return redirect()->action('KochbuchController@index');
     }
 }

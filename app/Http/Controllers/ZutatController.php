@@ -10,7 +10,7 @@ class ZutatController extends Controller
 {
 
     /**
-     * Create a new controller instance.
+     * Create a new controller instance. Only for authorised User the Controller will execute his functions.
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class ZutatController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Shows all Zutaten
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,7 +31,7 @@ class ZutatController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Shows a form to create a new Zutat
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,9 +43,9 @@ class ZutatController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Saved the new Zutat in DB
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,17 +54,17 @@ class ZutatController extends Controller
         /*     $request->user()->authorizeRole('logged_user');*/
         /*TODO Validation */
         $zutat = new Zutat;
-        $zutat->zName= $request->zName;
-        $zutat->kostenJeEinheit= $request->kostenJeEinheit;
-        $zutat->mengeneinheit= $request->mengeneinheit;
-        $zutat->produktgruppe= $request->produktgruppe;
+        $zutat->zName = $request->zName;
+        $zutat->kostenJeEinheit = $request->kostenJeEinheit;
+        $zutat->mengeneinheit = $request->mengeneinheit;
+        $zutat->produktgruppe = $request->produktgruppe;
         $zutat->save();
 
         return redirect()->action('ZutatController@index');
     }
 
     /**
-     * Display the specified resource.
+     * Shows one Zutat
      *
      * @param $zName
      * @return \Illuminate\Http\Response
@@ -75,15 +75,15 @@ class ZutatController extends Controller
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $zutat = Zutat::find($zName);
-        if(is_null($zutat)){
+        if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');
         }
-        return view('zutat/show')->with('z',$zutat);
+        return view('zutat/show')->with('z', $zutat);
 
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Shows a form to update a Zutat
      *
      * @param Request $request
      * @param $zName
@@ -94,35 +94,35 @@ class ZutatController extends Controller
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $zutat = Zutat::find($zName);
-        if(is_null($zutat)){
+        if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');
         }
-        return view('zutat/edit')->with('r',$zutat);
+        return view('zutat/edit')->with('r', $zutat);
 
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updates the edited Zutat in DB
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Zutat  $zutat
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Zutat $zutat
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $zName)
     {
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
-        $zutat=Zutat::find($zName);
+        $zutat = Zutat::find($zName);
         /*TODO Validation */
-        $zutat->kostenjeEinheit= $request->kostenjeEinheit;
-        $zutat->mengeneinheit= $request->mengeneinheit;
-        $zutat->produktgruppe= $request->produktgruppe;
+        $zutat->kostenjeEinheit = $request->kostenjeEinheit;
+        $zutat->mengeneinheit = $request->mengeneinheit;
+        $zutat->produktgruppe = $request->produktgruppe;
         $zutat->save();
-        return redirect()->action('ZutatController@show',['zName'=>$zName]);
+        return redirect()->action('ZutatController@show', ['zName' => $zName]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Destroy the specified Zutat from DB
      *
      * @param Request $request
      * @param $zName
@@ -134,7 +134,7 @@ class ZutatController extends Controller
         /*     $request->user()->authorizeRole('admin');*/
         $zutat = Zutat::find($zName);
         $zutat->delete();
-        Session::flash('alert-success', 'Rezept '.$zutat->zName.' wurde erfolgreich gelöscht.');
+        Session::flash('alert-success', 'Rezept ' . $zutat->zName . ' wurde erfolgreich gelöscht.');
         return redirect()->action('RezeptController@index');
 
 
