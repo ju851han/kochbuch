@@ -91,9 +91,9 @@
                         <label class="col-md-1 order-2">€</label>
                     </div>
                     <br>
-                    <input type="reset" class="abortbtn" value="Abbrechen">
+                    <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <!-- reset = Formulardaten werden gelöscht-->
-                    <input type="submit" class="normalbtn" value="Rezept erstellen">
+                    <input type="submit" class="normalbtn btn" value="Rezept erstellen">
                 </form>
             </section>
         </div>
