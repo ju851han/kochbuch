@@ -81,6 +81,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/kontakt', function () {
+    return view('kontakt');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
