@@ -122,7 +122,7 @@
                 <p>Registrieren Sie sich kostenlos und nutzen Sie die zahlreichen Vorteile dieser Web-Applikation. <a
                             href="{{ route('register') }}">Hier</a> geht es zur Registrierung. </p></div>
         </aside>
-        <section id="über-uns row">
+        <section id="über-uns" class="row">
             <div class="col-xs-10 offset-xs-1 col-md-10 offset-md-1">
                 <h2 class="center">Über Uns</h2>
                 <p>
