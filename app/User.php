@@ -36,4 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasRole($role)
+    {
+        return ($this->role == $role);
+    }
+
+
+    public function authorizeRole($role)
+    {
+        return ($this->role == $role) ||
+            abort(401, 'This action is unauthorized.');
+    }
+
+    /*Implementation Relation*/
+    public function kochbuches(){
+        return $this->hasMany('App\Kochbuch');
+    }
 }
