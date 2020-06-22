@@ -14,8 +14,8 @@ class Rezept extends Model
     public function kochbuches(){
         return $this->belongsToMany('App\Kochbuch');
     }
-/*    public function zutats()
+   public function zutats()
     {
         return $this->belongsToMany('App\Zutat');
-    }*/
+    }
 }
