@@ -10,8 +10,12 @@ class Kochbuch extends Model
     protected $fillable = ['kID','kName','erstelltam','aktualisiertam'];
     protected $primaryKey='kID';
 
-    /* TODO Relationen einbinden
+    /*Implementation Relations*/
+    public function users(){
+        return $this->belongsTo('App\User');
+    }
+
     public function rezepts() {
-        return $this->hasMany('App\Rezept');
-    }*/
+        return $this->belongsToMany('App\Rezept');
+    }
 }
