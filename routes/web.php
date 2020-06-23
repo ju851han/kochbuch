@@ -44,8 +44,10 @@ Route::get('/kochbuecher/{kID}/destroy/','KochbuchController@destroy')->name('ko
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 
 // Add Rezept
-Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create');
-Route::post('/rezepte','RezeptController@store')->name('rezepte.store');
+Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create_step1_addZutaten');
+Route::post('/rezepte/create_step2_Rezept','RezeptController@create_step2')->name('rezepte.create_step2_Rezept');
+Route::post('/rezepte/create_step3_overview','RezeptController@create_step3')->name('rezepte.create_step3_overview');
+Route::get('/rezepte/store','RezeptController@store')->name('rezepte.store');
 
 //Show Rezept
 Route::get('/rezepte/{rID}','RezeptController@show')->name('rezepte.show');
@@ -74,6 +76,11 @@ Route::post('/zutaten/{zName}/update','ZutatController@update')->name('zutaten.u
 
 //Delete Zutat
 Route::get('/zutaten/{zName}/destroy/','ZutatController@destroy')->name('zutaten.destroy');
+
+/****TODO Routes for Wochenkochplan **************************************************************************/
+
+/****TODO Routes for Einkaufsliste **************************************************************************/
+
 
 /****Remaining Routes **************************************************************************/
 
