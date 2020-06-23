@@ -15,8 +15,8 @@ class CreateRezeptZutatTable extends Migration
     {
         Schema::create('rezept_zutat', function (Blueprint $table) {
             $table->id();
-            $table->integer('rezept_id')->unsigned();
-            $table->integer('zutat_zName')->unsigned();
+            $table->integer('rID');
+            $table->string('zName',125);
     /*        TODO add  column
             $table->unsignedFloat('Menge');*/
         });
