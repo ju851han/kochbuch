@@ -27,6 +27,9 @@
                         <td></td>
                     </tr>
                 </table>
+
+                <h3>Zubereitung</h3>
+                <p>{{$r->zubereitung}}</p>
                 <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$r->rID}}/edit'"
                         title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
                 </button>
