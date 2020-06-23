@@ -8,13 +8,15 @@ class Rezept extends Model
 {
     protected $table = "rezepts";
     protected $fillable = ['rID', 'rName', 'kategorie', 'zeit', 'kostenjePortion', 'zubereitung'];
-    protected $primaryKey='rID';
+    protected $primaryKey = 'rID';
 
     /*Implementation Relations*/
-    public function kochbuches(){
+    public function kochbuches()
+    {
         return $this->belongsToMany('App\Kochbuch');
     }
-   public function zutats()
+
+    public function zutats()
     {
         return $this->belongsToMany('App\Zutat');
     }
