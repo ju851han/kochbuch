@@ -18,7 +18,7 @@
                 <!-- https://mdbootstrap.com/docs/jquery/forms/search/ -->
                 <!--TODO portion =1  rezept kosten-->
                 <h4>Zutaten</h4>
-                <table>
+                <table class="table">
                     <thead>
                     <tr>
                         <th>Menge</th>
