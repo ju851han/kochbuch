@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rezept;
+use App\Zutat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -33,6 +34,7 @@ class RezeptController extends Controller
     /**
      * Shows a form to create a new Rezepte
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -41,24 +43,54 @@ class RezeptController extends Controller
     }
 
     /**
-     * Saved the new Rezepte in DB
+     * Create Rezept / Step 2: Add Zutat
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function create_step2(Request $request){
+        $zutat =new Zutat;
+        $zutat->zName=$request->zName;
+        $zutat->mengeneinheit=$request->mengeneinheit;
+        $zutat->kostenJeEinheit=$request->kostenJeEinheit;
+        $zutat->produktgruppe=$request->produktgruppe;
+         $request->session()->put('zutat',$zutat);
+        return view('rezepte/create_step2_Rezept');
+    }
+
+    /**
+     * Create Rezept / Step 3: Add remaining Rezeptdata
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function create_step3(Request $request) {
+        $rezept=new Rezept;
+        $rezept->rName=$request->rName;
+        $rezept->zubereitung=$request->zubereitung;
+        $rezept->kategorie=$request->kategorie;
+        $rezept->zeit=$request->zeit;
+        $rezept->kostenjePortion=$request->kostenjePortion;
+        $request->session()->put('rezept',$rezept);
+        $zutat = $request->session()->get('zutat');
+        return view('rezepte/create_step3_overview')->with('rezept',$rezept)->with('zutat',$zutat);
+    }
+    /**
+     * Saved the new Rezepte in DB with the stored Data in Session
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
-        /*TODO Validation */
-        $rezept = new Rezept;
-        $rezept->rName = $request->rName;
-        $rezept->kategorie = $request->kategorie;
-        $rezept->zeit = $request->zeit;
-        $rezept->kostenjePortion = $request->kostenjePortion;
-        $rezept->zubereitung = $request->zubereitung;
-        $rezept->save();
+        $rezept = $request->session()->get('rezept');
+        $zutat = $request->session()->get('zutat');
 
+        $rezept->save();
+        $zutat->save();
+
+        $z=Zutat::find($request->zName);
+        $rezept->zutats()->attach($z);
 
         return redirect()->action('RezeptController@index');
     }
