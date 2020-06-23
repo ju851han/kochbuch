@@ -39,6 +39,17 @@ class RezeptController extends Controller
      */
     public function create(Request $request)
     {
+     /*   $rezept = new Rezept;
+        $rezept->rName='Mein Rezept';
+        $rezept->zubereitung='blablablablablablablablablablablablablablablablablabla';
+        $rezept->kategorie='Pasta';
+        $rezept->zeit=15;
+        $rezept->kostenjePortion=10;
+        $rezept->save();
+
+        $zutat=Zutat::find('werq');
+        $rezept->zutats()->attach($zutat);
+        return 'Success';*/
         return view('rezepte/create_step1_addZutaten');
     }
 
@@ -85,12 +96,12 @@ class RezeptController extends Controller
     {
         $rezept = $request->session()->get('rezept');
         $zutat = $request->session()->get('zutat');
+   /*     error_log($request->zName);
+        error_log($zutat->zName);*/
 
         $rezept->save();
+        $rezept->zutats()->attach($zutat->zName); //add entry in Table rezept_zutat
         $zutat->save();
-
-        $z=Zutat::find($request->zName);
-        $rezept->zutats()->attach($z);
 
         return redirect()->action('RezeptController@index');
     }
