@@ -37,9 +37,7 @@ class RezeptController extends Controller
      */
     public function create(Request $request)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
-        return view('rezepte/create');
+        return view('rezepte/create_step1_addZutaten');
     }
 
     /**
