@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <section class="col-xs-auto col-md-8 offset-md-2">
-                <h1>Wochenkochplan</h1>
+                <h2>Wochenkochplan <i class="fas fa-calendar-week"></i></h2>
                 <table>
                     <thead>
                     <tr>
