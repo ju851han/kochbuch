@@ -7,7 +7,7 @@
                 <h2>Kochbuch erstellen</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">1. Name eingeben</li>
+                        <li class="breadcrumb-item active" aria-current="page">1. Name des Kochbuches eingeben</li>
                     </ol>
                 </nav>
                 <form method="post" action="/kochbuecher/create_step2_addZutaten">
@@ -20,7 +20,6 @@
                     <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <!-- reset = Formulardaten werden gelöscht-->
                     <input type="submit" class="normalbtn btn" value="Nächste">
-                    <input type="submit" class="finishbtn btn" value="Kochbuch erstellen">
                 </form>
             </section>
         </div>
