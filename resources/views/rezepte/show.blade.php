@@ -22,8 +22,9 @@
                         <th>Zutat</th>
                     </tr>
                     <tr>
+                        {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}
                         @foreach($rezept->zutats  as $zutat )
-                            <td></td>{{--Menge * Portion--}}
+                            <td> {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}
                             <td>{{ $zutat->zName }}</td>
                         @endforeach
                     </tr>

@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><!--TODO Menge--> {{ $zutat->mengeneinheit }}</td>
+                        <td> {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}
                         <td>{{ $zutat->zName }}</td>
                     </tr>
                     </tbody>
