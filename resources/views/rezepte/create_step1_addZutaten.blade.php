@@ -18,8 +18,12 @@
                                required>
                     </div>
                     <br>
-                    <!-- TODO <label for="Menge">Menge</label>
-                    <input id="Menge" name="Menge" type="number" min="0.5" max="1000000" required></br></br>-->
+                    <div class="form-group">
+                        <label for="menge">Menge</label>
+                        <input id="menge" class="form-control" name="menge" type="number" min="0.5" max="1000000"
+                               step="0.5" required>
+                    </div>
+                    </br>
                     <div class="form-group">
                         <label for="mengeneinheit">Mengeneinheit</label>
                         <input class="form-control" id="mengeneinheit" name="mengeneinheit" type="text" minlength="1"
@@ -28,10 +32,11 @@
                     <br>
                     <div class="form-group">
 
-                        <label for="kostenJeEinheit">Kosten je Einheit</label><div class="form-row">
+                        <label for="kostenJeEinheit">Kosten je Einheit</label>
+                        <div class="form-row">
                             <input class="form-control col-md-10 order-1" id="kostenJeEinheit" name="kostenJeEinheit"
                                    type="number" min="0" step="0.01" required>
-                            <label class="col-md-2 order-2">  €</label>
+                            <label class="col-md-2 order-2"> €</label>
                         </div>
                     </div>
                     <br>
