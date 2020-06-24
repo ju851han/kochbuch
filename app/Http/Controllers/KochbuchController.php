@@ -186,11 +186,16 @@ class KochbuchController extends Controller
      */
     public function destroy(Request $request, $kID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
+        // if ( AUTH::user()->hasRole('admin')) {
         $kochbuch = Kochbuch::find($kID);
+        foreach ($kochbuch->rezepts as $rezept) {
+            $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
+        }
         $kochbuch->delete();
         Session::flash('alert-success', 'Kochbuch ' . $kochbuch->kName . ' wurde erfolgreich gelöscht.');
         return redirect()->action('KochbuchController@index');
+        /*    } else {
+        abort(401, 'This action is unauthorized.');
+        }*/
     }
 }
