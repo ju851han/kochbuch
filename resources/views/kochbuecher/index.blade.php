@@ -20,11 +20,11 @@
                             <td> {{  $k->kID }} </td> {{--TODO i instead of kID -> Sonst sind lücken vorhanden --}}
                             <td> {{  $k->kName }}</td>
                             <td>
-                                <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}'"
+                                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$k->kID}}'"
                                         title="Kochbuch ansehen"><i class='fas fa-eye btn_i'></i></button>
-                                <button class="normalbtn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"
+                                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"
                                         title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i></button>
-                                <button class="normalbtn"
+                                <button class="normalbtn btn"
                                         onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"
                                         title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i></button>
                             </td>
