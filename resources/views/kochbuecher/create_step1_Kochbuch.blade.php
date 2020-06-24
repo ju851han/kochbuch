@@ -19,7 +19,7 @@
                     <br>
                     <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <!-- reset = Formulardaten werden gelöscht-->
-                    <input type="submit" class="normalbtn btn" value="Nächste">
+                    <input type="submit" class="normalbtn btn" value="Weiter">
                 </form>
             </section>
         </div>
