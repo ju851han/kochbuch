@@ -37,12 +37,16 @@ class ZutatsTableSeeder extends Seeder
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Ananas','1','g','Obst & Gemüse',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Banane','1','g','Obst & Gemüse',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Apfel','1','g','Obst & Gemüse',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Pfirsich','1','g','Obst & Gemüse',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Brokkoli','1','g','Obst & Gemüse',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Paprika','1','g','Obst & Gemüse',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Tomate','1','g','Obst & Gemüse',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Gnocchi','1','g','Teigwaren',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Tagliatelle','1','g','Teigwaren',NOW(),NOW());");
-        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Tortelini','1','g','Teigwaren',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Tortellini','1','g','Teigwaren',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zucker','1','g','Grundnahrungsprodukt',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Vanillezucker','1','g','Backartikel',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Weichweizengrieß','1','g','Grundnahrungsprodukt',NOW(),NOW());");
 
     }
 }
