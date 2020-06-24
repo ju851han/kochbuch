@@ -114,13 +114,11 @@ class RezeptController extends Controller
      */
     public function show($rID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
         }
-        return view('rezepte/show')->with('r', $rezept);
+            return view('rezepte.show', compact('rezept'));
     }
 
     /**
