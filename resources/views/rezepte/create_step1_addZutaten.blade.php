@@ -27,12 +27,11 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="kostenJeEinheit">Kosten je Einheit</label>
-                        <div class="form-row">
-                        <input class="form-control col-md-6" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
-                               min="0"
-                               step="0.01" required>
-                            <p class="form-group col-md-2"> €</p><!--TODO EUR Zeichen formattieren-->
+
+                        <label for="kostenJeEinheit">Kosten je Einheit</label><div class="form-row">
+                            <input class="form-control col-md-10 order-1" id="kostenJeEinheit" name="kostenJeEinheit"
+                                   type="number" min="0" step="0.01" required>
+                            <label class="col-md-2 order-2">  €</label>
                         </div>
                     </div>
                     <br>
