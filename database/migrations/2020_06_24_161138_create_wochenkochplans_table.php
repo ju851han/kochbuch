@@ -15,6 +15,7 @@ class CreateWochenkochplansTable extends Migration
     {
         Schema::create('wochenkochplans', function (Blueprint $table) {
             $table->id();
+            $table->integer('users_id');
             $table->string('wochentag',10);
             $table->integer('portion')->unsigned();
         });
