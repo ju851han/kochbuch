@@ -41,7 +41,7 @@
                         <br>
                         <div class="form-check">
                             <input class="form-check-input" id="Fisch" name="Fisch" type="checkbox" value="Fisch">
-                            <label class="form-check-label" for="Fisch">Fleisch</label></div>
+                            <label class="form-check-label" for="Fisch">Fisch</label></div>
                         <br>
                         <div class="form-check">
                             <input class="form-check-input" id="Snacks" name="Snacks" type="checkbox" value="Snacks">
