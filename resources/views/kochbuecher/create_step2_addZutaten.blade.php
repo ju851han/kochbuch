@@ -12,7 +12,7 @@
                     </ol>
                 </nav>
                 </nav>
-                <form method="post" action="/kochbuecher/create_step4">
+                <form method="post" action="/kochbuecher/create_step3_addRezept">
                     @csrf
                     <div class="form-group">
                         <label for="zName">Zutat</label>
