@@ -20,4 +20,8 @@ class Rezept extends Model
     {
         return $this->belongsToMany('App\Zutat');
     }
+
+    public function wochenkochplans() {
+        return $this->belongsToMany('App\Wochenkochplan');
+    }
 }
