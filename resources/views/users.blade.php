@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <section class="col-xs-auto col-md-8 offset-md-2">
-                <h2>Nutzer</h2>
+                <h2>Nutzer <i class='fas fa-user'></i></h2>
                 <table class="table">
                     <thead class="thead_orangered">
                     <tr>
