@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Kochbuch;
+use App\Rezept;
+use App\Zutat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class KochbuchController extends Controller
@@ -37,9 +40,59 @@ class KochbuchController extends Controller
      */
     public function create(Request $request)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
-        return view('kochbuecher/create');
+        return view('kochbuecher/create_step1_Kochbuch');
+    }
+
+    /**
+     * Step2: Create a new Kochbuch
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function create_step2(Request $request)
+    {
+        $kochbuch = new Kochbuch;
+        $kochbuch->kName = $request->kName;
+        $request->session()->put('kochbuch', $kochbuch);
+        return view('kochbuecher/create_step2_addZutaten');
+    }
+
+    /**
+     * Create Rezept / Step 3: Add Zutat
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function create_step3(Request $request)
+    {
+        $zutat = new Zutat;
+        $zutat->zName = $request->zName;
+        $zutat->mengeneinheit = $request->mengeneinheit;
+        $zutat->kostenJeEinheit = $request->kostenJeEinheit;
+        $zutat->produktgruppe = $request->produktgruppe;
+        $request->session()->put('zutat', $zutat);
+        return view('kochbuecher/create_step3_addRezept');
+    }
+
+    /**
+     * Create Rezept / Step 4: Add Rezeptdata
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create_step4(Request $request)
+    {
+        $rezept = new Rezept;
+        $rezept->rName = $request->rName;
+        $rezept->zubereitung = $request->zubereitung;
+        $rezept->kategorie = $request->kategorie;
+        $rezept->zeit = $request->zeit;
+        $rezept->kostenjePortion = $request->kostenjePortion;
+        $request->session()->put('rezept', $rezept);
+        $zutat = $request->session()->get('zutat');
+        $kochbuch = $request->session()->get('kochbuch');
+        error_log("halllooooooooooo4");
+        error_log("Kochbuch: ".$kochbuch->kName." | Rezept: ".$rezept->rName." | Zutat: ".$zutat->zName);
+        return view('kochbuecher/create_step4_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat);
     }
 
     /**
@@ -50,11 +103,22 @@ class KochbuchController extends Controller
      */
     public function store(Request $request)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
+        $kochbuch = $request->session()->get('kochbuch');
+        $rezept = $request->session()->get('rezept');
+        $zutat = $request->session()->get('zutat');
+        /*     error_log($request->zName);
+             error_log($zutat->zName);*/
+        error_log("halllooooooooooo5a");
+        error_log("Kochbuch: ".$kochbuch->kName." | Rezept: ".$rezept->rName." | Zutat: ".$zutat->zName);
+        $kochbuch->users()->associate(Auth::user());
+        $rezept->save();
+        error_log("halllooooooooooo5b");
+        error_log("Kochbuch: ".$kochbuch->kName." | Rezept: ".$rezept->rName." | Zutat: ".$zutat->zName);
 
-        $kochbuch = Kochbuch::create($request->all());
-        /*TODO Validation */
+        $rezept->zutats()->attach($zutat->zName); //add entry in Table rezept_zutat
+        $zutat->save();
+        $kochbuch->save();
+        $kochbuch->rezepts()->attach($rezept->rID);
         return redirect()->action('KochbuchController@index');
     }
 
