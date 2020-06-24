@@ -15,6 +15,7 @@ class CreateKochbuchesTable extends Migration
     {
         Schema::create('kochbuches', function (Blueprint $table) {
             $table->bigIncrements('kID');
+            $table->integer('users_id');
             $table->string('kName',125);
             $table->timestamps();/*für erstelltam und aktualisiertam*/
         });
