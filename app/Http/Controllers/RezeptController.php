@@ -177,7 +177,7 @@ class RezeptController extends Controller
         // if ( AUTH::user()->hasRole('admin')) {
         $rezept = Rezept::find($rID);
         foreach ($rezept->zutats as $zutat) {
-            $rezept->zutats()->detach($zutat); // deletes row from rezept_zutat table; it does not delete the zutat from zutat table
+            $rezept->zutats()->detach($zutat); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
         }
         $rezept->delete();
         Session::flash('alert-success', 'Rezept ' . $rezept->rName . ' wurde erfolgreich gelöscht.');
