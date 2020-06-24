@@ -18,6 +18,6 @@ class Zutat extends Model
     public function rezepts()
     {
        /* https://stackoverflow.com/questions/51982358/laravel-many-to-many-relation-with-custom-table-names-and-ids*/
-        return $this->belongsToMany(Rezept::class);
+        return $this->belongsToMany(Rezept::class)->withPivot('menge');
     }
 }

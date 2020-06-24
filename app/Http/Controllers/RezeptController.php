@@ -67,6 +67,9 @@ class RezeptController extends Controller
         $zutat->kostenJeEinheit = $request->kostenJeEinheit;
         $zutat->produktgruppe = $request->produktgruppe;
         $request->session()->put('zutat', $zutat);
+
+        $menge=$request->menge;
+        $request->session()->put('menge', $menge);
         return view('rezepte/create_step2_Rezept');
     }
 
@@ -84,9 +87,11 @@ class RezeptController extends Controller
         $rezept->kategorie = $request->kategorie;
         $rezept->zeit = $request->zeit;
         $rezept->kostenjePortion = $request->kostenjePortion;
+
         $request->session()->put('rezept', $rezept);
+        $menge = $request->session()->get('menge');
         $zutat = $request->session()->get('zutat');
-        return view('rezepte/create_step3_overview')->with('rezept', $rezept)->with('zutat', $zutat);
+        return view('rezepte/create_step3_overview')->with('rezept', $rezept)->with('zutat', $zutat)->with('menge',$menge);
     }
 
     /**
@@ -99,11 +104,12 @@ class RezeptController extends Controller
     {
         $rezept = $request->session()->get('rezept');
         $zutat = $request->session()->get('zutat');
+        $menge = $request->session()->get('menge');
         /*     error_log($request->zName);
              error_log($zutat->zName);*/
-
+        error_log($menge);
         $rezept->save();
-        $rezept->zutats()->attach($zutat->zName); //add entry in Table rezept_zutat
+        $rezept->zutats()->attach($zutat->zName,['menge'=>$menge]); //add entry in Table rezept_zutat
         $zutat->save();
 
         return redirect()->action('RezeptController@index');

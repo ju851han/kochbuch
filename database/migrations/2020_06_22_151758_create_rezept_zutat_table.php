@@ -17,8 +17,7 @@ class CreateRezeptZutatTable extends Migration
             $table->id();
             $table->integer('rezept_rID')->unsigned();
             $table->string('zutat_zName',125);
-    /*        TODO add  column
-            $table->unsignedFloat('Menge');*/
+            $table->unsignedFloat('menge');
         });
     }
 

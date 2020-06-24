@@ -18,7 +18,7 @@ class Rezept extends Model
 
     public function zutats()
     {
-        return $this->belongsToMany('App\Zutat');
+        return $this->belongsToMany('App\Zutat')->withPivot('menge');
     }
 
     public function wochenkochplans() {
