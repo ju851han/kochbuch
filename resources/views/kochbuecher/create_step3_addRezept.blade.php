@@ -7,14 +7,14 @@
                 <h2>Kochbuch erstellen</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">1. Name eingeben</li>
+                        <li class="breadcrumb-item active" aria-current="page">1. Name des Kochbuches eingeben</li>
                         <li class="breadcrumb-item active" aria-current="page">2. Zutaten eingeben</li>
-                    <li class="breadcrumb-item active" aria-current="page">3. Rezepte hinzufügen</li>
+                        <li class="breadcrumb-item active" aria-current="page">3. Rezepte hinzufügen</li>
                     </ol>
                 </nav>
-                <form method="post" action="/kochbuecher/create_2">
+                <form method="post" action="/kochbuecher/create_step4_overview">
                     @csrf
-                    
+
                 </form>
             </section>
         </div>
