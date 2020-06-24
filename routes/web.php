@@ -30,7 +30,7 @@ Route::get('/kochbuecher/create','KochbuchController@create')->name('kochbuecher
 Route::post('/kochbuecher/create_step2_addZutaten','KochbuchController@create_step2')->name('kochbuecher.create_step2_addZutaten');
 Route::post('/kochbuecher/create_step3_addRezept','KochbuchController@create_step3')->name('kochbuecher.create_step3_addRezept');
 Route::post('/kochbuecher/create_step4_overview','KochbuchController@create_step4')->name('kochbuecher.create_step4_overview');
-Route::post('/kochbuecher','KochbuchController@store')->name('kochbuecher.store');
+Route::get('/kochbuecher/store','KochbuchController@store')->name('kochbuecher.store');
 
 //Show Kochbuch
 Route::get('/kochbuecher/{kID}','KochbuchController@show')->name('kochbuecher.show');
