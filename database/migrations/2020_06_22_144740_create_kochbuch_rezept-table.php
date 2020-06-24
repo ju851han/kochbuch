@@ -15,8 +15,8 @@ class CreateKochbuchRezeptTable extends Migration
     {
         Schema::create('kochbuch_rezept', function (Blueprint $table) {
             $table->id();
-            $table->integer('kochbuch_id')->unsigned();
-            $table->integer('rezept_id')->unsigned();
+            $table->integer('kochbuch_kID')->unsigned();
+            $table->integer('rezept_rID')->unsigned();
             /* TODO Spalten hinzufügen
           $table->unsignedFloat('portion');
           $table->integer('reihenfolge')->unsigned();*/
