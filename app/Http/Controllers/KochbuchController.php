@@ -71,6 +71,9 @@ class KochbuchController extends Controller
         $zutat->kostenJeEinheit = $request->kostenJeEinheit;
         $zutat->produktgruppe = $request->produktgruppe;
         $request->session()->put('zutat', $zutat);
+
+        $menge=$request->menge;
+        $request->session()->put('menge', $menge);
         return view('kochbuecher/create_step3_addRezept');
     }
 
@@ -88,10 +91,11 @@ class KochbuchController extends Controller
         $rezept->zeit = $request->zeit;
         $rezept->kostenjePortion = $request->kostenjePortion;
         $request->session()->put('rezept', $rezept);
+        $menge = $request->session()->get('menge');
         $zutat = $request->session()->get('zutat');
         $kochbuch = $request->session()->get('kochbuch');
 
-        return view('kochbuecher/create_step4_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat);
+        return view('kochbuecher/create_step4_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat)->with('menge',$menge);
     }
 
     /**
@@ -105,12 +109,13 @@ class KochbuchController extends Controller
         $kochbuch = $request->session()->get('kochbuch');
         $rezept = $request->session()->get('rezept');
         $zutat = $request->session()->get('zutat');
+        $menge = $request->session()->get('menge');
 
         $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
 
         $rezept->save();
 
-        $rezept->zutats()->attach($zutat->zName); //add entry in Table rezept_zutat
+        $rezept->zutats()->attach($zutat->zName,['menge'=>$menge]); //add entry in Table rezept_zutat
 
         $zutat->save();
         $kochbuch->save();
