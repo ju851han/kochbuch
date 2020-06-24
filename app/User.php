@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function kochbuches(){
         return $this->hasMany('App\Kochbuch');
     }
+
+    public function wochenkochplans(){
+        return $this->hasOne('App\Wochenkochplan');
+    }
 }
