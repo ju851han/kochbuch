@@ -81,6 +81,9 @@ Route::post('/zutaten/{zName}/update','ZutatController@update')->name('zutaten.u
 Route::get('/zutaten/{zName}/destroy/','ZutatController@destroy')->name('zutaten.destroy');
 
 /****TODO Routes for Wochenkochplan **************************************************************************/
+//Update Wochenkochplan
+Route::get('/wochenkochplan','WochenkochplanController@edit')->name('wochenkochplan.edit');
+
 
 /****TODO Routes for Einkaufsliste **************************************************************************/
 
