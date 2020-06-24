@@ -55,7 +55,7 @@
                     </div>
                     <br>
                     <input type="reset" class="abortbtn btn" value="Abbrechen">
-                    <input type="submit" class="normalbtn btn" value="Zutat hinzufügen">
+                    <input type="submit" class="normalbtn btn" value="Weiter">
                 </form>
             </section>
         </div>
