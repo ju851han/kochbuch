@@ -90,8 +90,7 @@ class KochbuchController extends Controller
         $request->session()->put('rezept', $rezept);
         $zutat = $request->session()->get('zutat');
         $kochbuch = $request->session()->get('kochbuch');
-        error_log("halllooooooooooo4");
-        error_log("Kochbuch: ".$kochbuch->kName." | Rezept: ".$rezept->rName." | Zutat: ".$zutat->zName);
+
         return view('kochbuecher/create_step4_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat);
     }
 
@@ -106,19 +105,17 @@ class KochbuchController extends Controller
         $kochbuch = $request->session()->get('kochbuch');
         $rezept = $request->session()->get('rezept');
         $zutat = $request->session()->get('zutat');
-        /*     error_log($request->zName);
-             error_log($zutat->zName);*/
-        error_log("halllooooooooooo5a");
-        error_log("Kochbuch: ".$kochbuch->kName." | Rezept: ".$rezept->rName." | Zutat: ".$zutat->zName);
-        $kochbuch->users()->associate(Auth::user());
+
+        $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
+
         $rezept->save();
-        error_log("halllooooooooooo5b");
-        error_log("Kochbuch: ".$kochbuch->kName." | Rezept: ".$rezept->rName." | Zutat: ".$zutat->zName);
 
         $rezept->zutats()->attach($zutat->zName); //add entry in Table rezept_zutat
+
         $zutat->save();
         $kochbuch->save();
-        $kochbuch->rezepts()->attach($rezept->rID);
+
+        $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
         return redirect()->action('KochbuchController@index');
     }
 
@@ -128,15 +125,17 @@ class KochbuchController extends Controller
      * @param $kID
      * @return \Illuminate\Http\Response
      */
-    public function show($kID)
+    public function show(Request $request, $kID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
         }
-        return view('kochbuecher/show')->with('k', $kochbuch);
+        if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+            return view('kochbuecher.show', compact('kochbuch'));//->with('kochbuch', $kochbuch);
+        } else {
+            abort(401, 'Keine Berechtigung.');
+        }
     }
 
     /**
