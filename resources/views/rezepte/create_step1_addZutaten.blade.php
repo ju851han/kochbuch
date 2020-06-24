@@ -12,36 +12,50 @@
                 </nav>
                 <form method="post" action="/rezepte/create_step2_Rezept">
                     @csrf
-                    <label for="zName">Zutat</label>
-                    <input class="form-control" id="zName" name="zName" type="text" minlength="2" maxlength="256"
-                           required>
+                    <div class="form-group">
+                        <label for="zName">Zutat</label>
+                        <input class="form-control" id="zName" name="zName" type="text" minlength="2" maxlength="256"
+                               required>
+                    </div>
                     <br>
                     <!-- TODO <label for="Menge">Menge</label>
                     <input id="Menge" name="Menge" type="number" min="0.5" max="1000000" required></br></br>-->
-                    <label for="mengeneinheit">Mengeneinheit</label>
-                    <input class="form-control" id="mengeneinheit" name="mengeneinheit" type="text" minlength="1"
-                           maxlength="125" required>
+                    <div class="form-group">
+                        <label for="mengeneinheit">Mengeneinheit</label>
+                        <input class="form-control" id="mengeneinheit" name="mengeneinheit" type="text" minlength="1"
+                               maxlength="125" required>
+                    </div>
                     <br>
-                    <label for="kostenJeEinheit">Kosten je Einheit</label>
-                    <input class="form-control" id="kostenJeEinheit" name="kostenJeEinheit" type="number" min="0"
-                           step="0.01" required><span>€</span>
+                    <div class="form-group">
+                        <label for="kostenJeEinheit">Kosten je Einheit</label>
+                        <div class="form-row">
+                        <input class="form-control col-md-6" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
+                               min="0"
+                               step="0.01" required>
+                            <p class="form-group col-md-2"> €</p><!--TODO EUR Zeichen formattieren-->
+                        </div>
+                    </div>
                     <br>
-                    <label for="produktgruppe">Produktgruppe</label>
-                    <input list="produktgruppen" id="produktgruppe" name="produktgruppe" type="text">
-                    <datalist id="produktgruppen">
-                        <option value="Backwaren"></option>
-                        <option value="Fisch&Meeresfrüchte"></option>
-                        <option value="Fleisch"></option>
-                        <option value="Getränke"></option>
-                        <option value="Grundnahrungsmittel"></option>
-                        <option value="Konserven"></option>
-                        <option value="Milchprodukte"></option>
-                        <option value="Obst&Gemüse"></option>
-                        <option value="Naschsachen&Knabbergebäck"></option>
-                        <option value="Tiefkühl"></option>
-                    </datalist>
+
+                    <div class="form-group">
+                        <label for="produktgruppe">Produktgruppe</label>
+                        <input class="form-control" list="produktgruppen" id="produktgruppe" name="produktgruppe"
+                               type="text">
+                        <datalist id="produktgruppen">
+                            <option value="Backwaren"></option>
+                            <option value="Fisch&Meeresfrüchte"></option>
+                            <option value="Fleisch"></option>
+                            <option value="Getränke"></option>
+                            <option value="Grundnahrungsmittel"></option>
+                            <option value="Konserven"></option>
+                            <option value="Milchprodukte"></option>
+                            <option value="Obst&Gemüse"></option>
+                            <option value="Naschsachen&Knabbergebäck"></option>
+                            <option value="Tiefkühl"></option>
+                        </datalist>
+                    </div>
                     <br>
-                    <input type="reset"   class="abortbtn btn" value="Abbrechen">
+                    <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <input type="submit" class="normalbtn btn" value="Zutat hinzufügen">
                 </form>
             </section>
