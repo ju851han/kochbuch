@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><!--TODO Menge--></td>
+                        <td><!--TODO Menge--> {{ $zutat->mengeneinheit }}</td>
                         <td>{{ $zutat->zName }}</td>
                     </tr>
                     </tbody>
