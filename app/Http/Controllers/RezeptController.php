@@ -39,17 +39,17 @@ class RezeptController extends Controller
      */
     public function create(Request $request)
     {
-     /*   $rezept = new Rezept;
-        $rezept->rName='Mein Rezept';
-        $rezept->zubereitung='blablablablablablablablablablablablablablablablablabla';
-        $rezept->kategorie='Pasta';
-        $rezept->zeit=15;
-        $rezept->kostenjePortion=10;
-        $rezept->save();
+        /*   $rezept = new Rezept;
+           $rezept->rName='Mein Rezept';
+           $rezept->zubereitung='blablablablablablablablablablablablablablablablablabla';
+           $rezept->kategorie='Pasta';
+           $rezept->zeit=15;
+           $rezept->kostenjePortion=10;
+           $rezept->save();
 
-        $zutat=Zutat::find('werq');
-        $rezept->zutats()->attach($zutat);
-        return 'Success';*/
+           $zutat=Zutat::find('werq');
+           $rezept->zutats()->attach($zutat);
+           return 'Success';*/
         return view('rezepte/create_step1_addZutaten');
     }
 
@@ -59,13 +59,14 @@ class RezeptController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function create_step2(Request $request){
-        $zutat =new Zutat;
-        $zutat->zName=$request->zName;
-        $zutat->mengeneinheit=$request->mengeneinheit;
-        $zutat->kostenJeEinheit=$request->kostenJeEinheit;
-        $zutat->produktgruppe=$request->produktgruppe;
-         $request->session()->put('zutat',$zutat);
+    public function create_step2(Request $request)
+    {
+        $zutat = new Zutat;
+        $zutat->zName = $request->zName;
+        $zutat->mengeneinheit = $request->mengeneinheit;
+        $zutat->kostenJeEinheit = $request->kostenJeEinheit;
+        $zutat->produktgruppe = $request->produktgruppe;
+        $request->session()->put('zutat', $zutat);
         return view('rezepte/create_step2_Rezept');
     }
 
@@ -75,17 +76,19 @@ class RezeptController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function create_step3(Request $request) {
-        $rezept=new Rezept;
-        $rezept->rName=$request->rName;
-        $rezept->zubereitung=$request->zubereitung;
-        $rezept->kategorie=$request->kategorie;
-        $rezept->zeit=$request->zeit;
-        $rezept->kostenjePortion=$request->kostenjePortion;
-        $request->session()->put('rezept',$rezept);
+    public function create_step3(Request $request)
+    {
+        $rezept = new Rezept;
+        $rezept->rName = $request->rName;
+        $rezept->zubereitung = $request->zubereitung;
+        $rezept->kategorie = $request->kategorie;
+        $rezept->zeit = $request->zeit;
+        $rezept->kostenjePortion = $request->kostenjePortion;
+        $request->session()->put('rezept', $rezept);
         $zutat = $request->session()->get('zutat');
-        return view('rezepte/create_step3_overview')->with('rezept',$rezept)->with('zutat',$zutat);
+        return view('rezepte/create_step3_overview')->with('rezept', $rezept)->with('zutat', $zutat);
     }
+
     /**
      * Saved the new Rezepte in DB with the stored Data in Session
      *
@@ -96,8 +99,8 @@ class RezeptController extends Controller
     {
         $rezept = $request->session()->get('rezept');
         $zutat = $request->session()->get('zutat');
-   /*     error_log($request->zName);
-        error_log($zutat->zName);*/
+        /*     error_log($request->zName);
+             error_log($zutat->zName);*/
 
         $rezept->save();
         $rezept->zutats()->attach($zutat->zName); //add entry in Table rezept_zutat
@@ -118,7 +121,7 @@ class RezeptController extends Controller
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
         }
-            return view('rezepte.show', compact('rezept'));
+        return view('rezepte.show', compact('rezept'));
     }
 
     /**
@@ -171,12 +174,16 @@ class RezeptController extends Controller
      */
     public function destroy(Request $request, $rID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('admin');*/
+        // if ( AUTH::user()->hasRole('admin')) {
         $rezept = Rezept::find($rID);
+        foreach ($rezept->zutats as $zutat) {
+            $rezept->zutats()->detach($zutat); // deletes row from rezept_zutat table; it does not delete the zutat from zutat table
+        }
         $rezept->delete();
         Session::flash('alert-success', 'Rezept ' . $rezept->rName . ' wurde erfolgreich gelöscht.');
         return redirect()->action('RezeptController@index');
-
+        /*    } else {
+        abort(401, 'This action is unauthorized.');
+        }*/
     }
 }
