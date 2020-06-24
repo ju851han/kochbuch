@@ -22,10 +22,16 @@
                             <td> {{  $z->kostenjeEinheit }} €</td>
                             <td> {{  $z->mengeneinheit }}</td>
                             <td> {{  $z->produktgruppe }}</td>
-                            <td><button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}'"
+                            <td>
+                                <button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}'"
                                         title="Zutat ansehen"><i class='fas fa-eye btn_i'></i></button>
-                                <button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}/edit'"
-                                        title="Zutat bearbeiten"><i class="material-icons btn_i">edit</i></button></td>
+                                <button class="normalbtn btn"
+                                        onclick="window.location.href='/zutaten/{{$z->zName}}/edit'"
+                                        title="Zutat bearbeiten"><i class="material-icons btn_i">edit</i></button>
+                                <button class="normalbtn btn"
+                                        onclick="window.location.href='/zutaten/{{$z->zName}}/destroy'"
+                                        title="Zutat löschen"><i class="fas fa-trash-alt btn_i"></i></button>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
