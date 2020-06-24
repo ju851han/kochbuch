@@ -36,6 +36,10 @@
                     </tbody>
                 </table>
             </section>
+            <div>
+                <button onclick="window.location.href='/kochbuecher/store'" class="btn finishbtn">Speichern</button>
+                <button onclick="window.location.href='#'" class="btn abortbtn">Abbrechen</button> <!-- TODO  -->
+            </div>
         </div>
     </div>
     <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
