@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <section class="col-xs-auto col-md-8 offset-md-2">
+            <section class="col-12 col-md-8 offset-md-2">
                 <h2>Zutat</h2>
                 <table class="table">
                     <thead>

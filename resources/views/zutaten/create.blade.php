@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <section class="col-xs-auto col-md-8 offset-md-2">
+            <section class="col-12 col-md-8 offset-md-2">
                 <h3>Zutaten hinzufügen</h3>
                 <form method="POST" action="/zutaten">
                     @csrf
