@@ -272,14 +272,12 @@ table {
 }
 
 .thead_orangered {
+/*  https://medium.com/@nsembo/getting-invalid-property-value-error-while-using-linear-gradient-heres-a-simple-fix-ec301effc897*/
   background: linear-gradient(top, $orange, $darkorange);
-  background: -ms-linear-gradient(top, $orange, $darkorange);
-  background: -webkit-gradient(linear, left top, left bottom, from($orange), to($darkorange));
-  background: -moz-linear-gradient(top, $orange, $darkorange);
+  background: -webkit-linear-gradient($orange, $darkorange);
   border: solid 1px $grey;
   box-shadow: 2px 2px 3px $grey;
   -webkit-box-shadow: 2px 2px 3px $grey;
-  -moz-box-shadow: 2px 2px 3px $grey;
   color: $white;
   font-weight: bold;
 }
