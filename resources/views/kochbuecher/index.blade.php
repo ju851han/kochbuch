@@ -15,21 +15,18 @@
                     </tr>
                     </thead>
                     <tbody class="background2ndTR">
-                    @foreach ($kochbuecher as $k)
-                        <tr>
-                            <td> {{  $k->kID }} </td> {{--TODO i instead of kID -> Sonst sind lücken vorhanden --}}
-                            <td> {{  $k->kName }}</td>
-                            <td>
-                                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$k->kID}}'"
-                                        title="Kochbuch ansehen"><i class='fas fa-eye btn_i'></i></button>
-                                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$k->kID}}/edit'"
-                                        title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i></button>
-                                <button class="normalbtn btn"
-                                        onclick="window.location.href='/kochbuecher/{{$k->kID}}/destroy'"
-                                        title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i></button>
-                            </td>
-                        </tr>
-                    @endforeach
+                    <?php
+                            $i=1;
+                            foreach($kochbuecher as $k){
+                            echo "<tr><td>".$i."</td>";
+                            $i ++;
+                            echo"<td>".$k->kName."</td>";
+                            echo"<td><button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/".$k->kID."'\" title='Kochbuch ansehen'><i class='fas fa-eye btn_i'></i></button>";
+                            echo"<button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/".$k->kID."/edit'\" title='Kochbuch bearbeiten'><i class='material-icons btn_i'>edit</i></button>";
+                            echo"<button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/".$k->kID."/destroy'\" title='Kochbuch löschen'><i class='fas fa-trash-alt btn_i'></i></button></tr>";
+                            }
+
+                    ?>
                     </tbody>
                 </table>
                 <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/create'"><i
