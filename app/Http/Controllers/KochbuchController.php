@@ -28,7 +28,11 @@ class KochbuchController extends Controller
      */
     public function index()
     {
-        $kochbuecher = Kochbuch::all();
+        if (AUTH::user()->hasRole('admin')) {
+            $kochbuecher = Kochbuch::all();
+        } else {
+            $kochbuecher = Kochbuch::where('users_id', AUTH::user()->id)->get();
+        }
         return view('kochbuecher/index')->with('kochbuecher', $kochbuecher);
     }
 
@@ -72,7 +76,7 @@ class KochbuchController extends Controller
         $zutat->produktgruppe = $request->produktgruppe;
         $request->session()->put('zutat', $zutat);
 
-        $menge=$request->menge;
+        $menge = $request->menge;
         $request->session()->put('menge', $menge);
         return view('kochbuecher/create_step3_addRezept');
     }
@@ -95,7 +99,7 @@ class KochbuchController extends Controller
         $zutat = $request->session()->get('zutat');
         $kochbuch = $request->session()->get('kochbuch');
 
-        return view('kochbuecher/create_step4_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat)->with('menge',$menge);
+        return view('kochbuecher/create_step4_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat)->with('menge', $menge);
     }
 
     /**
@@ -115,7 +119,7 @@ class KochbuchController extends Controller
 
         $rezept->save();
 
-        $rezept->zutats()->attach($zutat->zName,['menge'=>$menge]); //add entry in Table rezept_zutat
+        $rezept->zutats()->attach($zutat->zName, ['menge' => $menge]); //add entry in Table rezept_zutat
 
         $zutat->save();
         $kochbuch->save();
