@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <section class="col-xs-auto col-md-8 offset-md-2">
+            <section class="col-12 col-md-8 offset-md-2">
                 <h2>Rezept: {{  $rezept->rName }} </h2>
                 <p>Kategorien: {{  $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit : {{  $rezept->zeit }} min
                 </p>

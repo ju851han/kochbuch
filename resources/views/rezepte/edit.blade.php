@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <section class="col-xs-auto col-md-8 offset-md-2">
+            <section class="col-12 col-md-8 offset-md-2">
                 <h1>Rezept erstellen</h1>
                 <p>Du bist gerade dabei dein Rezept zu erstellen. <br>
                     Bitte beschreibe nun die Zubereitungsschritte.</p>
