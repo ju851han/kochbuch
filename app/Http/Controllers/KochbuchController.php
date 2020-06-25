@@ -23,7 +23,7 @@ class KochbuchController extends Controller
 
     /**
      * Shows all Kochbuecher
-     *
+     * Access: Admin sees all Kochbuecher; Koch sees only his Kochbuecher
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -130,7 +130,7 @@ class KochbuchController extends Controller
 
     /**
      * Shows one Kochbuch
-     *
+     * Access: The Kochbuch is shown for Admin or Owner of this Kochbuch
      * @param $kID
      * @return \Illuminate\Http\Response
      */
@@ -139,8 +139,7 @@ class KochbuchController extends Controller
         $kochbuch = Kochbuch::find($kID);
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
-        }
-        if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             return view('kochbuecher.show', compact('kochbuch'));//->with('kochbuch', $kochbuch);
         } else {
             abort(401, 'Keine Berechtigung.');
@@ -161,9 +160,11 @@ class KochbuchController extends Controller
         $kochbuch = Kochbuch::find($kID);
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
+        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+            return view('kochbuecher/edit')->with('k', $kochbuch);
+        } else {
+            abort(401, 'Keine Berechtigung.');
         }
-        return view('kochbuecher/edit')->with('k', $kochbuch);
-
 
     }
 
@@ -188,23 +189,23 @@ class KochbuchController extends Controller
 
     /**
      * Destroy the specified Kochbuch from DB
-     *
+     * Access: Only Admin can destroy a Kochbuch
      * @param Request $request
      * @param $kID
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $kID)
     {
-        // if ( AUTH::user()->hasRole('admin')) {
-        $kochbuch = Kochbuch::find($kID);
-        foreach ($kochbuch->rezepts as $rezept) {
-            $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
+        if (AUTH::user()->hasRole('admin')) {
+            $kochbuch = Kochbuch::find($kID);
+            foreach ($kochbuch->rezepts as $rezept) {
+                $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
+            }
+            $kochbuch->delete();
+            Session::flash('alert-success', 'Kochbuch ' . $kochbuch->kName . ' wurde erfolgreich gelöscht.');
+            return redirect()->action('KochbuchController@index');
+        } else {
+            abort(401, 'This action is unauthorized.');
         }
-        $kochbuch->delete();
-        Session::flash('alert-success', 'Kochbuch ' . $kochbuch->kName . ' wurde erfolgreich gelöscht.');
-        return redirect()->action('KochbuchController@index');
-        /*    } else {
-        abort(401, 'This action is unauthorized.');
-        }*/
     }
 }
