@@ -78,7 +78,7 @@ class ZutatController extends Controller
         if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');
         }
-        return view('zutat/show')->with('z', $zutat);
+        return view('zutaten/show')->with('z', $zutat);
 
     }
 
