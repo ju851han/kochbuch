@@ -21,13 +21,14 @@
                         <th>Menge</th>
                         <th>Zutat</th>
                     </tr>
-                    <tr>
-                        {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}
-                        @foreach($rezept->zutats  as $zutat )
+                    {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}
+                    @foreach($rezept->zutats  as $zutat )
+                        <tr>
                             <td> {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}
                             <td>{{ $zutat->zName }}</td>
-                        @endforeach
-                    </tr>
+                        </tr>
+                    @endforeach
+
                 </table>
 
                 <h3>Zubereitung</h3>
@@ -36,7 +37,8 @@
                         title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
                 </button>
                 <button class="abortbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/destroy'"
-                        title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i> Löschen</button>
+                        title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i> Löschen
+                </button>
             </section>
         </div>
     </div>
