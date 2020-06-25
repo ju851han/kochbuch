@@ -16,14 +16,14 @@ class UsersTableSeeder extends Seeder
         $user->name = 'Julia';
         $user->email = 'jh@web.de';
         $user->password= bcrypt('12345678');
-        $user->role = 'user';
+        $user->role = 'koch';
         $user->save();
 
         $user = new User();
         $user->name = 'Hansi';
         $user->email = 'h@web.de';
         $user->password= bcrypt('12345678');
-        $user->role = 'user';
+        $user->role = 'koch';
         $user->save();
 
         $admin = new User();
