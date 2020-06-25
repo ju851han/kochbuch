@@ -46,7 +46,6 @@
                             <option value="Milchprodukte"></option>
                             <option value="Obst&Gemüse"></option>
                             <option value="Naschsachen&Knabbergebäck"></option>
-                            <option value="Tiefkühl"></option>
                         </datalist>
                     </div>
                     <br>
