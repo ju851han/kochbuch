@@ -105,7 +105,7 @@ class ZutatController extends Controller
         } elseif (AUTH::user()->hasRole('admin')) {
             return view('zutaten/edit')->with('z', $zutat);
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten von der Zutat vorhanden.');
+            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten einer Zutat vorhanden.');
         }
     }
 
@@ -129,7 +129,7 @@ class ZutatController extends Controller
             $zutat->save();
             return redirect()->action('ZutatController@show', ['zName' => $zName]);
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten von der Zutat vorhanden.');
+            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten einer Zutat vorhanden.');
         }
 
     }
@@ -143,7 +143,6 @@ class ZutatController extends Controller
      */
     public function destroy(Request $request, $zName)
     {
-
         $zutat = Zutat::find($zName);
         if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');

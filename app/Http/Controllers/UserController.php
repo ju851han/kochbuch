@@ -15,10 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-       if (AUTH::user()->hasRole('admin')) {
+        if (AUTH::user()->hasRole('admin')) {
             $users = User::all();
             return view('users')->with('users', $users);
-     } else {
+        } else {
             abort(401, 'This action is unauthorized.');
         }
     }
@@ -31,8 +31,11 @@ class UserController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        if (AUTH::user()->hasRole('admin')) {
-            $user = User::find($id);
+
+        $user = User::find($id);
+        if (is_null($user)) {
+            return redirect()->action('UserController@index');
+        } elseif (AUTH::user()->hasRole('admin')) {
             $user->delete();
             Session::flash('alert-success', 'Benutzer ' . $user->email . ' wurde erfolgreich gelöscht.');
             return redirect()->action('UserController@index');
