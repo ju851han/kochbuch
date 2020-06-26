@@ -40,8 +40,10 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="/kochbuecher">Kochbücher</a></li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="/rezepte">Rezepte</a></li>
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="/zutaten">Zutaten</a></li>
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="/users">Benutzer</a></li>
+                @if (Auth::user()->hasRole('admin'))
+                    <li class="nav-item"><a class="a_nav nav-link text-white" href="/zutaten">Zutaten</a></li>
+                    <li class="nav-item"><a class="a_nav nav-link text-white" href="/users">Benutzer</a></li>
+                @endif
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="/wochenkochplan">Wochenkochplan</a></li>
             </ul>
 
