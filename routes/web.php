@@ -98,6 +98,10 @@ Route::get('/kontakt', function () {
     return view('kontakt');
 });
 
+Route::get('/impressum', function () {
+    return view('impressum');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
