@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <section class="col-12 col-md-8 offset-md-2">
-                <h3>Zutaten hinzufügen</h3>
+                <h3>Zutaten erstellen</h3>
+                <p class="beschreibung">Du bist gerade dabei eine neue Zutat zu erstellen. Bitte fülle die folgenden Felder aus:</p>
                 <form method="POST" action="/zutaten">
                     @csrf
                     <div class="form-group">
@@ -12,26 +13,20 @@
                         <input class="form-control" id="zName" name="zName" type="text" minlength="2" maxlength="256"
                                required>
                     </div>
-                    <br>
-                    <!-- TODO <label for="Menge">Menge</label>
-                    <input id="Menge" name="Menge" type="number" min="0.5" max="1000000" required></br></br>-->
                     <div class="form-group">
                         <label for="mengeneinheit">Mengeneinheit</label>
                         <input class="form-control" id="mengeneinheit" name="mengeneinheit" type="text" minlength="1"
                                maxlength="125" required>
                     </div>
-                    <br>
                     <div class="form-group">
                         <label for="kostenJeEinheit">Kosten je Einheit</label>
                         <div class="form-row">
-                            <input class="form-control col-md-6" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
+                            <input class="form-control text-rightcol-10 col-md-7" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
                                    min="0"
                                    step="0.01" required>
-                            <p class="form-group col-md-2"> €</p><!--TODO EUR Zeichen formattieren-->
+                            <p class="form-group col-2 col-md-1 waehrung"> €</p>
                         </div>
                     </div>
-                    <br>
-
                     <div class="form-group">
                         <label for="produktgruppe">Produktgruppe</label>
                         <input class="form-control" list="produktgruppen" id="produktgruppe" name="produktgruppe"
@@ -50,7 +45,7 @@
                     </div>
                     <br>
                     <input type="reset"   class="abortbtn btn" value="Abbrechen">
-                    <input type="submit" class="normalbtn btn" value="Zutat hinzufügen">
+                    <input type="submit" class="normalbtn btn" value="Speichern">
                 </form>
                 <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
             </section>
