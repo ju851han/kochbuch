@@ -26,8 +26,12 @@ class ZutatController extends Controller
      */
     public function index()
     {
-        $zutaten = Zutat::all();
-        return view('zutaten/index')->with('zutaten', $zutaten);
+        if (AUTH::user()->hasRole('admin')) {
+            $zutaten = Zutat::all();
+            return view('zutaten/index')->with('zutaten', $zutaten);
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Ansehen aller Zutaten vorhanden.');
+        }
     }
 
     /**
@@ -37,9 +41,11 @@ class ZutatController extends Controller
      */
     public function create(Request $request)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
-        return view('zutaten/create');
+        if (AUTH::user()->hasRole('admin')) {
+            return view('zutaten/create');
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Erstellen einer Zutat vorhanden.');
+        }
     }
 
     /**
@@ -50,17 +56,19 @@ class ZutatController extends Controller
      */
     public function store(Request $request)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
-        /*TODO Validation */
-        $zutat = new Zutat;
-        $zutat->zName = $request->zName;
-        $zutat->kostenJeEinheit = $request->kostenJeEinheit;
-        $zutat->mengeneinheit = $request->mengeneinheit;
-        $zutat->produktgruppe = $request->produktgruppe;
-        $zutat->save();
+        if (AUTH::user()->hasRole('admin')) {
+            /*TODO Validation */
+            $zutat = new Zutat;
+            $zutat->zName = $request->zName;
+            $zutat->kostenJeEinheit = $request->kostenJeEinheit;
+            $zutat->mengeneinheit = $request->mengeneinheit;
+            $zutat->produktgruppe = $request->produktgruppe;
+            $zutat->save();
 
-        return redirect()->action('ZutatController@index');
+            return redirect()->action('ZutatController@index');
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Speeichern einer Zutat vorhanden.');
+        }
     }
 
     /**
@@ -71,15 +79,15 @@ class ZutatController extends Controller
      */
     public function show($zName)
     {
-        /*TODO Später löschen*/
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
+
         $zutat = Zutat::find($zName);
         if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');
+        } elseif (AUTH::user()->hasRole('admin')) {
+            return view('zutaten/show')->with('z', $zutat);
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Anzeigen einer Zutat vorhanden.');
         }
-        return view('zutaten/show')->with('z', $zutat);
-
     }
 
     /**
@@ -91,34 +99,39 @@ class ZutatController extends Controller
      */
     public function edit(Request $request, $zName)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
         $zutat = Zutat::find($zName);
         if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');
+        } elseif (AUTH::user()->hasRole('admin')) {
+            return view('zutaten/edit')->with('z', $zutat);
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten von der Zutat vorhanden.');
         }
-        return view('zutaten/edit')->with('z', $zutat);
-
     }
 
     /**
      * Updates the edited Zutat in DB
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Zutat $zutat
+     * @param $zName
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $zName)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
+
         $zutat = Zutat::find($zName);
-        /*TODO Validation */
-        $zutat->kostenjeEinheit = $request->kostenjeEinheit;
-        $zutat->mengeneinheit = $request->mengeneinheit;
-        $zutat->produktgruppe = $request->produktgruppe;
-        $zutat->save();
-        return redirect()->action('ZutatController@show', ['zName' => $zName]);
+        if (is_null($zutat)) {
+            return redirect()->action('ZutatController@index');
+        } elseif (AUTH::user()->hasRole('admin')) {
+            $zutat->kostenjeEinheit = $request->kostenjeEinheit;
+            $zutat->mengeneinheit = $request->mengeneinheit;
+            $zutat->produktgruppe = $request->produktgruppe;
+            $zutat->save();
+            return redirect()->action('ZutatController@show', ['zName' => $zName]);
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten von der Zutat vorhanden.');
+        }
+
     }
 
     /**
@@ -130,16 +143,19 @@ class ZutatController extends Controller
      */
     public function destroy(Request $request, $zName)
     {
-        // if ( AUTH::user()->hasRole('admin')) {
+
         $zutat = Zutat::find($zName);
-        foreach ($zutat->rezepts as $rezept) {
-            $zutat->rezepts()->detach($rezept); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
+        if (is_null($zutat)) {
+            return redirect()->action('ZutatController@index');
+        } elseif (AUTH::user()->hasRole('admin')) {
+            foreach ($zutat->rezepts as $rezept) {
+                $zutat->rezepts()->detach($rezept); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
+            }
+            $zutat->delete();
+            Session::flash('alert-success', 'Rezept ' . $zutat->zName . ' wurde erfolgreich gelöscht.');
+            return redirect()->action('ZutatController@index');
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Löschen einer Zutat vorhanden.');
         }
-        $zutat->delete();
-        Session::flash('alert-success', 'Rezept ' . $zutat->zName . ' wurde erfolgreich gelöscht.');
-        return redirect()->action('ZutatController@index');
-        /*    } else {
-        abort(401, 'This action is unauthorized.');
-        }*/
     }
 }
