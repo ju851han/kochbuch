@@ -50,7 +50,9 @@ class RezeptController extends Controller
            $zutat=Zutat::find('werq');
            $rezept->zutats()->attach($zutat);
            return 'Success';*/
-        return view('rezepte/create_step1_addZutaten');
+        $zutaten=Zutat::all();
+
+        return view('rezepte/create_step1_addZutaten')->with('zutaten', $zutaten);
     }
 
     /**
@@ -63,13 +65,12 @@ class RezeptController extends Controller
     {
         $zutat = new Zutat;
         $zutat->zName = $request->zName;
-        $zutat->mengeneinheit = $request->mengeneinheit;
-        $zutat->kostenJeEinheit = $request->kostenJeEinheit;
-        $zutat->produktgruppe = $request->produktgruppe;
         $request->session()->put('zutat', $zutat);
 
         $menge=$request->menge;
         $request->session()->put('menge', $menge);
+
+
         return view('rezepte/create_step2_Rezept');
     }
 
