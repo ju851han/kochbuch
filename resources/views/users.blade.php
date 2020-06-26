@@ -10,7 +10,7 @@
                     <tr>
                         <th>Name</th>
                         <th>E-Mail</th>
-                        <!--TODO Rolle-->
+                        <th>Rolle</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -19,6 +19,7 @@
                         <tr>
                             <td> {{  $u->name }} </td>
                             <td> {{  $u->email }}</td>
+                            <td> {{  $u->role }}</td>
                             <td>
                                 <button class="normalbtn"
                                         onclick="window.location.href='/users/{{$u->id}}/destroy'"
