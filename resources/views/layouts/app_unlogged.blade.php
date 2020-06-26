@@ -89,9 +89,9 @@
 @yield('content') <!-- Patzhalter für eigenen Inhalt -->
 </main>
 <footer class="fixed-bottom">
-    <a href="#">Impressum</a>
+    <a href="/impressum">Impressum</a>
     <a href="#">Datenschutz</a>
-    <a href="#">Kontakt</a>
+    <a href="/kontakt">Kontakt</a>
     <a href="#">FAQ</a>
 </footer>
 </body>
