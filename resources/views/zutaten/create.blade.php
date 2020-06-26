@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="kostenJeEinheit">Kosten je Einheit</label>
                         <div class="form-row">
-                            <input class="form-control text-rightcol-10 col-md-7" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
+                            <input class="form-control text-right col-10 col-md-7" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
                                    min="0"
                                    step="0.01" required>
                             <p class="form-group col-2 col-md-1 waehrung"> €</p>
