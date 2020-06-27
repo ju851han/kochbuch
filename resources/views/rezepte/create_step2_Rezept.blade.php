@@ -94,19 +94,19 @@
         }
         function kategory() {
             var txt = "";
-            if ($('#Pasta').checked) {
+            if ($('#Pasta').prop('checked') == true) {
                 txt = txt + " Pasta";
             }
-            if ($('#Fisch').checked) {
+            if ($('#Fisch').prop('checked') == true) {
                 txt = txt + " Fisch";
             }
-            if ($('#Fleisch').checked) {
+            if ($('#Fleisch').prop('checked') == true) {
                 txt = txt + " Fleisch";
             }
-            if ($('#Snacks').checked) {
+            if ($('#Snacks').prop('checked') == true) {
                 txt = txt + " Snacks";
             }
-            if ($('#Vegetarisch').checked) {
+            if ($('#Vegetarisch').prop('checked') == true) {
                 txt = txt + " Vegetarisch";
             }
             $('#kategorie').val(txt);
