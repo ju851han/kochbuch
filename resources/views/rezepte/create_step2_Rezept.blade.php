@@ -11,7 +11,7 @@
                         <li class="breadcrumb-item active" aria-current="page">2. Rezeptdaten hinzufügen</li>
                     </ol>
                 </nav>
-                <form method="post" action="/rezepte/create_step3_overview">
+                <form method="post" action="/rezepte/create_step3">
                     @csrf
                     <div class="form-group">
                         <label for="rName">Name des Rezepts:</label>

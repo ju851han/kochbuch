@@ -27,9 +27,9 @@ Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index')
 
 // Add Kochbuch
 Route::get('/kochbuecher/create','KochbuchController@create')->name('kochbuecher.create_step1_Kochbuch');
-Route::post('/kochbuecher/create_step2_addZutaten','KochbuchController@create_step2')->name('kochbuecher.create_step2_addZutaten');
-Route::post('/kochbuecher/create_step3_addRezept','KochbuchController@create_step3')->name('kochbuecher.create_step3_addRezept');
-Route::post('/kochbuecher/create_step4_overview','KochbuchController@create_step4')->name('kochbuecher.create_step4_overview');
+Route::post('/kochbuecher/create_step2','KochbuchController@create_step2')->name('kochbuecher.create_step2_addZutaten');
+Route::post('/kochbuecher/create_step3','KochbuchController@create_step3')->name('kochbuecher.create_step3_addRezept');
+Route::post('/kochbuecher/create_step4','KochbuchController@create_step4')->name('kochbuecher.create_step4_overview');
 Route::get('/kochbuecher/store','KochbuchController@store')->name('kochbuecher.store');
 
 //Show Kochbuch
@@ -48,8 +48,8 @@ Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 
 // Add Rezept
 Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create_step1_addZutaten');
-Route::post('/rezepte/create_step2_Rezept','RezeptController@create_step2')->name('rezepte.create_step2_Rezept');
-Route::post('/rezepte/create_step3_overview','RezeptController@create_step3')->name('rezepte.create_step3_overview');
+Route::post('/rezepte/create_step2','RezeptController@create_step2')->name('rezepte.create_step2_Rezept');
+Route::post('/rezepte/create_step3','RezeptController@create_step3')->name('rezepte.create_step3_overview');
 Route::get('/rezepte/store','RezeptController@store')->name('rezepte.store');
 
 //Show Rezept

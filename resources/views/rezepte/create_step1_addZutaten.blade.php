@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item active" aria-current="page">1. Zutaten eingeben</li>
                     </ol>
                 </nav>
-                <form method="post" action="/rezepte/create_step2_Rezept">
+                <form method="post" action="/rezepte/create_step2">
                     @csrf
                     <div id="extendable_area">
                         <div class="form-row">
