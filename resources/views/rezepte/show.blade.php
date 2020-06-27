@@ -5,15 +5,22 @@
         <div class="row">
             <section class="col-12 col-md-8 offset-md-2">
                 <h2>Rezept: {{  $rezept->rName }} </h2>
-                <p id="kategorie_zeit_kosten">Kategorien: {{  $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit
+                <p class="beschreibung" id="kategorie_zeit_kosten">Kategorien: {{  $rezept->kategorie }} | <i
+                            class="far fa-clock"></i> Zeit
                     : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: {{$rezept->kostenjePortion}}
                     €</p>
-                <label for="portion">Portion(en):</label>
-                <input id="portion" name="portion" type="number" step="0.5" min="0" max="50" value="1"
-                       onchange="updateKosten(this.value);updateMenge(this.value);">
-
-                <h3>Zutaten</h3>
-                <table class="table">
+                <br><br>
+                <div class="form-group">
+                    <div class="form-row">
+                        <p class="col-4 col-md-2 offset-md-3 ">Portion(en):</p>
+                        <input id="portion" name="portion" class="form-control col-3 col-md-2 text-right" type="number"
+                               step="0.5"
+                               min="0" max="50" value="1"
+                               onchange="updateKosten(this.value);updateMenge(this.value);">
+                    </div>
+                </div>
+                <h3 class="offset-2 offset-md-3">Zutaten</h3>
+                <table class="table col-8 col-md-6 align-self-center">
                     <thead>
                     <tr>
                         <th>Menge</th>
@@ -30,9 +37,9 @@
                     @endforeach
                     </tbody>
                 </table>
-
+                <br>
                 <h3>Zubereitung</h3>
-                <p>{{$rezept->zubereitung}}</p>
+                <p class="beschreibung">{{$rezept->zubereitung}}</p>
                 <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/edit'"
                         title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
                 </button>
@@ -45,7 +52,7 @@
     <script>
         function updateKosten(val) {
             var kosten = "{{ $rezept->kostenjePortion}}" * val;
-            $('#kategorie_zeit_kosten').replaceWith(" <p id=\"kategorie_zeit_kosten\">Kategorien: {{  $rezept->kategorie }} | <i class=\"far fa-clock\"></i> Zeit : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: " + kosten + " €</p>\n");
+            $('#kategorie_zeit_kosten').replaceWith(" <p class=\"beschreibung\" id=\"kategorie_zeit_kosten\">Kategorien: {{  $rezept->kategorie }} | <i class=\"far fa-clock\"></i> Zeit : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: " + kosten + " €</p>\n");
         }
 
         function updateMenge(val) {
@@ -53,7 +60,7 @@
                 "                    {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}\n" +
                 "                    @foreach($rezept->zutats  as $zutat )\n" +
                 "                        <tr>\n" +
-                "                            <td>" + {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}}*val+" {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}\n" +
+                "                            <td>" + {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}}* val + " {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}\n" +
                 "                            <td>{{ $zutat->zName }}</td>\n" +
                 "                        </tr>\n" +
                 "                    @endforeach\n" +
