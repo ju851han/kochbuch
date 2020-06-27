@@ -39,19 +39,7 @@ class RezeptController extends Controller
      */
     public function create(Request $request)
     {
-        /*   $rezept = new Rezept;
-           $rezept->rName='Mein Rezept';
-           $rezept->zubereitung='blablablablablablablablablablablablablablablablablabla';
-           $rezept->kategorie='Pasta';
-           $rezept->zeit=15;
-           $rezept->kostenjePortion=10;
-           $rezept->save();
-
-           $zutat=Zutat::find('werq');
-           $rezept->zutats()->attach($zutat);
-           return 'Success';*/
-        $zutaten=Zutat::all();
-
+        $zutaten=Zutat::all()->sortBy('zName');
         return view('rezepte/create_step1_addZutaten')->with('zutaten', $zutaten);
     }
 
