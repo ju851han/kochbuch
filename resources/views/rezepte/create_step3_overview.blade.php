@@ -13,11 +13,9 @@
                     </ol>
                 </nav>
                 <h3>Neues Rezept: {{$rezept->rName}}</h3>
-                <p>Kategorien: {{  $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit : {{  $rezept->zeit }} min
+                <p>Kategorien: {{ $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit : {{  $rezept->zeit }} min
                 </p>
-                <!-- https://mdbootstrap.com/docs/jquery/forms/search/ -->
-                <!--TODO portion =1  rezept kosten-->
-                <h4>Zutaten</h4>
+                <h4 class="text-center">Zutaten</h4>
                 <table class="table">
                     <thead>
                     <tr>
@@ -26,13 +24,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td> {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}
-                        <td>{{ $zutat->zName }}</td>
-                    </tr>
+                    @foreach($zutaten as $zutat)
+                        <tr>
+                            <td>{{$zutat->menge}}{{$zutat->mengeneinheit}}</td>
+                            <td>{{ $zutat->zName }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
-
                 <h4>Zubereitungsbeschreibung</h4>
                 <p>{{$rezept->zubereitung}}</p>
             </section>
