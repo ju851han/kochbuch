@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rezept;
 use App\Zutat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class RezeptController extends Controller
@@ -39,7 +40,7 @@ class RezeptController extends Controller
      */
     public function create(Request $request)
     {
-        $zutaten=Zutat::all()->sortBy('zName');
+        $zutaten = Zutat::all()->sortBy('zName');
         return view('rezepte/create_step1_addZutaten')->with('zutaten', $zutaten);
     }
 
@@ -52,12 +53,12 @@ class RezeptController extends Controller
     public function create_step2(Request $request)
     {
         /*TODO Validation */
-        $zutaten =array();
-        $i=1;
+        $zutaten = array();
+        $i = 1;
 
-        while($request->has('zName_'.$i)){
-            $zutat = Zutat::where('zName',$request->input("zName_".$i))->first();
-            $zutat->menge=$request->input("menge_".$i);
+        while ($request->has('zName_' . $i)) {
+            $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
+            $zutat->menge = $request->input("menge_" . $i);
             error_log($zutat->zName);
             $zutaten[] = $zutat;
 
@@ -65,8 +66,8 @@ class RezeptController extends Controller
         }
 
         $request->session()->put('zutaten', $zutaten);
-        $kostenjePortion=$request->kostenjePortion;
-        $request->session()->put('kostenjePortion',$kostenjePortion);
+        $kostenjePortion = $request->kostenjePortion;
+        $request->session()->put('kostenjePortion', $kostenjePortion);
 
         return view('rezepte/create_step2_addRezeptdata');
     }
@@ -103,8 +104,8 @@ class RezeptController extends Controller
         $rezept = $request->session()->get('rezept');
         $zutaten = $request->session()->get('zutaten');
         $rezept->save();
-        foreach($zutaten as $zutat){
-        $rezept->zutats()->attach($zutat->zName,['menge'=>$zutat->menge]); //add entry in Table rezept_zutat
+        foreach ($zutaten as $zutat) {
+            $rezept->zutats()->attach($zutat->zName, ['menge' => $zutat->menge]); //add entry in Table rezept_zutat
         }
         Session::flash('alert-success', 'Ein neues Rezept ' . $rezept->rName . ' wurde erfolgreich erstellt.');
         return redirect()->action('RezeptController@index');
@@ -175,16 +176,18 @@ class RezeptController extends Controller
      */
     public function destroy(Request $request, $rID)
     {
-        // if ( AUTH::user()->hasRole('admin')) {
         $rezept = Rezept::find($rID);
-        foreach ($rezept->zutats as $zutat) {
-            $rezept->zutats()->detach($zutat); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
+        if (is_null($rezept)) {
+            return redirect()->action('RezeptController@index');
+        } else if (AUTH::user()->hasRole('admin')) {
+            foreach ($rezept->zutats as $zutat) {
+                $rezept->zutats()->detach($zutat); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
+            }
+            $rezept->delete();
+            Session::flash('alert-success', 'Rezept ' . $rezept->rName . ' wurde erfolgreich gelöscht.');
+            return redirect()->action('RezeptController@index');
+        } else {
+            abort(401, 'Es ist keine Berechtigung fürs Löschen eines Rezeptes vorhanden.');
         }
-        $rezept->delete();
-        Session::flash('alert-success', 'Rezept ' . $rezept->rName . ' wurde erfolgreich gelöscht.');
-        return redirect()->action('RezeptController@index');
-        /*    } else {
-        abort(401, 'This action is unauthorized.');
-        }*/
     }
 }
