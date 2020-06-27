@@ -68,7 +68,7 @@ class RezeptController extends Controller
         $kostenjePortion=$request->kostenjePortion;
         $request->session()->put('kostenjePortion',$kostenjePortion);
 
-        return view('rezepte/create_step2_Rezept');
+        return view('rezepte/create_step2_addRezeptdata');
     }
 
     /**
