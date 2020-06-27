@@ -5,15 +5,13 @@
         <div class="row">
             <section class="col-12 col-md-8 offset-md-2">
                 <h2>Rezept: {{  $rezept->rName }} </h2>
-                <p>Kategorien: {{  $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit : {{  $rezept->zeit }} min
-                </p>
+                <p id="kategorie_zeit_kosten">Kategorien: {{  $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit
+                    : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: {{$rezept->kostenjePortion}}
+                    €</p>
                 <!-- https://mdbootstrap.com/docs/jquery/forms/search/ -->
-                <label for="portion">Portion(en):</label><input id="portion" name="portion" type="number" step="0.5"
-                                                                min="0"
-                                                                max="50" value="1">
-                <?php
-                echo "<p> Kosten: " . $rezept->kostenjePortion * 2 . " €" . "</p>"
-                ?> {{--TODO Kosten *Portionen--}}
+                <label for="portion">Portion(en):</label>
+                <input id="portion" name="portion" type="number" step="0.5" min="0" max="50" value="1"
+                       onchange="updateKosten(this.value);updateMenge(this.value);">
 
                 <h3>Zutaten</h3>
                 <table class="table">
@@ -42,4 +40,15 @@
             </section>
         </div>
     </div>
+    <script>
+        function updateKosten(val) {/*TODO*/
+            var kosten = "{{ $rezept->kostenjePortion}}" * val;
+            $('#kategorie_zeit_kosten').replaceWith(" <p id=\"kategorie_zeit_kosten\">Kategorien: {{  $rezept->kategorie }} | <i class=\"far fa-clock\"></i> Zeit : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: " + kosten + " €</p>\n");
+        }
+
+        function updateMenge(val) {
+
+        }
+
+    </script>
 @endsection
