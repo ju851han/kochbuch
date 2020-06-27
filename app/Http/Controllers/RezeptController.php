@@ -63,13 +63,22 @@ class RezeptController extends Controller
 
     public function create_step2(Request $request)
     {
-        $zutat = new Zutat;
-        $zutat->zName = $request->zName;
-        $request->session()->put('zutat', $zutat);
+        /*TODO Validation */
+        $zutaten =array();
+        $i=1;
 
-        $menge=$request->menge;
-        $request->session()->put('menge', $menge);
+        while($request->has('zName_'.$i)){
+            $zutat = Zutat::where('zName',$request->input("zName_".$i))->first();
+            $zutat->menge=$request->input("menge_".$i);
+            error_log($zutat->zName);
+            $zutaten[] = $zutat;
 
+            $i++;
+        }
+
+        $request->session()->put('zutaten', $zutaten);
+        $kostenjePortion=$request->kostenjePortion;
+        $request->session()->put('kostenjePortion',$kostenjePortion);
 
         return view('rezepte/create_step2_Rezept');
     }
@@ -87,12 +96,12 @@ class RezeptController extends Controller
         $rezept->zubereitung = $request->zubereitung;
         $rezept->kategorie = $request->kategorie;
         $rezept->zeit = $request->zeit;
-        $rezept->kostenjePortion = $request->kostenjePortion;
+        $rezept->kostenjePortion = $request->session()->get('kostenjePortion');
 
         $request->session()->put('rezept', $rezept);
-        $menge = $request->session()->get('menge');
-        $zutat = $request->session()->get('zutat');
-        return view('rezepte/create_step3_overview')->with('rezept', $rezept)->with('zutat', $zutat)->with('menge',$menge);
+        $mengen = $request->session()->get('mengen');
+        $zutaten = $request->session()->get('zutaten');
+        return view('rezepte/create_step3_overview')->with('rezept', $rezept)->with('zutaten', $zutaten);
     }
 
     /**
@@ -104,15 +113,11 @@ class RezeptController extends Controller
     public function store(Request $request)
     {
         $rezept = $request->session()->get('rezept');
-        $zutat = $request->session()->get('zutat');
-        $menge = $request->session()->get('menge');
-        /*     error_log($request->zName);
-             error_log($zutat->zName);*/
-        error_log($menge);
+        $zutaten = $request->session()->get('zutaten');
         $rezept->save();
-        $rezept->zutats()->attach($zutat->zName,['menge'=>$menge]); //add entry in Table rezept_zutat
-        $zutat->save();
-
+        foreach($zutaten as $zutat){
+        $rezept->zutats()->attach($zutat->zName,['menge'=>$zutat->menge]); //add entry in Table rezept_zutat
+        }
         return redirect()->action('RezeptController@index');
     }
 
