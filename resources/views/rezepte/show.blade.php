@@ -8,17 +8,19 @@
                 <p id="kategorie_zeit_kosten">Kategorien: {{  $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit
                     : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: {{$rezept->kostenjePortion}}
                     €</p>
-                <!-- https://mdbootstrap.com/docs/jquery/forms/search/ -->
                 <label for="portion">Portion(en):</label>
                 <input id="portion" name="portion" type="number" step="0.5" min="0" max="50" value="1"
                        onchange="updateKosten(this.value);updateMenge(this.value);">
 
                 <h3>Zutaten</h3>
                 <table class="table">
+                    <thead>
                     <tr>
                         <th>Menge</th>
                         <th>Zutat</th>
                     </tr>
+                    </thead>
+                    <tbody id="zutaten">
                     {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}
                     @foreach($rezept->zutats  as $zutat )
                         <tr>
@@ -26,7 +28,7 @@
                             <td>{{ $zutat->zName }}</td>
                         </tr>
                     @endforeach
-
+                    </tbody>
                 </table>
 
                 <h3>Zubereitung</h3>
@@ -41,12 +43,21 @@
         </div>
     </div>
     <script>
-        function updateKosten(val) {/*TODO*/
+        function updateKosten(val) {
             var kosten = "{{ $rezept->kostenjePortion}}" * val;
             $('#kategorie_zeit_kosten').replaceWith(" <p id=\"kategorie_zeit_kosten\">Kategorien: {{  $rezept->kategorie }} | <i class=\"far fa-clock\"></i> Zeit : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i> Kosten: " + kosten + " €</p>\n");
         }
 
         function updateMenge(val) {
+            $('#zutaten').replaceWith("<tbody id=\"zutaten\">\n" +
+                "                    {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}\n" +
+                "                    @foreach($rezept->zutats  as $zutat )\n" +
+                "                        <tr>\n" +
+                "                            <td>" + {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}}*val+" {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}\n" +
+                "                            <td>{{ $zutat->zName }}</td>\n" +
+                "                        </tr>\n" +
+                "                    @endforeach\n" +
+                "                    </tbody>");
 
         }
 
