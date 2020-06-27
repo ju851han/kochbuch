@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--TODO Validate:  zutaten die bereits schon geaddetet wurde, darf nicht nochmal geaddet werden--}}
 @section('content')
     <div class="container">
         <div class="row">
