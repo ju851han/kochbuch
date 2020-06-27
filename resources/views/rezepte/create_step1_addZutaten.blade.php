@@ -19,9 +19,7 @@
                                 <label for="menge">Menge</label>
                                 <div class="form-row">
                                     <input id="menge_1" class="form-control col-md-5" name="menge_1" type="number"
-                                           min="0.5"
-                                           max="1000000"
-                                           step="0.5" required>
+                                           min="0.5" max="1000000" step="0.5" onchange="calc_kosten(1)" required>
                                     <output id="mengeneinheit_1" class="mengeneinheit col-md-1" name="mengeneinheit_1">g
                                     </output>
                                 </div>
@@ -41,9 +39,7 @@
                                     class="material-icons btn_i">add_circle</i>Zutat hinzufügen
                         </button>
                     </div>
-                    <input class="form-control col-md-10 order-1" id="kostenJeEinheit" name="kostenJeEinheit"
-                           required>
-
+                    <input class="form-control" type="hidden" id="kostenjePortion" name="kostenjePortion" >
                     <br>
                     <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <input type="submit" class="normalbtn btn" value="Weiter">
@@ -72,10 +68,8 @@
                 "                                <label for=\"menge\">Menge</label>\n" +
                 "                                <div class=\"form-row\">\n" +
                 "                                    <input id=\"menge_"+anz_rows+"\" class=\"form-control col-md-5\" name=\"menge_"+anz_rows+"\" type=\"number\"\n" +
-                "                                           min=\"0.5\"\n" +
-                "                                           max=\"1000000\"\n" +
-                "                                           step=\"0.5\" required>\n" +
-                "                                    <output id=\"mengeneinheit_"+anz_rows+"\" class=\"mengeneinheit col-md-1\" name=\"mengeneinheit"+anz_rows+"\">Stk\n" +
+                "                                           min=\"0.5\" max=\"1000000\" step=\"0.5\" onchange=\"calc_kosten("+anz_rows+")\" required>\n" +
+                "                                    <output id=\"mengeneinheit_"+anz_rows+"\" class=\"mengeneinheit col-md-1\" name=\"mengeneinheit"+anz_rows+"\">g\n" +
                 "                                    </output>\n" +
                 "                                </div>\n" +
                 "                            </div>\n" +
@@ -95,6 +89,21 @@
                 "                        </button>");
 
         }
+
+        function calc_kosten(anz_rows) {
+            var kostenJePortion=0;
+            while(anz_rows>0){
+                @foreach ($zutaten as $z)
+                if ($('#zName_'+anz_rows).val() === "{{$z->zName}}") {
+                    var kostenJeEinheit="{{$z->kostenjeEinheit}}";
+                    kostenJePortion= kostenJePortion+ (kostenJeEinheit*$('#menge_'+anz_rows).val());
+                    $('#kostenjePortion').val(kostenJePortion);
+            }
+            @endforeach
+            anz_rows--;
+            }
+        }
+
 
     </script>
 @endsection
