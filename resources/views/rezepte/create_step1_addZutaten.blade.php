@@ -12,28 +12,38 @@
                 </nav>
                 <form method="post" action="/rezepte/create_step2_Rezept">
                     @csrf
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="menge">Menge</label>
-                            <input id="menge" class="form-control" name="menge" type="number" min="0.5" max="1000000"
-                                   step="0.5" required>
+                    <div id="extendable_area">
+                        <div class="form-row">
+                            <input type="hidden" name="anz_rows" value="1" id="anz_rows">
+                            <div class="form-group col-md-5 offset-1">
+                                <label for="menge">Menge</label>
+                                <div class="form-row">
+                                    <input id="menge_1" class="form-control col-md-5" name="menge_1" type="number"
+                                           min="0.5"
+                                           max="1000000"
+                                           step="0.5" required>
+                                    <output id="mengeneinheit_1" class="mengeneinheit col-md-1" name="mengeneinheit_1">g
+                                    </output>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="zName">Zutat</label>
+                                <select name="zName_1" id="zName_1" class="form-control"
+                                        onchange="updateMengeneinheit(this.value,1);">
+                                    @foreach ($zutaten as $z)
+                                        <option value="{{$z->zName}}">{{$z->zName}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-1">
-                            <label></label>
-                            <output id="mengeneinheit" name="mengeneinheit">Stk</output>
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="zName">Zutat</label>
-                            <select name="zName_1" id="zName_1" class="form-control"
-                                    onchange="updateMengeneinheit(this.value);">
-                                @foreach ($zutaten as $z)
-                                    <option value="{{$z->zName}}">{{$z->zName}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <br>
+                        <button id="addBtn" class="normalbtn btn" onclick="addZutat();"><i
+                                    class="material-icons btn_i">add_circle</i>Zutat hinzufügen
+                        </button>
                     </div>
                     <input class="form-control col-md-10 order-1" id="kostenJeEinheit" name="kostenJeEinheit"
-                            required>
+                           required>
+
                     <br>
                     <input type="reset" class="abortbtn btn" value="Abbrechen">
                     <input type="submit" class="normalbtn btn" value="Weiter">
@@ -42,13 +52,49 @@
         </div>
     </div>
     <script>
-        function updateMengeneinheit(val) {
+        function updateMengeneinheit(val,anz_rows) {
             @foreach ($zutaten as $z)
-            if (val ==="{{$z->zName}}") {
-                $('#mengeneinheit').val("{{$z->mengeneinheit}}");
-                $('#mengeneinheit').text("{{$z->mengeneinheit}}");
+            if (val === "{{$z->zName}}") {
+                $('#mengeneinheit_'+anz_rows).val("{{$z->mengeneinheit}}");
+                $('#mengeneinheit'+anz_rows).text("{{$z->mengeneinheit}}");
             }
             @endforeach
         }
+
+        function addZutat() {
+            var anz_rows = parseInt($('#anz_rows').val());
+            anz_rows++;
+            $('#anz_rows').val(anz_rows);
+            $('#addBtn').remove();
+            $('#extendable_area').append("<div class=\"form-row\">\n" +
+                "                            <input type=\"hidden\" name=\"anz_rows\" value=\"1\" id=\"anz_rows\">\n" +
+                "                            <div class=\"form-group col-md-5 offset-1\">\n" +
+                "                                <label for=\"menge\">Menge</label>\n" +
+                "                                <div class=\"form-row\">\n" +
+                "                                    <input id=\"menge_"+anz_rows+"\" class=\"form-control col-md-5\" name=\"menge_"+anz_rows+"\" type=\"number\"\n" +
+                "                                           min=\"0.5\"\n" +
+                "                                           max=\"1000000\"\n" +
+                "                                           step=\"0.5\" required>\n" +
+                "                                    <output id=\"mengeneinheit_"+anz_rows+"\" class=\"mengeneinheit col-md-1\" name=\"mengeneinheit"+anz_rows+"\">Stk\n" +
+                "                                    </output>\n" +
+                "                                </div>\n" +
+                "                            </div>\n" +
+                "                            <div class=\"form-group col-md-5\">\n" +
+                "                                <label for=\"zName\">Zutat</label>\n" +
+                "                                <select name=\"zName_"+anz_rows+"\" id=\"zName_"+anz_rows+"\" class=\"form-control\"\n" +
+                "                                        onchange=\"updateMengeneinheit(this.value,"+anz_rows+");\">\n" +
+                "                                    @foreach ($zutaten as $z)\n" +
+                "                                        <option value=\"{{$z->zName}}\">{{$z->zName}}</option>\n" +
+                "                                    @endforeach\n" +
+                "                                </select>\n" +
+                "                            </div>\n" +
+                "                        </div>\n" +
+                "                        <br>\n" +
+                "                        <button id=\"addBtn\" class=\"normalbtn btn\" onclick=\"addZutat();\"><i\n" +
+                "                                    class=\"material-icons btn_i\">add_circle</i>Zutat hinzufügen\n" +
+                "                        </button>");
+
+        }
+
     </script>
 @endsection
