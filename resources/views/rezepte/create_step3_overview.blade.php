@@ -13,8 +13,10 @@
                     </ol>
                 </nav>
                 <h3>Neues Rezept: {{$rezept->rName}}</h3>
-                <p>Kategorien: {{ $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit : {{  $rezept->zeit }} min
-                </p>
+                <p class="beschreibung">Kategorien: {{ $rezept->kategorie }} | <i class="far fa-clock"></i> Zeit
+                    : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i>
+                    Kosten: {{ $rezept->kostenjePortion }}
+                </p><br>
                 <h4 class="text-center">Zutaten</h4>
                 <table class="table">
                     <thead>
@@ -32,8 +34,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <br>
                 <h4>Zubereitungsbeschreibung</h4>
-                <p>{{$rezept->zubereitung}}</p>
+                <p class="beschreibung">{{$rezept->zubereitung}}</p>
             </section>
             <div>
                 <button onclick="window.location.href='/rezepte/store'" class="btn finishbtn">Speichern</button>
