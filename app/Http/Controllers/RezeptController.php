@@ -106,6 +106,7 @@ class RezeptController extends Controller
         foreach($zutaten as $zutat){
         $rezept->zutats()->attach($zutat->zName,['menge'=>$zutat->menge]); //add entry in Table rezept_zutat
         }
+        Session::flash('alert-success', 'Ein neues Rezept ' . $rezept->rName . ' wurde erfolgreich erstellt.');
         return redirect()->action('RezeptController@index');
     }
 
