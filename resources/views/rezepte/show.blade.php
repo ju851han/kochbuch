@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <div class="form-row">
                         <p class="col-4 col-md-2 offset-md-3 ">Portion(en):</p>
-                        <input id="portion" name="portion" class="form-control col-3 col-md-2 text-right" type="number"
+                        <input id="portion" name="portion" class="form-control col-3 col-md-2" type="number"
                                step="0.5"
                                min="0" max="50" value="1"
                                onchange="updateKosten(this.value);updateMenge(this.value);">
