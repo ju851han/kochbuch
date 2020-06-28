@@ -88,7 +88,6 @@ class RezeptController extends Controller
         $rezept->kostenjePortion = $request->session()->get('kostenjePortion');
 
         $request->session()->put('rezept', $rezept);
-        $mengen = $request->session()->get('mengen');
         $zutaten = $request->session()->get('zutaten');
         return view('rezepte/create_step3_overview')->with('rezept', $rezept)->with('zutaten', $zutaten);
     }
