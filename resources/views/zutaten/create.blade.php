@@ -5,7 +5,8 @@
         <div class="row">
             <section class="col-12 col-md-8 offset-md-2">
                 <h3>Zutaten erstellen</h3>
-                <p class="beschreibung">Du bist gerade dabei eine neue Zutat zu erstellen. Bitte fülle die folgenden Felder aus:</p>
+                <p class="beschreibung">Du bist gerade dabei eine neue Zutat zu erstellen. Bitte fülle die folgenden
+                    Felder aus:</p>
                 <form method="POST" action="/zutaten">
                     @csrf
                     <div class="form-group">
@@ -44,8 +45,13 @@
                         </datalist>
                     </div>
                     <br>
-                    <input type="reset"  onclick="window.location.href='/zutaten/index'" class="abortbtn btn" value="Abbrechen">
-                    <input type="submit" class="normalbtn btn" value="Speichern">
+                    <div class="row justify-content-end">
+                        <div>
+                            <input type="reset" onclick="window.location.href='/zutaten/index'" class="abortbtn btn"
+                                   value="Abbrechen">
+                            <input type="submit" class="normalbtn btn" value="Speichern">
+                        </div>
+                    </div>
                 </form>
                 <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
             </section>
