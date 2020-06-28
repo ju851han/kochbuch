@@ -14,7 +14,7 @@
                     </ol>
                 </nav>
                 <h1 id="special">{{ $kochbuch->kName }}</h1>
-                <p class="untertitel">erstellt am: {{$kochbuch->erstelltam}}; zuletzt aktualisert
+                <p class="untertitel">erstellt am: {{$kochbuch->erstelltam}} | zuletzt aktualisert
                     am: {{$kochbuch->aktualisiertam}}</p>
                 <h2>Inhaltsverzeichnis</h2>
                 <table class="table">
@@ -28,10 +28,12 @@
                     </thead>
                     <tbody class="background2ndTR">
                     <tr>
-                        <td>{{ $rezept->rName}}</td>
-                        <td>{{  $rezept->kategorie }}</td>
-                        <td>{{  $rezept->zeit }} min</td>
-                        <td>{{  $rezept->kostenjePortion }} €</td>
+                        @if(!is_null($rezept))
+                            <td>{{ $rezept->rName}}</td>
+                            <td>{{  $rezept->kategorie }}</td>
+                            <td>{{  $rezept->zeit }} min</td>
+                            <td>{{  $rezept->kostenjePortion }} €</td>
+                        @endif
                     </tr>
                     </tbody>
                 </table>
@@ -42,5 +44,4 @@
             </section>
         </div>
     </div>
-    <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
 @endsection
