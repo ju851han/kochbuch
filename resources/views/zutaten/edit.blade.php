@@ -24,9 +24,11 @@
                     <div class="form-group">
                         <label for="kostenJeEinheit">Kosten je Einheit</label>
                         <div class="form-row">
-                            <input class="form-control text-right col-5" id="kostenJeEinheit" name="kostenJeEinheit" type="number"
+                            <input class="form-control text-right col-5" id="kostenJeEinheit" name="kostenJeEinheit"
+                                   type="number"
                                    min="0"
-                                   step="0.01"  value="{{$z->kostenjeEinheit}}" placeholder="{{$z->kostenjeEinheit}}" required>
+                                   step="0.01" value="{{$z->kostenjeEinheit}}" placeholder="{{$z->kostenjeEinheit}}"
+                                   required>
                             <p class="form-group col-1 waehrung"> €</p>
                         </div>
                     </div>
@@ -47,8 +49,13 @@
                         </datalist>
                     </div>
                     <br>
-                    <input type="reset" onclick="window.location.href='/zutaten/index'" class="abortbtn btn" value="Abbrechen">
-                    <input type="submit" class="normalbtn btn" value="Änderungen speichern">
+                    <div class="row justify-content-end">
+                        <div>
+                            <input type="reset" onclick="window.location.href='/zutaten/index'" class="abortbtn btn"
+                                   value="Abbrechen">
+                            <input type="submit" class="normalbtn btn" value="Änderungen speichern">
+                        </div>
+                    </div>
                 </form>
             </section>
         </div>
