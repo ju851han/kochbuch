@@ -21,6 +21,14 @@
                     </tr>
                     </tbody>
                 </table>
+                <button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}/edit'"
+                        title="Zutat bearbeiten"><i class="material-icons btn_i">edit</i> Zutat bearbeiten
+                </button>
+                @if (Auth::user()->hasRole('admin'))
+                    <button class="abortbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}/destroy'"
+                            title="Zutat löschen"><i class="fas fa-trash-alt btn_i"></i> Zutat löschen
+                    </button>
+                @endif
             </section>
         </div>
     </div>
