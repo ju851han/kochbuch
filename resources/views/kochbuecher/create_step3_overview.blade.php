@@ -38,7 +38,7 @@
                     </tbody>
                 </table>
                 <div>
-                    <button onclick="window.location.href='#'" class="abortbtn btn">Abbrechen</button> <!-- TODO  -->
+                    <button onclick="window.location.href='/kochbuecher/index'" class="abortbtn btn">Abbrechen</button>
                     <button onclick="window.location.href='/kochbuecher/store'" class="finishbtn btn">Speichern</button>
                 </div>
             </section>
