@@ -48,7 +48,7 @@ Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 
 // Add Rezept
 Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create_step1_addZutaten');
-Route::post('/rezepte/create_step2','RezeptController@create_step2')->name('rezepte.create_step2_addRezeptdata');
+Route::post('/rezepte/create_step2','RezeptController@create_step2')->name('rezepte.create_step2_Rezept');
 Route::post('/rezepte/create_step3','RezeptController@create_step3')->name('rezepte.create_step3_overview');
 Route::get('/rezepte/store','RezeptController@store')->name('rezepte.store');
 
