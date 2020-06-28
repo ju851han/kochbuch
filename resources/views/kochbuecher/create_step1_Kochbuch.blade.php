@@ -10,16 +10,28 @@
                         <li class="breadcrumb-item active" aria-current="page">1. Name des Kochbuches eingeben</li>
                     </ol>
                 </nav>
-                <form method="post" action="/kochbuecher/create_step2_addZutaten">
+                <form method="post" action="/kochbuecher/create_step4_overview">
                     @csrf
                     <div class="form-group">
                         <label for="kName">Name des Kochbuchs:</label>
                         <input class="form-control" id="kName" name="kName" type="text" minlength="2" required>
                     </div>
                     <br>
-                    <input type="reset" class="abortbtn btn" value="Abbrechen">
-                    <!-- reset = Formulardaten werden gelöscht-->
-                    <input type="submit" class="normalbtn btn" value="Weiter">
+                    <div class="row justify-content-end">
+                        <div>
+                            <input type="reset" class="abortbtn btn" onclick="window.location.href='/kochbuecher/index'"
+                                   value="Abbrechen">
+                            <button class="normalbtn btn"
+                                    onclick="window.location.href='/kochbuecher/create_step2a_addRezept'"><i
+                                        class="material-icons btn_i">add_circle</i>Rezepte hinzufügen
+                            </button>
+                            <button class="normalbtn btn"
+                                    onclick="window.location.href='/kochbuecher/create_step2b-1_createRezept'"><i
+                                        class="material-icons btn_i">edit</i>Rezept erstellen
+                            </button>
+                            <input type="submit" class="finishbtn btn" value="Kochbuch fertig stellen">
+                        </div>
+                    </div>
                 </form>
             </section>
         </div>
