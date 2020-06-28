@@ -37,7 +37,7 @@
                 <br>
                 <h4>Zubereitungsbeschreibung</h4>
                 <p class="beschreibung">{{$rezept->zubereitung}}</p>
-
+                <br>
                 <div class="row justify-content-end">
                     <div>
                         <button onclick="window.location.href='/rezepte/index'" class="btn abortbtn">Abbrechen</button>
