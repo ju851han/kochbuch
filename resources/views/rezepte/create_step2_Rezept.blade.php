@@ -82,8 +82,13 @@
                         <span> min</span>
                     </div>
                     <br>
-                    <input type="reset" class="abortbtn btn" onclick="window.location.href='/rezepte/index'" value="Abbrechen">
-                    <input type="submit" class="normalbtn btn" value="Weiter">
+                    <div class="row justify-content-end">
+                        <div>
+                            <input type="reset" class="abortbtn btn" onclick="window.location.href='/rezepte/index'"
+                                   value="Abbrechen">
+                            <input type="submit" class="normalbtn btn" value="Weiter">
+                        </div>
+                    </div>
                 </form>
             </section>
         </div>
@@ -92,6 +97,7 @@
         function updateZeitOutput(val) {
             $('#zeit_output').val(val);
         }
+
         function kategory() {
             var txt = "";
             if ($('#Pasta').prop('checked') == true) {
