@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item active" aria-current="page">1. Name des Kochbuches eingeben</li>
                     </ol>
                 </nav>
-                <form method="post" action="/kochbuecher/create_step4_overview">
+                <form method="post" action="/kochbuecher/create_step3">
                     @csrf
                     <div class="form-group">
                         <label for="kName">Name des Kochbuchs:</label>
