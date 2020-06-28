@@ -24,7 +24,7 @@
                                   cols="50" rows="5"
                                   required></textarea><br>
                     </div>
-                    <div class="form-group" onchange="kategory()">
+                    <div class="form-group" onchange="kategory();">
                         <label for="kategorie">Wähle die Kategorien aus, zu denen das Rezept passt:</label>
                         <br>
                         <div class="form-check">
