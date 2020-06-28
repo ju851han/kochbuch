@@ -40,7 +40,7 @@
             </section>
             <div>
                 <button onclick="window.location.href='/rezepte/store'" class="btn finishbtn">Speichern</button>
-                <button onclick="window.location.href='/rezepte/index'" class="btn abortbtn">Abbrechen</button> <!--TODO-->
+                <button onclick="window.location.href='/rezepte/index'" class="btn abortbtn">Abbrechen</button>
             </div>
         </div>
     </div>
