@@ -44,7 +44,7 @@
                         </datalist>
                     </div>
                     <br>
-                    <input type="reset"   class="abortbtn btn" value="Abbrechen">
+                    <input type="reset"  onclick="window.location.href='/zutaten/index'" class="abortbtn btn" value="Abbrechen">
                     <input type="submit" class="normalbtn btn" value="Speichern">
                 </form>
                 <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
