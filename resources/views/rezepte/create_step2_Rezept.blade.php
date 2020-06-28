@@ -82,7 +82,7 @@
                         <span> min</span>
                     </div>
                     <br>
-                    <input type="reset" class="abortbtn btn" value="Abbrechen">
+                    <input type="reset" class="abortbtn btn" onclick="window.location.href='/rezepte/index'" value="Abbrechen">
                     <input type="submit" class="normalbtn btn" value="Weiter">
                 </form>
             </section>
