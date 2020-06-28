@@ -17,8 +17,8 @@
                     : {{  $rezept->zeit }} min | <i class='fas fa-piggy-bank'></i>
                     Kosten: {{ $rezept->kostenjePortion }}
                 </p><br>
-                <h4 class="text-center">Zutaten</h4>
-                <table class="table">
+                <h4 class="offset-2 offset-md-3">Zutaten</h4>
+                <table class="table col-8 col-md-6 align-self-center">
                     <thead>
                     <tr>
                         <th>Menge</th>
@@ -37,11 +37,14 @@
                 <br>
                 <h4>Zubereitungsbeschreibung</h4>
                 <p class="beschreibung">{{$rezept->zubereitung}}</p>
+
+                <div class="row justify-content-end">
+                    <div>
+                        <button onclick="window.location.href='/rezepte/index'" class="btn abortbtn">Abbrechen</button>
+                        <button onclick="window.location.href='/rezepte/store'" class="btn finishbtn">Speichern</button>
+                    </div>
+                </div>
             </section>
-            <div>
-                <button onclick="window.location.href='/rezepte/store'" class="btn finishbtn">Speichern</button>
-                <button onclick="window.location.href='/rezepte/index'" class="btn abortbtn">Abbrechen</button>
-            </div>
         </div>
     </div>
 @endsection
