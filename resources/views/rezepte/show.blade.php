@@ -46,7 +46,7 @@
                 </button>
                 @if (Auth::user()->hasRole('admin'))
                     <button class="abortbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/destroy'"
-                            title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i> Rezepet löschen
+                            title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i> Rezept löschen
                     </button>
                 @endif
             </section>
