@@ -38,6 +38,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="a_nav nav-link text-white" href="{{ url('/home') }}">Home</a>
+                </li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="/kochbuecher">Kochbücher</a></li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="/rezepte">Rezepte</a></li>
                 @if (Auth::user()->hasRole('admin'))
