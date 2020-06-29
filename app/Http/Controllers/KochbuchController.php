@@ -40,11 +40,54 @@ class KochbuchController extends Controller
      * Shows a form to create a new Kochbuch
      *
      * @param Request $request
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
     {
         return view('kochbuecher/create_step1_Kochbuch');
+    }
+
+    /**
+     * Create Rezept / Step2b_1: Create a new Kochbuch
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function create_step2b_1(Request $request)
+    {
+        $kochbuch = new Kochbuch;
+        $kochbuch->kName = $request->kName;
+        $request->session()->put('kochbuch', $kochbuch);
+
+        $zutaten = Zutat::all()->sortBy('zName'); //For select options
+        return view('kochbuecher/create_step2b_1_addZutaten')->with('zutaten', $zutaten);
+    }
+
+    /**
+     * Create Rezept / Step 2b_2: Add zutaten
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function create_step2b_2(Request $request)
+    {
+        /*TODO Validation */
+        $zutaten = array();
+        $i = 1;
+
+        while ($request->has('zName_' . $i)) {
+            $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
+            $zutat->menge = $request->input("menge_" . $i);
+            $zutaten[] = $zutat;
+
+            $i++;
+        }
+
+        $request->session()->put('zutaten', $zutaten);
+        $kostenjePortion = $request->kostenjePortion;
+        $request->session()->put('kostenjePortion', $kostenjePortion);
+
+        return view('kochbuecher/create_step2b_2_createRezept');
     }
 
 
@@ -55,8 +98,7 @@ class KochbuchController extends Controller
      */
     public function create_step3(Request $request)
     {
-        if (!is_null($request->rname)) {
-            error_log('reeeeeeeeeeeeeeeeezeeeeeeeeeeeeeeeeept');
+        if (!is_null($request->rName)) {
             $rezept = new Rezept;
             $rezept->rName = $request->rName;
             $rezept->zubereitung = $request->zubereitung;
@@ -69,7 +111,6 @@ class KochbuchController extends Controller
             return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat);
 
         } else {
-            error_log('halloooooooooooo');
             $kochbuch = new Kochbuch;
             $kochbuch->kName = $request->kName;
             $request->session()->put('kochbuch', $kochbuch);
