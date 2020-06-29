@@ -21,14 +21,11 @@
                         <div>
                             <input type="reset" class="abortbtn btn" onclick="window.location.href='/kochbuecher/index'"
                                    value="Abbrechen">
-                            <button class="normalbtn btn"
-                                    onclick="window.location.href='/kochbuecher/create_step2a_addRezept'"><i
+                            <button type="submit" class="normalbtn btn" onclick="change_submitaction1();"> <i
                                         class="material-icons btn_i">add_circle</i>Rezepte hinzufügen
                             </button>
-                            <button class="normalbtn btn"
-                                    onclick="window.location.href='/kochbuecher/create_step2b-1_createRezept'"><i
-                                        class="material-icons btn_i">edit</i>Rezept erstellen
-                            </button>
+                            <button type="submit" class="normalbtn btn" onclick="change_submitaction2();"><i
+                                        class="material-icons btn_i">edit</i>Rezept erstellen</button>
                             <input type="submit" class="finishbtn btn" value="Kochbuch fertig stellen">
                         </div>
                     </div>
@@ -36,5 +33,13 @@
             </section>
         </div>
     </div>
-    <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
+    <script>
+        function change_submitaction1(){
+            $('form').attr("action","/kochbuecher/create_step2a");
+        }
+        function change_submitaction2(){
+            $('form').attr("action","/kochbuecher/create_step2b_1");
+        }
+    </script>
+
 @endsection
