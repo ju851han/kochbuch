@@ -48,6 +48,13 @@ class KochbuchController extends Controller
     }
 
     /**
+     * @param Request $request
+     */
+
+    public function create_step2a(Request $request){
+
+    }
+    /**
      * Create Rezept / Step2b_1: Create a new Kochbuch
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -78,6 +85,7 @@ class KochbuchController extends Controller
         while ($request->has('zName_' . $i)) {
             $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
             $zutat->menge = $request->input("menge_" . $i);
+            error_log($zutat->zName);
             $zutaten[] = $zutat;
 
             $i++;
@@ -92,7 +100,7 @@ class KochbuchController extends Controller
 
 
     /**
-     * Create Rezept / Step 3: Show new Kochbuch
+     * Step 3: Creating (Rezept|Kochbuch) and adding relations
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -106,16 +114,16 @@ class KochbuchController extends Controller
             $rezept->zeit = $request->zeit;
             $rezept->kostenjePortion = $request->session()->get('kostenjePortion');
             $request->session()->put('rezept', $rezept);
-            $zutat = $request->session()->get('zutat');
+            $zutaten = $request->session()->get('zutaten');
             $kochbuch = $request->session()->get('kochbuch');
-            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutat', $zutat);
+            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutaten', $zutaten);
 
         } else {
             $kochbuch = new Kochbuch;
             $kochbuch->kName = $request->kName;
             $request->session()->put('kochbuch', $kochbuch);
 
-            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept',null);
+            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', null);
         }
     }
 
@@ -127,24 +135,24 @@ class KochbuchController extends Controller
      */
     public function store(Request $request)
     {
-        if(!is_null($request->session()->get('rezept'))){
-        $kochbuch = $request->session()->get('kochbuch');
-        $rezept = $request->session()->get('rezept');
-        $zutat = $request->session()->get('zutat');
-        $menge = $request->session()->get('menge');
+        if (!is_null($request->session()->get('rezept'))) {
+            $kochbuch = $request->session()->get('kochbuch');
+            $rezept = $request->session()->get('rezept');
+            $zutaten = $request->session()->get('zutaten');
 
-        $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
+            $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
 
-        $rezept->save();
+            $rezept->save();
 
-        $rezept->zutats()->attach($zutat->zName, ['menge' => $menge]); //add entry in Table rezept_zutat
+            foreach ($zutaten as $zutat) {
+                $rezept->zutats()->attach($zutat->zName, ['menge' => $zutat->menge]); //add entry in Table rezept_zutat
+            }
 
-        $zutat->save();
-        $kochbuch->save();
+            $kochbuch->save();
 
-        $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
-        return redirect()->action('KochbuchController@index');
-        }else{
+            $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
+            return redirect()->action('KochbuchController@index');
+        } else {
             $kochbuch = $request->session()->get('kochbuch');
             $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
             $kochbuch->save();
