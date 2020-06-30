@@ -66,7 +66,7 @@ class ZutatController extends Controller
             $zutat->produktgruppe = $request->produktgruppe;
             $zutat->save();
 
-            return redirect()->action('ZutatController@index');
+            return redirect()->action('zutaten/index');
         } else {
             abort(401, 'Es ist keine Berechtigung fürs Speeichern einer Zutat vorhanden.');
         }
