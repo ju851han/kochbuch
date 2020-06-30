@@ -45,17 +45,21 @@
                     @else
                         <li class="nav-item"><a class="a_nav nav-link text-white" href="{{ route('login') }}">Login</a>
                         </li>
-
                         @if (Route::has('register'))
                             <li class="nav-item"><a class="a_nav nav-link text-white" href="{{ route('register') }}">Registierung</a>
                             </li>
                         @endif
                     @endauth
                 @endif
-                <li class="nav-item"><a class="a_nav nav-link text-white" href="#hauptfunktionalitäten">Hauptfunktionalitäten</a>
+                @if (Route::currentRouteName()=='register'||Route::currentRouteName()=='login')
+                        <li class="nav-item"><a class="a_nav nav-link text-white" href="/">Willkommensseite</a>
+                        </li>
+                @else
+                        <li class="nav-item"><a class="a_nav nav-link text-white" href="#hauptfunktionalitäten">Hauptfunktionalitäten</a>
                 </li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="#anwendungsfall">Wofür & wozu?</a></li>
                 <li class="nav-item"><a class="a_nav nav-link text-white" href="#über-uns">Über Uns</a></li>
+                    @endif
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
