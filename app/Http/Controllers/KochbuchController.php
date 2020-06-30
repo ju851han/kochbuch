@@ -49,10 +49,16 @@ class KochbuchController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\Response
      */
 
     public function create_step2a(Request $request){
+        $kochbuch = new Kochbuch;
+        $kochbuch->kName = $request->kName;
+        $request->session()->put('kochbuch', $kochbuch);
 
+        $rezepte = Rezept::all();
+        return view('kochbuecher/create_step2a_addRezept')->with('rezepte',$rezepte);
     }
     /**
      * Create Rezept / Step2b_1: Create a new Kochbuch
