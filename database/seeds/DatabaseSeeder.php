@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ZutatsTableSeeder::class);
         $this->call(Rezept_ZutatTableSeeder::class);
         $this->call(Kochbuch_RezeptTableSeeder::class);
+        $this->call(Rezept_WochenkochplanSeeder::class);
+        $this->call(WochenkochplansSeeder::class);
     }
 }
