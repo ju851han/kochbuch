@@ -27,9 +27,10 @@ Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index')
 
 // Add Kochbuch
 Route::get('/kochbuecher/create','KochbuchController@create')->name('kochbuecher.create_step1_Kochbuch');
-Route::post('/kochbuecher/create_step2','KochbuchController@create_step2')->name('kochbuecher.create_step2_addZutaten');
-Route::post('/kochbuecher/create_step3','KochbuchController@create_step3')->name('kochbuecher.create_step3_addRezept');
-Route::post('/kochbuecher/create_step4','KochbuchController@create_step4')->name('kochbuecher.create_step4_overview');
+Route::post('/kochbuecher/create_step2a','KochbuchController@create_step2a')->name('kochbuecher.create_step2a_addRezepte');
+Route::post('/kochbuecher/create_step2b_1','KochbuchController@create_step2b_1')->name('kochbuecher.create_step2b_1_addZutaten');
+Route::post('/kochbuecher/create_step2b_2','KochbuchController@create_step2b_2')->name('kochbuecher.create_step2b_2_createRezept');
+Route::post('/kochbuecher/create_step3','KochbuchController@create_step3')->name('kochbuecher.create_step3_overview');
 Route::get('/kochbuecher/store','KochbuchController@store')->name('kochbuecher.store');
 
 //Show Kochbuch
@@ -62,7 +63,7 @@ Route::post('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.up
 //Delete Rezept
 Route::get('/rezepte/{rID}/destroy/','RezeptController@destroy')->name('rezepte.destroy');
 
-/****TODO Routes for Zutaten **************************************************************************/
+/****Routes for Zutaten **************************************************************************/
 // Show all Zutaten
 Route::get('/zutaten','ZutatController@index')->name('zutaten.index');
 
