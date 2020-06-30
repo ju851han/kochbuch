@@ -27,14 +27,16 @@
                     </tr>
                     </thead>
                     <tbody class="background2ndTR">
-                    <tr>
-                        @if(!is_null($rezept))
-                            <td>{{ $rezept->rName}}</td>
-                            <td>{{  $rezept->kategorie }}</td>
-                            <td>{{  $rezept->zeit }} min</td>
-                            <td>{{  $rezept->kostenjePortion }} €</td>
-                        @endif
-                    </tr>
+                    @if(!is_null($rezepte))
+                        @foreach($rezepte as $r)
+                            <tr>
+                                <td>{{ $r->rName}}</td>
+                                <td>{{ $r->kategorie }}</td>
+                                <td>{{ $r->zeit }} min</td>
+                                <td>{{ $r->kostenjePortion }} €</td>
+                            </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
                 <div>
