@@ -20,16 +20,18 @@
                     </tr>
                     </thead>
                     <tbody class="background2ndTR">
-                    <tr>
-                        @foreach($kochbuch->rezepts  as $rezept )
-                        <td>{{ $rezept->rName}}</td>
-                        <td>{{  $rezept->kategorie }}</td>
-                        <td>{{  $rezept->zeit }} min</td>
-                        <td>{{  $rezept->kostenjePortion }} €</td>
-                            <td><button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}'"
-                                        title="Rezept ansehen"><i class='fas fa-eye btn_i'></i></button></td>
-                        @endforeach
-                    </tr>
+                    @foreach($kochbuch->rezepts  as $rezept )
+                        <tr>
+                            <td>{{ $rezept->rName}}</td>
+                            <td>{{  $rezept->kategorie }}</td>
+                            <td>{{  $rezept->zeit }} min</td>
+                            <td>{{  $rezept->kostenjePortion }} €</td>
+                            <td>
+                                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}'"
+                                        title="Rezept ansehen"><i class='fas fa-eye btn_i'></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/edit'"
