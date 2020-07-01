@@ -40,7 +40,7 @@
                                value="Abbrechen">
                         <input type="submit" class="normalbtn btn" value="Weiter">
                     </div>
-                    <input type="text" id="rIDs" name="rIDs" value="">
+                    <input type="hidden" id="rIDs" name="rIDs" value="">
                 </form>
             </section>
         </div>
