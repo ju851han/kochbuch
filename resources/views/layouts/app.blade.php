@@ -5,7 +5,7 @@
     <meta name="keywords" content="Kochbuch, Rezepte, Rezeptsuche, Einkaufsliste, Wochenkochplan, Kochplan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Julia Hansi">
-    <title>Willkommen - Kochbuch</title>
+    <title>Kochbuch</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
     <!-- Icons -->
