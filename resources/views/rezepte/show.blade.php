@@ -41,7 +41,7 @@
                 <h3>Zubereitung</h3>
                 <p class="beschreibung">{{$rezept->zubereitung}}</p>
                 <br>
-                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/edit'"
+                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/edit_step1'"
                         title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
                 </button>
                 @if (Auth::user()->hasRole('admin'))
