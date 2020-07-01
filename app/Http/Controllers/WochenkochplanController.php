@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Wochenkochplan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WochenkochplanController extends Controller
 {
@@ -20,19 +21,20 @@ class WochenkochplanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Wochenkochplan  $wochenkochplan
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Wochenkochplan $wochenkochplan)
+    public function edit()
     {
-        return view('wochenkochplan/edit');
+        $wochentag =Wochenkochplan::where('users_id', AUTH::user()->id)->get();
+        return view('wochenkochplan/edit')->with('wochentag', $wochentag);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Wochenkochplan  $wochenkochplan
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Wochenkochplan $wochenkochplan
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Wochenkochplan $wochenkochplan)
