@@ -27,7 +27,7 @@
                     </tr>
                     </thead>
                     <tbody class="background2ndTR">
-                    @if(!is_null($rezepte))
+                    @if(isset($rezepte)) {{--if there are many rezepte--}}
                         @foreach($rezepte as $r)
                             <tr>
                                 <td>{{ $r->rName}}</td>
@@ -36,6 +36,13 @@
                                 <td>{{ $r->kostenjePortion }} €</td>
                             </tr>
                         @endforeach
+                    @else{{--if there are only one rezept --}}
+                        <tr>
+                            <td>{{ $rezept->rName}}</td>
+                            <td>{{ $rezept->kategorie }}</td>
+                            <td>{{ $rezept->zeit }} min</td>
+                            <td>{{ $rezept->kostenjePortion }} €</td>
+                        </tr>
                     @endif
                     </tbody>
                 </table>
