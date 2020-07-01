@@ -54,11 +54,11 @@
                                 <table class=" col-8 col-md-6 align-self-center">
                                     <thead>
                                     <tr>
-                                        <th>Menge</th>
-                                        <th>Zutat</th>
+                                        <th class="bg-white">Menge</th>
+                                        <th class="bg-white">Zutat</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="zutaten">
+                                    <tbody class="background2ndTR">
                                     @foreach($r->zutats  as $zutat )
                                         <tr>
                                             <td> {{$r->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>
