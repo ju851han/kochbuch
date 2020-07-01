@@ -17,7 +17,7 @@ class CreateWochenkochplansTable extends Migration
             $table->id();
             $table->integer('users_id');
             $table->string('wochentag',10);
-            $table->integer('portion')->unsigned();
+            $table->unsignedFloat('portion');
         });
     }
 
