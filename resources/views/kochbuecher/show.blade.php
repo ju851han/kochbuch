@@ -6,8 +6,8 @@
             <section class="col-xs-auto col-md-8 offset-md-2">
                 <h3><i class="fa fa-book"></i> Kochbuch:</h3>
                 <h1 id="special">{{ $kochbuch->kName }}</h1>
-                <p class="untertitel">erstellt am: {{$kochbuch->erstelltam}}; zuletzt aktualisert
-                    am: {{$kochbuch->aktualisiertam}}</p>
+                <p class="untertitel">erstellt am: {{$kochbuch->created_at}}; zuletzt aktualisert
+                    am: {{$kochbuch->updated_at}}</p>
                 <h2>Inhaltsverzeichnis</h2>
                 <table class="table">
                     <thead>

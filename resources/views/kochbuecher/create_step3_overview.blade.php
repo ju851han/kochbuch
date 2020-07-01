@@ -14,8 +14,8 @@
                     </ol>
                 </nav>
                 <h1 id="special">{{ $kochbuch->kName }}</h1>
-                <p class="untertitel">erstellt am: {{$kochbuch->erstelltam}} | zuletzt aktualisert
-                    am: {{$kochbuch->aktualisiertam}}</p>
+                <p class="untertitel">erstellt am: {{$kochbuch->created_at}}; zuletzt aktualisert
+                    am: {{$kochbuch->updated_at}}</p>
                 <h2>Inhaltsverzeichnis</h2>
                 <table class="table">
                     <thead>
