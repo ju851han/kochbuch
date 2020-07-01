@@ -27,7 +27,7 @@
                         <th>Zutat</th>
                     </tr>
                     </thead>
-                    <tbody id="zutaten">
+                    <tbody id="zutaten" class="background2ndTR">
                     {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}
                     @foreach($rezept->zutats  as $zutat )
                         <tr>
