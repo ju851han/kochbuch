@@ -378,17 +378,17 @@ button {
 
 .normalbtn {
   box-shadow: 0 1px 0 0 #fff6af;
-  background: linear-gradient(to bottom, $lightyellow 5%, $yellow 100%);
+  background: linear-gradient(to bottom, $lightyellow 5%, $yellow);
   border-radius: 6px;
-  border: 1px solid #ffaa22;
+  border: 1px solid $yellow;
   display: inline-block;
   cursor: pointer;
-  color: #333333;
+  color: $black;
   text-shadow: 0 1px 0 #ffee66;
 }
 
 .normalbtn:hover {
-  background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+  background: linear-gradient(to bottom, $yellow 5%, $lightyellow);
 }
 
 .normalbtn:active {
@@ -419,7 +419,7 @@ button {
 
 .abortbtn {
   box-shadow: 0 1px 0 0 #8a2a21;
-  background: linear-gradient(to bottom, $darkred 5%, #f24437 100%);
+  background: linear-gradient(to top, $darkred 5%, #f24437);
   border-radius: 6px;
   border: 1px solid #d02718;
   display: inline-block;
@@ -429,7 +429,7 @@ button {
 }
 
 .abortbtn:hover {
-  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+  background: linear-gradient(to top, #f24437 5%, $darkred);
 }
 
 .abortbtn:active {
