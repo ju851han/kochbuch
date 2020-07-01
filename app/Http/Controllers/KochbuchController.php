@@ -115,9 +115,8 @@ class KochbuchController extends Controller
     {
         if (!is_null($request->rID)) { //Rezepte will be added to Kochbuch
             error_log($request->rIDs);
-            $rIDs= explode(',', $request->rIDs); //rIDs = array
+            $rIDs= explode(',', $request->rIDs); //rIDs = parse text into array
             $max =sizeof($rIDs);
-            error_log("größe".$max);
 
             $rezepte = array();
             for($i=0;$i<$max;$i++){
@@ -155,20 +154,7 @@ class KochbuchController extends Controller
      */
     public function store(Request $request)
     {
-        if(!is_null($request->session()->get('rezepte'))){ //Rezepte are added to Kochbuch
-            $kochbuch = $request->session()->get('kochbuch');
-            $rezepte = $request->session()->get('rezepte');
-
-            $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
-            $kochbuch->save();
-
-            foreach($rezepte as $rezept){
-                $rezept->save();
-                $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
-            }
-            return redirect()->action('KochbuchController@index');
-        }
-       else if (!is_null($request->session()->get('rezept'))) { //Rezept for new Kochbuch is created
+      if (!is_null($request->session()->get('zutaten'))) { //Rezept for new Kochbuch is created
             $kochbuch = $request->session()->get('kochbuch');
             $rezept = $request->session()->get('rezept');
             $zutaten = $request->session()->get('zutaten');
@@ -183,7 +169,19 @@ class KochbuchController extends Controller
             $kochbuch->save();
             $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
             return redirect()->action('KochbuchController@index');
-        } else { //Only Kochbuch is created
+        } elseif(!is_null($request->session()->get('rezepte'))){ //Rezepte are added to Kochbuch
+          $kochbuch = $request->session()->get('kochbuch');
+          $rezepte = $request->session()->get('rezepte');
+
+          $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
+          $kochbuch->save();
+
+          foreach($rezepte as $rezept){
+              $rezept->save();
+              $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
+          }
+          return redirect()->action('KochbuchController@index');
+      }else { //Only Kochbuch is created
             $kochbuch = $request->session()->get('kochbuch');
             $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
             $kochbuch->save();
