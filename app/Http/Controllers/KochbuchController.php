@@ -93,7 +93,6 @@ class KochbuchController extends Controller
         while ($request->has('zName_' . $i)) {
             $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
             $zutat->menge = $request->input("menge_" . $i);
-            error_log($zutat->zName);
             $zutaten[] = $zutat;
 
             $i++;
@@ -114,48 +113,32 @@ class KochbuchController extends Controller
      */
     public function create_step3(Request $request)
     {
-        if (!is_null($request->rID)) {
+        if (!is_null($request->rID)) { //Rezepte will be added to Kochbuch
             error_log($request->rIDs);
             $rIDs= explode(',', $request->rIDs); //rIDs = array
             $max =sizeof($rIDs);
             error_log("größe".$max);
-            print_r($rIDs);
 
             $rezepte = array();
             for($i=0;$i<$max;$i++){
-                $rezept=Rezept::where('rID', $rIDs[$i]);
-                error_log('finallyyyyyyyyyyyyyyy: ' .  $rIDs[$i]);
+                $rezept=Rezept::where('rID', $rIDs[$i])->first();
                 $rezepte[] = $rezept;
             }
-
-
-           /* $i = 1;
-            while ($i <= Rezept::max('rID')) {
-
-                if (!is_null($request->rID_ . $i)) {
-                    $rezept = Rezept::where('rID', $i)->first();
-                    error_log('finallyyyyyyyyyyyyyyy: ' . $request->rID);
-                    $rezepte[] = $rezept;
-                } else {
-                    error_log('ojeeee');
-                }
-                $i++;
-            }*/
             $request->session()->put('rezepte', $rezepte);
             $kochbuch = $request->session()->get('kochbuch');
             return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezepte', $rezepte);
-        } elseif (!is_null($request->rName)) {
-            $rezepte = new Rezept;
-            $rezepte->rName = $request->rName;
-            $rezepte->zubereitung = $request->zubereitung;
-            $rezepte->kategorie = $request->kategorie;
-            $rezepte->zeit = $request->zeit;
-            $rezepte->kostenjePortion = $request->session()->get('kostenjePortion');
-            $request->session()->put('rezepte', $rezepte);
+        } elseif (!is_null($request->rName)) { //Rezept for new Kochbuch will be created
+            $rezept = new Rezept;
+            $rezept->rName = $request->rName;
+            $rezept->zubereitung = $request->zubereitung;
+            $rezept->kategorie = $request->kategorie;
+            $rezept->zeit = $request->zeit;
+            $rezept->kostenjePortion = $request->session()->get('kostenjePortion');
+            $request->session()->put('rezept', $rezept);
             $zutaten = $request->session()->get('zutaten');
             $kochbuch = $request->session()->get('kochbuch');
-            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezepte', $rezepte)->with('zutaten', $zutaten);
-        } else {
+            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutaten', $zutaten);
+        } else { //Only Kochbuch will be created
             $kochbuch = new Kochbuch;
             $kochbuch->kName = $request->kName;
             $request->session()->put('kochbuch', $kochbuch);
@@ -172,13 +155,25 @@ class KochbuchController extends Controller
      */
     public function store(Request $request)
     {
-        if (!is_null($request->session()->get('rezept'))) {
+        if(!is_null($request->session()->get('rezepte'))){ //Rezepte are added to Kochbuch
+            $kochbuch = $request->session()->get('kochbuch');
+            $rezepte = $request->session()->get('rezepte');
+
+            $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
+            $kochbuch->save();
+
+            foreach($rezepte as $rezept){
+                $rezept->save();
+                $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
+            }
+            return redirect()->action('KochbuchController@index');
+        }
+       else if (!is_null($request->session()->get('rezept'))) { //Rezept for new Kochbuch is created
             $kochbuch = $request->session()->get('kochbuch');
             $rezept = $request->session()->get('rezept');
             $zutaten = $request->session()->get('zutaten');
 
             $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
-
             $rezept->save();
 
             foreach ($zutaten as $zutat) {
@@ -186,10 +181,9 @@ class KochbuchController extends Controller
             }
 
             $kochbuch->save();
-
             $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
             return redirect()->action('KochbuchController@index');
-        } else {
+        } else { //Only Kochbuch is created
             $kochbuch = $request->session()->get('kochbuch');
             $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
             $kochbuch->save();
