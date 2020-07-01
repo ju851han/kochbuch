@@ -57,8 +57,10 @@ Route::get('/rezepte/store','RezeptController@store')->name('rezepte.store');
 Route::get('/rezepte/{rID}','RezeptController@show')->name('rezepte.show');
 
 //Update Rezept
-Route::get('rezepte/{rID}/edit','RezeptController@edit')->name('rezepte.edit');
-Route::post('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.update');
+Route::get('rezepte/{rID}/edit_step1','RezeptController@edit')->name('rezepte.edit_step1_Zutaten');
+Route::post('/rezepte/{rID}/edit_step2','RezeptController@edit_step2')->name('rezepte.edit_step2_Rezept');
+Route::post('/rezepte/{rID}/edit_step3','RezeptController@edit_step3')->name('rezepte.edit_step3_overview');
+Route::get('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.update');
 
 //Delete Rezept
 Route::get('/rezepte/{rID}/destroy/','RezeptController@destroy')->name('rezepte.destroy');
