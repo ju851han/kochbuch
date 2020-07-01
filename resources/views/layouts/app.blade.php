@@ -15,7 +15,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Stylesheet -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--<link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">--}}
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+
 </head>
 <body>
 <header>
@@ -94,5 +96,24 @@
     <a href="/kontakt">Kontakt</a>
     <a href="#">FAQ</a>
 </footer>
+<div class="modal fade cookieModal" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="cookieModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="cookieModalLabel">Cookie Information and Consent Request</h2>
+            </div>
+            <div class="modal-body">
+                <h4>Einstellung zu Cookies</h4>
+                <p>Wenn Sie über 16 Jahre sind, klicken Sie auf „Ich bin einverstanden“, um allen Verarbeitungszwecken zuzustimmen. Bei der Benutzung unserer Seite stimmen Sie der Verarbeitung von Cookies zu.</p>
+                <p>
+                    <a href="/privacy-statement" target="_blank">Click here to view our cookie policy</a>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button id="cookieModalConsent" type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Ich bin einverstanden</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
