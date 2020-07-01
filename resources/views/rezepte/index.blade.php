@@ -27,7 +27,7 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody class="background2ndTR">
+                    <tbody class="background4thTR">
                     @foreach ($rezepte as $r)
                         <tr>
                             <td>
@@ -77,8 +77,4 @@
             </section>
         </div>
     </div>
-    <script>
-        function show(rID) {
-        }
-    </script>
 @endsection
