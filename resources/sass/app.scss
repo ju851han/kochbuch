@@ -297,7 +297,11 @@ Background Formatting
   https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
   background-color: $lightyellow;
 }
-
+.background4thTR tr:nth-child(4n+1) {
+  /*Jedes 2. Element wird formatiert
+  https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+  background-color: $lightyellow;
+}
 .background {
   background-color: $lightyellow;
 }
