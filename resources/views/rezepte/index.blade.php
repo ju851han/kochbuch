@@ -29,9 +29,9 @@
                     </thead>
                     <tbody class="background2ndTR">
                     @foreach ($rezepte as $r)
-                        <tr id="{{$r->rID}}">
+                        <tr>
                             <td>
-                                <button id="btn_{{$r->rID}}" class="btn-primary" onclick="show({{$r->rID}});">+</button>
+                                <button id="btn_{{$r->rID}}" class="btn-primary" data-toggle="collapse" data-target="#tr_{{$r->rID}}">+</button>
                             </td>
                             <td> {{  $r->rName }} </td>
                             <td> {{  $r->zeit }} min</td>
@@ -50,6 +50,23 @@
                                 @endif
                             </td>
                         </tr>
+                        <tr id="tr_{{$r->rID}}" class="collapse"><td colspan="5">Kategorie: {{$r->kategorie}} <br>
+                                <table class=" col-8 col-md-6 align-self-center">
+                                    <thead>
+                                    <tr>
+                                        <th>Menge</th>
+                                        <th>Zutat</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="zutaten">
+                                    @foreach($r->zutats  as $zutat )
+                                        <tr>
+                                            <td> {{$r->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>
+                                            <td>{{ $zutat->zName }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table></tr>
                     @endforeach
                     </tbody>
                 </table>
@@ -62,30 +79,6 @@
     </div>
     <script>
         function show(rID) {
-            @foreach($rezepte as $r)
-            if (rID == "{{$r->rID}}") {
-                $('#' + rID).last().after("<tr><td colspan=\"5\">Kategorie: {{$r->kategorie}} <br>\n" +
-      " <table class=\" col-8 col-md-6 align-self-center\">\n" +
-                    "                    <thead>\n" +
-                    "                    <tr>\n" +
-                    "                        <th>Menge</th>\n" +
-                    "                        <th>Zutat</th>\n" +
-                    "                    </tr>\n" +
-                    "                    </thead>\n" +
-                    "                    <tbody id=\"zutaten\">\n" +
-                    "                    {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}\n" +
-                    "                    @foreach($r->zutats  as $zutat )\n" +
-                    "                        <tr>\n" +
-                    "                            <td> {{$r->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>\n" +
-                    "                            <td>{{ $zutat->zName }}</td>\n" +
-                    "                        </tr>\n" +
-                    "                    @endforeach\n" +
-                    "                    </tbody>\n" +
-                    "                </table></tr>");
-            }
-            @endforeach
-
         }
-
     </script>
 @endsection
