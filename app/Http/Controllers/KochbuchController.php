@@ -52,14 +52,16 @@ class KochbuchController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create_step2a(Request $request){
+    public function create_step2a(Request $request)
+    {
         $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
 
         $rezepte = Rezept::all();
-        return view('kochbuecher/create_step2a_addRezept')->with('rezepte',$rezepte);
+        return view('kochbuecher/create_step2a_addRezept')->with('rezepte', $rezepte);
     }
+
     /**
      * Create Rezept / Step2b_1: Create a new Kochbuch
      * @param Request $request
@@ -112,18 +114,47 @@ class KochbuchController extends Controller
      */
     public function create_step3(Request $request)
     {
-        if (!is_null($request->rName)) {
-            $rezept = new Rezept;
-            $rezept->rName = $request->rName;
-            $rezept->zubereitung = $request->zubereitung;
-            $rezept->kategorie = $request->kategorie;
-            $rezept->zeit = $request->zeit;
-            $rezept->kostenjePortion = $request->session()->get('kostenjePortion');
-            $request->session()->put('rezept', $rezept);
+        if (!is_null($request->rID)) {
+            error_log($request->rIDs);
+            $rIDs= explode(',', $request->rIDs); //rIDs = array
+            $max =sizeof($rIDs);
+            error_log("größe".$max);
+            print_r($rIDs);
+
+            $rezepte = array();
+            for($i=0;$i<$max;$i++){
+                $rezept=Rezept::where('rID', $rIDs[$i]);
+                error_log('finallyyyyyyyyyyyyyyy: ' .  $rIDs[$i]);
+                $rezepte[] = $rezept;
+            }
+
+
+           /* $i = 1;
+            while ($i <= Rezept::max('rID')) {
+
+                if (!is_null($request->rID_ . $i)) {
+                    $rezept = Rezept::where('rID', $i)->first();
+                    error_log('finallyyyyyyyyyyyyyyy: ' . $request->rID);
+                    $rezepte[] = $rezept;
+                } else {
+                    error_log('ojeeee');
+                }
+                $i++;
+            }*/
+            $request->session()->put('rezepte', $rezepte);
+            $kochbuch = $request->session()->get('kochbuch');
+            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezepte', $rezepte);
+        } elseif (!is_null($request->rName)) {
+            $rezepte = new Rezept;
+            $rezepte->rName = $request->rName;
+            $rezepte->zubereitung = $request->zubereitung;
+            $rezepte->kategorie = $request->kategorie;
+            $rezepte->zeit = $request->zeit;
+            $rezepte->kostenjePortion = $request->session()->get('kostenjePortion');
+            $request->session()->put('rezepte', $rezepte);
             $zutaten = $request->session()->get('zutaten');
             $kochbuch = $request->session()->get('kochbuch');
-            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutaten', $zutaten);
-
+            return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezepte', $rezepte)->with('zutaten', $zutaten);
         } else {
             $kochbuch = new Kochbuch;
             $kochbuch->kName = $request->kName;
