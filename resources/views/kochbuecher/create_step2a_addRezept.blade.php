@@ -36,7 +36,7 @@
                         </tbody>
                     </table>
                     <div>
-                        <input type="reset" class="abortbtn btn" onclick="window.location.href='/rezepte/index'"
+                        <input type="reset" class="abortbtn btn" onclick="window.location.href='/kochbuecher/index'"
                                value="Abbrechen">
                         <input type="submit" class="normalbtn btn" value="Weiter">
                     </div>
