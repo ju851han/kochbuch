@@ -32,7 +32,23 @@ class RezeptController extends Controller
         return view('rezepte/index')->with('rezepte', $rezepte);
     }
 
-    /**
+
+    public function filterAjax(Request $request){
+        return view('rezepte/index_tbody')->with('rezepte',$this->filter($request));
+    }
+
+
+    public function filter(Request $request)
+    {
+        $pattern = $request->filter;
+        if(is_null($pattern)|| $pattern==""){
+            return Rezept::all();
+        }else{
+            return Rezept::where('rName', 'like', '%'.$pattern.'%')->get();
+        }
+
+    }
+        /**
      * Shows a form to create a new Rezepte
      *
      * @param Request $request
@@ -140,7 +156,7 @@ class RezeptController extends Controller
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
         }
-        return view('rezepte/edit')->with('r', $rezept);
+        return view('rezepte/edit_step1')->with('r', $rezept);
 
     }
 
