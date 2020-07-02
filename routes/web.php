@@ -38,6 +38,8 @@ Route::get('/kochbuecher/{kID}','KochbuchController@show')->name('kochbuecher.sh
 
 //Update Kochbuch
 Route::get('kochbuecher/{kID}/edit','KochbuchController@edit')->name('kochbuecher.edit');
+Route::get('/kochbuecher/{kID}/edit_step2','KochbuchController@edit_step2')->name('kochbuecher.edit_step2');
+Route::get('/kochbuecher/{kID}/rezept/{rID}/delete','KochbuchController@edit_step3')->name('kochbuecher.edit_step3');
 Route::post('/kochbuecher/{kID}/update','KochbuchController@update')->name('kochbuecher.update');
 
 //Delete Kochbuch
@@ -46,6 +48,8 @@ Route::get('/kochbuecher/{kID}/destroy/','KochbuchController@destroy')->name('ko
 /****TODO Routes for Rezepte **************************************************************************/
 // Show all Rezepte
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
+Route::get('/rezepte_ajax','RezeptController@filterAjax');
+
 
 // Add Rezept
 Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create_step1_addZutaten');
