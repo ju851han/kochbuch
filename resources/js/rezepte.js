@@ -5,6 +5,49 @@ function filterAJAX() {
     $('tbody').load('/rezepte_ajax?' + query);
 }
 
-module.exports =  {
-    filterAJAX : filterAJAX
+function show_details(rID) {
+    console.log('start' + $('#z_' + rID).length);
+    if ($('#z_' + rID).length === 0) {
+        console.log('if');
+        $.getJSON('/api/v1/zutaten/' + rID, function (zutaten) {
+            var zutaten_html = "<tr id=\"z_"+rID+"\"><td colspan=\"5\" class=\"bg-white\"><br>\n" +
+                " <table class=\" col-8 col-md-6 align-self-center\">\n" +
+                "                    <thead>\n" +
+                "                    <tr>\n" +
+                "                        <th class=\"bg-white\">Menge</th>\n" +
+                "                        <th class=\"bg-white\">Zutat</th>\n" +
+                "                    </tr>\n" +
+                "                    </thead>\n" +
+                "                    <tbody id=\"zutaten\" class=\"background2ndTR\">\n";
+            console.log('str 1:' + zutaten_html);
+            for (var i = 0; i < zutaten.length; i++) {
+                var zutat = zutaten[i];
+                zutaten_html = zutaten_html + "<tr><td></td><td>" + zutat.zName + "</td></tr>";
+            }/*"+ zutat.menge +""+zutat.mengeneinheit+"*/
+            console.log('str 2:' + zutaten_html);
+            zutaten_html = zutaten_html + "</tbody></table></tr>";
+            console.log('str final:' + zutaten_html);
+            $('#' + rID).last().after(zutaten_html);
+            $('#z_' + rID).fadeOut('slow');
+
+        });
+    } else {
+        console.log('else');
+        $('#z_' + rID).fadeIn('slow');
+    }
+    $('#btn_' + rID).replaceWith("<button id=\"btn_" + rID + "\" class=\"btn-primary\" onclick=\"rezepte.hide_details(" + rID + ");\">-</button>");
+}
+
+
+function hide_details(rID) {
+    console.log('hide');
+    $('#z_' + rID).fadeOut('slow'); /*oder:  $('#z_' + rID).hide*/
+    $('#btn_' + rID).replaceWith("<button id=\"btn_" + rID + "\" class=\"btn-primary\" onclick=\"rezepte.show_details(" + rID + ");\">+</button>");
+}
+
+
+module.exports = {
+    filterAJAX: filterAJAX,
+    show_details: show_details,
+    hide_details: hide_details
 };

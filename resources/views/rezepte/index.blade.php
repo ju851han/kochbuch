@@ -26,7 +26,7 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody class="background4thTR">
+                    <tbody class="background2ndTR">
                     @include('rezepte/index_tbody')
 
                     </tbody>
@@ -38,4 +38,6 @@
             </section>
         </div>
     </div>
+
+
 @endsection

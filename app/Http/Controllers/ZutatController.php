@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rezept;
 use App\Zutat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,13 @@ class ZutatController extends Controller
         }
     }
 
+
+    public function indexJson(Request $request, $rID){
+        $rezept=Rezept::find($rID);
+        $zutaten = $rezept->zutats()->get();
+
+        return response()->json($zutaten);
+    }
     /**
      * Shows a form to create a new Zutat
      *

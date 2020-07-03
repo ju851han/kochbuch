@@ -80,6 +80,9 @@ Route::post('/zutaten','ZutatController@store')->name('zutaten.store');
 //Show Zutat
 Route::get('/zutaten/{zName}','ZutatController@show')->name('zutaten.show');
 
+//API for AJAX
+Route::get('/api/v1/zutaten/{rID}', 'ZutatController@indexJson')->name('zutaten.indexJson');
+
 //Update Zutat
 Route::get('zutaten/{zName}/edit','ZutatController@edit')->name('zutaten.edit');
 Route::post('/zutaten/{zName}/update','ZutatController@update')->name('zutaten.update');
