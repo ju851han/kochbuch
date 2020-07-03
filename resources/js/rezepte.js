@@ -22,18 +22,18 @@ function show_details(rID) {
             console.log('str 1:' + zutaten_html);
             for (var i = 0; i < zutaten.length; i++) {
                 var zutat = zutaten[i];
-                zutaten_html = zutaten_html + "<tr><td></td><td>" + zutat.zName + "</td></tr>";
-            }/*"+ zutat.menge +""+zutat.mengeneinheit+"*/
+                zutaten_html = zutaten_html + "<tr><td> "+ zutat.menge +" "+zutat.mengeneinheit+"</td><td>" + zutat.zName + "</td></tr>";
+            }
             console.log('str 2:' + zutaten_html);
             zutaten_html = zutaten_html + "</tbody></table></tr>";
             console.log('str final:' + zutaten_html);
             $('#' + rID).last().after(zutaten_html);
-            $('#z_' + rID).fadeOut('slow');
+            $('#z_' + rID).fadeIn('fast');
 
         });
     } else {
         console.log('else');
-        $('#z_' + rID).fadeIn('slow');
+        $('#z_' + rID).fadeIn('fast');
     }
     $('#btn_' + rID).replaceWith("<button id=\"btn_" + rID + "\" class=\"btn-primary\" onclick=\"rezepte.hide_details(" + rID + ");\">-</button>");
 }

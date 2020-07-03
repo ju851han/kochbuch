@@ -39,7 +39,14 @@ class ZutatController extends Controller
 
     public function indexJson(Request $request, $rID){
         $rezept=Rezept::find($rID);
-        $zutaten = $rezept->zutats()->get();
+        $z1 = $rezept->zutats()->get();
+
+        $zutaten=array();
+        foreach($z1 as $zutat){
+            $zutat->menge=$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge;
+            $zutaten[]=$zutat;
+        }
+
 
         return response()->json($zutaten);
     }
