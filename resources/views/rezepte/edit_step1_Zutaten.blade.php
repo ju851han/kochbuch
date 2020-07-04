@@ -4,13 +4,13 @@
     <div class="container">
         <div class="row">
             <section class="col-12 col-md-8 offset-md-2">
-                <h2>Rezept erstellen</h2>
+                <h2>Rezept bearbeiten</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">1. Zutaten eingeben</li>
+                        <li class="breadcrumb-item active" aria-current="page">1. Zutaten bearbeiten</li>
                     </ol>
                 </nav>
-                <form method="post" action="/rezepte/edit_step2">
+                <form method="post" action="/rezepte/{{$r->rID}}/edit_step2">
                     @csrf
                     <?php
                     $i=1;
