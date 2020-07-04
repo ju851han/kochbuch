@@ -21,7 +21,7 @@
                         echo "<label for='menge'>Menge</label>";
                         echo "<div class='form-row'>";
                         echo "<input id='menge_" . $i . "' class='form-control col-11' name='menge_" . $i . "' type='number' min='0.5' max='1000000' step='0.5' onchange='calc_kosten(" . $i . ")' value='".$r->zutats()->where('zutat_zName',$z->zName)->first()->pivot->menge."' required>";
-                        echo "<output id='mengeneinheit_" . $i . "' class='mengeneinheit col-1' name='mengeneinheit_" . $i . "'>";
+                        echo "<output id='mengeneinheit_" . $i . "' class='mengeneinheit col-1' name='mengeneinheit_" . $i . "'>".$z->mengeneinheit."";
                         echo "</output>";
                         echo "</div>";
                         echo "</div>";
