@@ -97,7 +97,7 @@ class RezeptController extends Controller
      */
 
     public function create_step3(Request $request)
-    {
+    {/*TODO Validation */
         $rezept = new Rezept;
         $rezept->rName = $request->rName;
         $rezept->zubereitung = $request->zubereitung;
@@ -117,7 +117,7 @@ class RezeptController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {/*TODO Validation */
         $rezept = $request->session()->get('rezept');
         $zutaten = $request->session()->get('zutaten');
         $rezept->save();
@@ -152,14 +152,15 @@ class RezeptController extends Controller
      */
     public function edit(Request $request, $rID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
-        } else {
+        }  elseif (AUTH::user()->hasRole('admin')) {
             $zutaten = Zutat::all()->sortBy('zName');
             return view('rezepte/edit_step1_Zutaten')->with('r', $rezept)->with('zutaten', $zutaten);
+        }else{
+            abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
+
         }
     }
 
@@ -169,7 +170,7 @@ class RezeptController extends Controller
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
-        } else {
+        } elseif (AUTH::user()->hasRole('admin')) {
             $zutaten = array();
             $i = 1;
 
@@ -187,6 +188,9 @@ class RezeptController extends Controller
             $request->session()->put('kostenjePortion', $kostenjePortion);
 
             return view('rezepte/edit_step2_Rezept')->with('r', $rezept);
+        }else{
+            abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
+
         }
     }
 
@@ -200,13 +204,10 @@ class RezeptController extends Controller
      */
     public function update(Request $request, $rID)
     {
-          /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
-
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
-        } else {
+        } elseif (AUTH::user()->hasRole('admin')) {
             $rezept->rName = $request->rName;
             if (!is_null($request->kategorie)) { // If there is a new kategory added or deleted -> kategory input string will be changed
                 $rezept->kategorie = $request->kategorie;
@@ -224,6 +225,8 @@ class RezeptController extends Controller
             /*https://laravel.com/docs/5.4/eloquent-relationships#updating-many-to-many-relationships*/
             //  $rezept->zutats()->updateExistingPivot($zutat->zName, ['menge' => $zutat->menge]);
             return redirect()->action('RezeptController@show', ['rID' => $rID]);
+        }else{
+            abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
         }
     }
 
