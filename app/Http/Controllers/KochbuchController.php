@@ -7,6 +7,7 @@ use App\Rezept;
 use App\Zutat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class KochbuchController extends Controller
@@ -65,7 +66,7 @@ class KochbuchController extends Controller
     /**
      * Create Rezept / Step2b_1: Create a new Kochbuch
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
 
     public function create_step2b_1(Request $request)
@@ -115,12 +116,12 @@ class KochbuchController extends Controller
     {
         if (!is_null($request->rID)) { //Rezepte will be added to Kochbuch
             error_log($request->rIDs);
-            $rIDs= explode(',', $request->rIDs); //rIDs = parse text into array
-            $max =sizeof($rIDs);
+            $rIDs = explode(',', $request->rIDs); //rIDs = parse text into array
+            $max = sizeof($rIDs);
 
             $rezepte = array();
-            for($i=0;$i<$max;$i++){
-                $rezept=Rezept::where('rID', $rIDs[$i])->first();
+            for ($i = 0; $i < $max; $i++) {
+                $rezept = Rezept::where('rID', $rIDs[$i])->first();
                 $rezepte[] = $rezept;
             }
             $request->session()->put('rezepte', $rezepte);
@@ -154,7 +155,7 @@ class KochbuchController extends Controller
      */
     public function store(Request $request)
     {
-      if (!is_null($request->session()->get('zutaten'))) { //Rezept for new Kochbuch is created
+        if (!is_null($request->session()->get('zutaten'))) { //Rezept for new Kochbuch is created
             $kochbuch = $request->session()->get('kochbuch');
             $rezept = $request->session()->get('rezept');
             $zutaten = $request->session()->get('zutaten');
@@ -169,19 +170,19 @@ class KochbuchController extends Controller
             $kochbuch->save();
             $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
             return redirect()->action('KochbuchController@index');
-        } elseif(!is_null($request->session()->get('rezepte'))){ //Rezepte are added to Kochbuch
-          $kochbuch = $request->session()->get('kochbuch');
-          $rezepte = $request->session()->get('rezepte');
+        } elseif (!is_null($request->session()->get('rezepte'))) { //Rezepte are added to Kochbuch
+            $kochbuch = $request->session()->get('kochbuch');
+            $rezepte = $request->session()->get('rezepte');
 
-          $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
-          $kochbuch->save();
+            $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
+            $kochbuch->save();
 
-          foreach($rezepte as $rezept){
-              $rezept->save();
-              $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
-          }
-          return redirect()->action('KochbuchController@index');
-      }else { //Only Kochbuch is created
+            foreach ($rezepte as $rezept) {
+                $rezept->save();
+                $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
+            }
+            return redirect()->action('KochbuchController@index');
+        } else { //Only Kochbuch is created
             $kochbuch = $request->session()->get('kochbuch');
             $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
             $kochbuch->save();
@@ -216,17 +217,60 @@ class KochbuchController extends Controller
      */
     public function edit(Request $request, $kID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
         } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
-            return view('kochbuecher/edit')->with('k', $kochbuch);
+            return view('kochbuecher/edit_step1')->with('kochbuch', $kochbuch);
+        } else {
+            abort(401, 'Keine Berechtigung.');
+
+        }
+
+    }
+
+    /**
+     * @param Request $request
+     * @param $kID
+     * @return \Illuminate\Http\Response
+     */
+    public function edit_step2(Request $request, $kID)
+    {
+        $kochbuch = Kochbuch::find($kID);
+
+        if (is_null($kochbuch)) {
+            return redirect()->action('KochbuchController@index');
+        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+            $rezepte = DB::select(DB::raw("SELECT * FROM rezepts WHERE NOT EXISTS (SELECT * FROM kochbuch_rezept where kochbuch_rezept.kochbuch_kID=1 AND kochbuch_rezept.rezept_rID=rezepts.rID);"));
+            return view('kochbuecher/edit_step2_addRezept')->with('rezepte', $rezepte)->with('kochbuch', $kochbuch);
+        } else {
+            abort(401, 'Keine Berechtigung.');
+
+        }
+
+
+    }
+
+    /**
+     * Delete the link between Rezept and Kochbuch in PivotTable kochbuch_rezept
+     * @param Request $request
+     * @param $kID
+     * @param $rID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function edit_step3(Request $request, $kID, $rID)
+    {
+        $kochbuch = Kochbuch::find($kID);
+        $rezept = Rezept::find($rID);
+
+        if (is_null($kochbuch) || is_null($rezept)) {
+            return redirect()->action('KochbuchController@index');
+        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+            $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
+            return view('kochbuecher/edit_step1')->with('kochbuch', $kochbuch);
         } else {
             abort(401, 'Keine Berechtigung.');
         }
-
     }
 
     /**
@@ -241,11 +285,28 @@ class KochbuchController extends Controller
         /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
-        /*TODO Validation */
-        $kochbuch->kName = $request->kName;
-        $kochbuch->save();
-        return redirect()->action('KochbuchController@show', ['kID' => $kID]);
 
+        if (is_null($kochbuch)) {
+            return redirect()->action('KochbuchController@index');
+        }else {
+/*            $kochbuch->kName = $request->kName;
+            $kochbuch->save();*/
+error_log('rID'.$request->rIDs);
+            $rIDs = explode(',', $request->rIDs); //rIDs = parse text into array
+            $max = sizeof($rIDs);
+
+            $rezepte = array();
+            for ($i = 0; $i < $max; $i++) {
+                $rezept = Rezept::where('rID', $rIDs[$i])->first();
+                $rezepte[] = $rezept;
+            }
+
+            foreach ($rezepte as $rezept) {
+                $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
+            }
+
+        return redirect()->action('KochbuchController@show', ['kID' => $kID]);
+        }
     }
 
     /**
