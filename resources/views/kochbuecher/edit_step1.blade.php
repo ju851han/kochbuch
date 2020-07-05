@@ -29,7 +29,7 @@
                             <td>
                                 <button class="normalbtn btn"
                                         onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/rezept/{{$rezept->rID}}/delete'"
-                                        title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i></button>
+                                        title="Rezept vom Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -37,8 +37,8 @@
                 </table>
                 <button class="normalbtn btn"
                         onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/edit_step2'"><i
-                            class="material-icons btn_i">add_circle</i>Rezepte hinzufügen
-                </button> {{--TODO href--}}
+                            class="material-icons btn_i">add_circle</i> Weitere Rezepte hinzufügen
+                </button>
             </section>
         </div>
     </div>
