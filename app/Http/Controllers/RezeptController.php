@@ -33,22 +33,24 @@ class RezeptController extends Controller
     }
 
 
-    public function filterAjax(Request $request){
-        return view('rezepte/index_tbody')->with('rezepte',$this->filter($request));
+    public function filterAjax(Request $request)
+    {
+        return view('rezepte/index_tbody')->with('rezepte', $this->filter($request));
     }
 
 
     public function filter(Request $request)
     {
         $pattern = $request->filter;
-        if(is_null($pattern)|| $pattern==""){
+        if (is_null($pattern) || $pattern == "") {
             return Rezept::all();
-        }else{
-            return Rezept::where('rName', 'like', '%'.$pattern.'%')->get();
+        } else {
+            return Rezept::where('rName', 'like', '%' . $pattern . '%')->get();
         }
 
     }
-        /**
+
+    /**
      * Shows a form to create a new Rezepte
      *
      * @param Request $request
@@ -155,10 +157,39 @@ class RezeptController extends Controller
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
+        } else {
+            $zutaten = Zutat::all()->sortBy('zName');
+            return view('rezepte/edit_step1_Zutaten')->with('r', $rezept)->with('zutaten', $zutaten);
         }
-        return view('rezepte/edit_step1')->with('r', $rezept);
-
     }
+
+    public function edit_step2(Request $request, $rID)
+    {
+
+        $rezept = Rezept::find($rID);
+        if (is_null($rezept)) {
+            return redirect()->action('RezeptController@index');
+        } else {
+            $zutaten = array();
+            $i = 1;
+
+            while ($request->has('zName_' . $i)) {
+                $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
+                $zutat->menge = $request->input("menge_" . $i);
+                error_log($zutat->zName);
+                $zutaten[] = $zutat;
+
+                $i++;
+            }
+
+            $request->session()->put('zutaten', $zutaten);
+            $kostenjePortion = $request->kostenjePortion;
+            $request->session()->put('kostenjePortion', $kostenjePortion);
+
+            return view('rezepte/edit_step2_Rezept')->with('r', $rezept);
+        }
+    }
+
 
     /**
      * Updates the edited Rezept in DB
@@ -169,17 +200,31 @@ class RezeptController extends Controller
      */
     public function update(Request $request, $rID)
     {
-        /*TODO authorized Role wo festzulegen?*/
+          /*TODO authorized Role wo festzulegen?*/
         /*     $request->user()->authorizeRole('logged_user');*/
+
         $rezept = Rezept::find($rID);
-        /*TODO Validation */
-        $rezept->rName = $request->rName;
-        $rezept->kategorie = $request->kategorie;
-        $rezept->zeit = $request->zeit;
-        $rezept->kostenjePortion = $request->kostenjePortion;
-        $rezept->zubereitung = $request->zubereitung;
-        $rezept->save();
-        return redirect()->action('RezeptController@show', ['rID' => $rID]);
+        if (is_null($rezept)) {
+            return redirect()->action('RezeptController@index');
+        } else {
+            $rezept->rName = $request->rName;
+            if (!is_null($request->kategorie)) { // If there is a new kategory added or deleted -> kategory input string will be changed
+                $rezept->kategorie = $request->kategorie;
+            }
+            $rezept->zeit = $request->zeit;
+            $rezept->kostenjePortion = $request->session()->get('kostenjePortion');
+            $rezept->zubereitung = $request->zubereitung;
+            $rezept->save();
+            foreach ($rezept->zutats as $zutat) {
+                $rezept->zutats()->detach($zutat); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
+            }
+            foreach ($request->session()->get('zutaten') as $zutat) {
+                $rezept->zutats()->attach($zutat->zName, ['menge' => $zutat->menge]); ////add entry in Table rezept_zutat
+            }
+            /*https://laravel.com/docs/5.4/eloquent-relationships#updating-many-to-many-relationships*/
+            //  $rezept->zutats()->updateExistingPivot($zutat->zName, ['menge' => $zutat->menge]);
+            return redirect()->action('RezeptController@show', ['rID' => $rID]);
+        }
     }
 
     /**
