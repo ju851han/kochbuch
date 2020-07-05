@@ -16,6 +16,7 @@
                     </thead>
                     <tbody class="background2ndTR">
                     <?php
+                    use Illuminate\Support\Facades\Auth;
                     $i = 1;
                     foreach ($kochbuecher as $k) {
                         echo "<tr><td>" . $i . "</td>";
@@ -23,7 +24,9 @@
                         echo "<td>" . $k->kName . "</td>";
                         echo "<td><button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/" . $k->kID . "'\" title='Kochbuch ansehen'><i class='fas fa-eye btn_i'></i></button>";
                         echo "<button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/" . $k->kID . "/edit'\" title='Kochbuch bearbeiten'><i class='material-icons btn_i'>edit</i></button>";
-                        echo "<button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/" . $k->kID . "/destroy'\" title='Kochbuch löschen'><i class='fas fa-trash-alt btn_i'></i></button></tr>";
+                        if (Auth::user()->hasRole('admin')) {
+                            echo "<button class='normalbtn btn' onclick=\"window.location.href='/kochbuecher/" . $k->kID . "/destroy'\" title='Kochbuch löschen'><i class='fas fa-trash-alt btn_i'></i></button></tr>";
+                        }
                     }
                     ?>
                     </tbody>
