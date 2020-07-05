@@ -267,6 +267,8 @@ class KochbuchController extends Controller
             return redirect()->action('KochbuchController@index');
         } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
+            /*TODO update at liefert falsche uhrzeit */
+            $kochbuch->touch();// updates the updated_at column
             return view('kochbuecher/edit_step1')->with('kochbuch', $kochbuch);
         } else {
             abort(401, 'Keine Berechtigung.');
@@ -289,9 +291,6 @@ class KochbuchController extends Controller
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
         }else {
-/*            $kochbuch->kName = $request->kName;
-            $kochbuch->save();*/
-error_log('rID'.$request->rIDs);
             $rIDs = explode(',', $request->rIDs); //rIDs = parse text into array
             $max = sizeof($rIDs);
 
@@ -304,7 +303,8 @@ error_log('rID'.$request->rIDs);
             foreach ($rezepte as $rezept) {
                 $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
             }
-
+            /*TODO update at liefert falsche uhrzeit */
+            $kochbuch->touch();// updates the updated_at column
         return redirect()->action('KochbuchController@show', ['kID' => $kID]);
         }
     }
