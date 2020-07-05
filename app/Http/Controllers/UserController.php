@@ -20,7 +20,7 @@ class UserController extends Controller
             $users = User::all();
             return view('users')->with('users', $users);
         } else {
-            abort(401, 'This action is unauthorized.');
+            return abort(401, 'This action is unauthorized.');
         }
     }
 
@@ -41,7 +41,7 @@ class UserController extends Controller
             Session::flash('alert-success', 'Benutzer ' . $user->email . ' wurde erfolgreich gelöscht.');
             return redirect()->action('UserController@index');
         } else {
-            abort(401, 'This action is unauthorized.');
+            return abort(401, 'This action is unauthorized.');
         }
     }
 }

@@ -32,7 +32,7 @@ class ZutatController extends Controller
             $zutaten = Zutat::all();
             return view('zutaten/index')->with('zutaten', $zutaten);
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Ansehen aller Zutaten vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Ansehen aller Zutaten vorhanden.');
         }
     }
 
@@ -60,7 +60,7 @@ class ZutatController extends Controller
         if (AUTH::user()->hasRole('admin')) {
             return view('zutaten/create');
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Erstellen einer Zutat vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Erstellen einer Zutat vorhanden.');
         }
     }
 
@@ -83,7 +83,7 @@ class ZutatController extends Controller
 
             return redirect()->action('zutaten/index');
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Speeichern einer Zutat vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Speeichern einer Zutat vorhanden.');
         }
     }
 
@@ -102,7 +102,7 @@ class ZutatController extends Controller
         } elseif (AUTH::user()->hasRole('admin')) {
             return view('zutaten/show')->with('z', $zutat);
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Anzeigen einer Zutat vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Anzeigen einer Zutat vorhanden.');
         }
     }
 
@@ -121,7 +121,7 @@ class ZutatController extends Controller
         } elseif (AUTH::user()->hasRole('admin')) {
             return view('zutaten/edit')->with('z', $zutat);
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten einer Zutat vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Bearbeiten einer Zutat vorhanden.');
         }
     }
 
@@ -145,7 +145,7 @@ class ZutatController extends Controller
             $zutat->save();
             return redirect()->action('ZutatController@show', ['zName' => $zName]);
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Bearbeiten einer Zutat vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Bearbeiten einer Zutat vorhanden.');
         }
 
     }
@@ -170,7 +170,7 @@ class ZutatController extends Controller
             Session::flash('alert-success', 'Rezept ' . $zutat->zName . ' wurde erfolgreich gelöscht.');
             return redirect()->action('ZutatController@index');
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Löschen einer Zutat vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Löschen einer Zutat vorhanden.');
         }
     }
 }

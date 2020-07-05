@@ -189,8 +189,7 @@ class RezeptController extends Controller
 
             return view('rezepte/edit_step2_Rezept')->with('r', $rezept);
         }else{
-            abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
-
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
         }
     }
 
@@ -226,7 +225,7 @@ class RezeptController extends Controller
             //  $rezept->zutats()->updateExistingPivot($zutat->zName, ['menge' => $zutat->menge]);
             return redirect()->action('RezeptController@show', ['rID' => $rID]);
         }else{
-            abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
         }
     }
 
@@ -250,7 +249,7 @@ class RezeptController extends Controller
             Session::flash('alert-success', 'Rezept ' . $rezept->rName . ' wurde erfolgreich gelöscht.');
             return redirect()->action('RezeptController@index');
         } else {
-            abort(401, 'Es ist keine Berechtigung fürs Löschen eines Rezeptes vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Löschen eines Rezeptes vorhanden.');
         }
     }
 }

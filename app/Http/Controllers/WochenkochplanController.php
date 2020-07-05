@@ -26,8 +26,14 @@ class WochenkochplanController extends Controller
      */
     public function edit()
     {
-        $wochentag =Wochenkochplan::where('users_id', AUTH::user()->id)->get();
-        return view('wochenkochplan/edit')->with('wochentag', $wochentag);
+        $wochenkochplan =Wochenkochplan::where('users_id', AUTH::user()->id)->get();
+        if(is_null($wochenkochplan)){
+           $wochenkochplan=new Wochenkochplan;
+           $wochenkochplan->wochentag="Montag";
+
+        }
+
+        return view('wochenkochplan/edit')->with('wochenkochplan', $wochenkochplan);
     }
 
     /**
