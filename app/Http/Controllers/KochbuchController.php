@@ -201,10 +201,10 @@ class KochbuchController extends Controller
         $kochbuch = Kochbuch::find($kID);
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
-        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+        } elseif ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             return view('kochbuecher.show', compact('kochbuch'));//->with('kochbuch', $kochbuch);
         } else {
-            abort(401, 'Keine Berechtigung.');
+           return abort(401, 'Es ist keine Berechtigung fürs Anzeigen dieses Kochbuches vorhanden.');
         }
     }
 
@@ -220,13 +220,11 @@ class KochbuchController extends Controller
         $kochbuch = Kochbuch::find($kID);
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
-        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+        } elseif ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             return view('kochbuecher/edit_step1')->with('kochbuch', $kochbuch);
         } else {
-            abort(401, 'Keine Berechtigung.');
-
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Kochbuches vorhanden.');
         }
-
     }
 
     /**
@@ -240,15 +238,12 @@ class KochbuchController extends Controller
 
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
-        } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
+        } elseif ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             $rezepte = DB::select(DB::raw("SELECT * FROM rezepts WHERE NOT EXISTS (SELECT * FROM kochbuch_rezept where kochbuch_rezept.kochbuch_kID=1 AND kochbuch_rezept.rezept_rID=rezepts.rID);"));
             return view('kochbuecher/edit_step2_addRezept')->with('rezepte', $rezepte)->with('kochbuch', $kochbuch);
         } else {
-            abort(401, 'Keine Berechtigung.');
-
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Kochbuches vorhanden.');
         }
-
-
     }
 
     /**
@@ -271,7 +266,7 @@ class KochbuchController extends Controller
             $kochbuch->touch();// updates the updated_at column
             return view('kochbuecher/edit_step1')->with('kochbuch', $kochbuch);
         } else {
-            abort(401, 'Keine Berechtigung.');
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Kochbuches vorhanden.');
         }
     }
 
@@ -290,7 +285,7 @@ class KochbuchController extends Controller
 
         if (is_null($kochbuch)) {
             return redirect()->action('KochbuchController@index');
-        }else {
+        } elseif ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             $rIDs = explode(',', $request->rIDs); //rIDs = parse text into array
             $max = sizeof($rIDs);
 
@@ -305,7 +300,9 @@ class KochbuchController extends Controller
             }
             /*TODO update at liefert falsche uhrzeit */
             $kochbuch->touch();// updates the updated_at column
-        return redirect()->action('KochbuchController@show', ['kID' => $kID]);
+            return redirect()->action('KochbuchController@show', ['kID' => $kID]);
+        } else {
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Kochbuches vorhanden.');
         }
     }
 
@@ -318,8 +315,11 @@ class KochbuchController extends Controller
      */
     public function destroy(Request $request, $kID)
     {
-        if (AUTH::user()->hasRole('admin')) {
-            $kochbuch = Kochbuch::find($kID);
+
+        $kochbuch = Kochbuch::find($kID);
+        if (is_null($kochbuch)) {
+            return redirect()->action('KochbuchController@index');
+        } elseif (AUTH::user()->hasRole('admin')) {
             foreach ($kochbuch->rezepts as $rezept) {
                 $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
             }
@@ -327,7 +327,7 @@ class KochbuchController extends Controller
             Session::flash('alert-success', 'Kochbuch ' . $kochbuch->kName . ' wurde erfolgreich gelöscht.');
             return redirect()->action('KochbuchController@index');
         } else {
-            abort(401, 'This action is unauthorized.');
+            return abort(401, 'Es ist keine Berechtigung fürs Löschen eines Kochbuches vorhanden.');
         }
     }
 }
