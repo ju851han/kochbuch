@@ -34,12 +34,15 @@
                     @endforeach
                     </tbody>
                 </table>
-                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/edit'"
-                        title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i> Bearbeiten
-                </button>
-                <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/destroy'"
-                        title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i> Löschen
-                </button>
+                    <button class="normalbtn btn" onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/edit'"
+                            title="Kochbuch bearbeiten"><i class="material-icons btn_i">edit</i> Bearbeiten
+                    </button>
+                @if (Auth::user()->hasRole('admin'))
+                    <button class="normalbtn btn"
+                            onclick="window.location.href='/kochbuecher/{{$kochbuch->kID}}/destroy'"
+                            title="Kochbuch löschen"><i class="fas fa-trash-alt btn_i"></i> Löschen
+                    </button>
+                @endif
             </section>
         </div>
     </div>
