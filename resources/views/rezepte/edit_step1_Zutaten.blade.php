@@ -41,7 +41,7 @@
                         $i++;
                     }
                     ?>
-                    <input class="form-control" type="hidden" id="kostenjePortion" name="kostenjePortion">
+                    <input class="form-control" type="hidden" id="kostenjePortion" name="kostenjePortion" value="{{$r->kostenjePortion}}">
                     <br>
                     <div class="row justify-content-end">
                         <div>
