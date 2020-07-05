@@ -88,6 +88,12 @@
     </div>
 </nav>
 <main>
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if (Session::has('alert-' . $msg))
+            <div class="alert alert-{{ $msg }} col-12 col-md-8 offset-md-2">{{ Session::get('alert-' . $msg) }}</div>
+        @endif
+    @endforeach
+
 @yield('content') <!-- Patzhalter für eigenen Inhalt -->
 </main>
 <footer class="fixed-bottom">
@@ -104,13 +110,16 @@
             </div>
             <div class="modal-body">
                 <h4>Einstellung zu Cookies</h4>
-                <p>Wenn Sie über 16 Jahre sind, klicken Sie auf „Ich bin einverstanden“, um allen Verarbeitungszwecken zuzustimmen. Bei der Benutzung unserer Seite stimmen Sie der Verarbeitung von Cookies zu.</p>
+                <p>Wenn Sie über 16 Jahre sind, klicken Sie auf „Ich bin einverstanden“, um allen Verarbeitungszwecken
+                    zuzustimmen. Bei der Benutzung unserer Seite stimmen Sie der Verarbeitung von Cookies zu.</p>
                 <p>
                     <a href="/privacy-statement" target="_blank">Click here to view our cookie policy</a>
                 </p>
             </div>
             <div class="modal-footer">
-                <button id="cookieModalConsent" type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Ich bin einverstanden</button>
+                <button id="cookieModalConsent" type="button" class="btn btn-primary btn-lg btn-block"
+                        data-dismiss="modal">Ich bin einverstanden
+                </button>
             </div>
         </div>
     </div>
