@@ -21,7 +21,7 @@ Route::get('/users','UserController@index')->name('users');
 Route::get('/users/{id}/destroy/','UserController@destroy')->name('users.destroy');
 
 
-/****TODO Routes for Kochbuecher **************************************************************************/
+/**** Routes for Kochbuecher **************************************************************************/
 // Show all Kochbuecher
 Route::get('/kochbuecher','KochbuchController@index')->name('kochbuecher.index');
 
@@ -38,14 +38,14 @@ Route::get('/kochbuecher/{kID}','KochbuchController@show')->name('kochbuecher.sh
 
 //Update Kochbuch
 Route::get('kochbuecher/{kID}/edit','KochbuchController@edit')->name('kochbuecher.edit');
-Route::get('/kochbuecher/{kID}/edit_step2','KochbuchController@edit_step2')->name('kochbuecher.edit_step2');
+Route::get('/kochbuecher/{kID}/edit_step2','KochbuchController@edit_step2')->name('kochbuecher.edit_step2_addRezept');
 Route::get('/kochbuecher/{kID}/rezept/{rID}/delete','KochbuchController@edit_step3')->name('kochbuecher.edit_step3');
 Route::post('/kochbuecher/{kID}/update','KochbuchController@update')->name('kochbuecher.update');
 
 //Delete Kochbuch
 Route::get('/kochbuecher/{kID}/destroy/','KochbuchController@destroy')->name('kochbuecher.destroy');
 
-/****TODO Routes for Rezepte **************************************************************************/
+/****Routes for Rezepte **************************************************************************/
 // Show all Rezepte
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 Route::get('/rezepte_ajax','RezeptController@filterAjax');
