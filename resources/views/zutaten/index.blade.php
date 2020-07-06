@@ -20,7 +20,7 @@
                         <tr>
                             <td> {{  $z->zName }} </td>
                             <td class="text-center"> {{ number_format( $z->kostenjeEinheit,2,",", "." )}} €</td>
-                            <td> {{  $z->mengeneinheit }}</td>
+                            <td class="text-center"> {{  $z->mengeneinheit }}</td>
                             <td> {{  $z->produktgruppe }}</td>
                             <td>
                                 <button class="normalbtn btn" onclick="window.location.href='/zutaten/{{$z->zName}}'"
