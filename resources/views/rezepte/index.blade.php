@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 <hr>
-                <h2>Rezepte</h2>
+                <h2><i class="material-icons">local_dining</i> Rezepte</h2>
                 <table class="table">
                     <thead class="thead_orangered">
                     <tr>
