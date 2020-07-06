@@ -19,7 +19,7 @@
                     @foreach ($zutaten as $z)
                         <tr>
                             <td> {{  $z->zName }} </td>
-                            <td> {{  $z->kostenjeEinheit }} €</td>
+                            <td class="text-center"> {{ number_format( $z->kostenjeEinheit,2,",", "." )}} €</td>
                             <td> {{  $z->mengeneinheit }}</td>
                             <td> {{  $z->produktgruppe }}</td>
                             <td>

@@ -16,7 +16,7 @@
                     <tbody class="background2ndTR">
                     <tr>
                         <td> {{  $z->produktgruppe }}</td>
-                        <td> {{  $z->kostenjeEinheit }} €</td>
+                        <td class="text-center"> {{  number_format($z->kostenjeEinheit,2,",", "." ) }} €</td>
                         <td> {{  $z->mengeneinheit }}</td>
                     </tr>
                     </tbody>

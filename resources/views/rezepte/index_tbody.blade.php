@@ -6,7 +6,7 @@
         </td>
         <td> {{  $r->rName }} </td>
         <td> {{  $r->zeit }} min</td>
-        <td> {{  $r->kostenjePortion }} €</td>
+        <td class="text-center"> {{  number_format($r->kostenjePortion,2,",", "." ) }} €</td>
         <td>
             <button class="normalbtn btn"
                     onclick="window.location.href='/rezepte/{{$r->rID}}'"

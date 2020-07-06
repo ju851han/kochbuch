@@ -25,7 +25,7 @@
                             <td>{{ $rezept->rName}}</td>
                             <td>{{  $rezept->kategorie }}</td>
                             <td>{{  $rezept->zeit }} min</td>
-                            <td>{{  $rezept->kostenjePortion }} €</td>
+                            <td class="text-center">{{  number_format($rezept->kostenjePortion,2,",", "." ) }} €</td>
                             <td>
                                 <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}'"
                                         title="Rezept ansehen"><i class='fas fa-eye btn_i'></i></button>
