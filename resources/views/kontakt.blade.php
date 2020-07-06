@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <section class="col-xs-auto col-md-8 offset-md-2">
+            <section class="col-12 col-md-8 offset-md-2">
                 <h2>Kontakt</h2>
                 <p>Haben Sie Fragen oder wollen Sie ein Feedback zur Web-Applikation "Kochplan" geben? <br>
                    Dann füllen Sie einfach das folgende Formularfelder aus:</p>

@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <section class="col-12 col-md-8 offset-md-2">
-                <h2>Impressum</h2>
+                <h2>Datenschutz</h2>
                {{--TODO add text
-               https://www.impressum-generator.de/impressum-generator/--}}
+               https://datenschutz-generator.de/--}}
             </section>
         </div>
     </div>
