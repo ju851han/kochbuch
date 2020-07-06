@@ -111,6 +111,10 @@ Route::get('/impressum', function () {
     return view('impressum');
 });
 
+Route::get('/datenschutz', function () {
+    return view('datenschutz');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
