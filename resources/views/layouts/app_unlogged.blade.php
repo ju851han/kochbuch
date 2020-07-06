@@ -96,9 +96,8 @@
 </main>
 <footer class="fixed-bottom">
     <a href="/impressum">Impressum</a>
-    <a href="#">Datenschutz</a>
+    <a href="/datenschutz">Datenschutz</a>
     <a href="/kontakt">Kontakt</a>
-    <a href="#">FAQ</a>
 </footer>
 <div class="modal fade cookieModal" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="cookieModalLabel">
     <div class="modal-dialog" role="document">
