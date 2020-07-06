@@ -24,6 +24,8 @@
             <img class="koch augen_offen" src="{{ asset('img/Koch_Augen_offen.png') }}" alt="Koch"/>
         </div>
         <img id="img-header-background" src="{{ asset('img/Arbeitsflaeche.jpeg') }}" alt="Arbeitsfläche"/>
+        <img id="img-header-background-large" src="{{asset('img/Arbeitsflaeche_groß.jpeg')}}" alt="Arbeitsfläche"/>
+
         <h1 id="header-ueberschrift">Kochbuch</h1>
 
     </figure>
