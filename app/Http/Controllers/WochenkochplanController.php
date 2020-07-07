@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rezept;
 use App\Wochenkochplan;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,12 +44,25 @@ class WochenkochplanController extends Controller
            $wochenkochplan = $w1;
             $rezepte = array();
             foreach ($wochenkochplan as $w) {
-                $r = Rezept::find($w->rezept_rID);
+                $r = Rezept::find($w->rezepts_rID);
                 $rezepte[] = $r;
             }
         }
 
         return view('wochenkochplan/edit')->with('wochenkochplan', $wochenkochplan)->with('rezepte', $rezepte);
+    }
+
+
+    /**
+     * Add Rezept to Wochenkochplan
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addRezept(Request $request, $id){
+        $rezepte = Rezept::all();
+        $wochenkochplan = Wochenkochplan::find($id);
+        return view('wochenkochplan/addRezept')->with('wochenkochplan',$wochenkochplan)->with('rezepte', $rezepte);
+
     }
 
     /**
@@ -58,10 +72,35 @@ class WochenkochplanController extends Controller
      * @param  \App\Wochenkochplan $wochenkochplan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Wochenkochplan $wochenkochplan)
+    public function updateRezept(Request $request, $id)
     {
-        //
+        $wochenkochplan=Wochenkochplan::find($id);
+        $rezept= Rezept::find($request->rID);
+        $wochenkochplan->rezepts()->associate($rezept);
+        $wochenkochplan->save();
+        return redirect()->action('WochenkochplanController@edit');
     }
 
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request){
 
+    }
+
+    /**
+     * Emptying the Wochenkochplan
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Request $request){
+        $wochenkochplan = Wochenkochplan::where('users_id',AUTH::user()->id)->get();
+        if(!is_null($wochenkochplan)){
+            foreach($wochenkochplan as $w){
+            $w->delete();}
+
+            Session::flash('alert-success', 'Wochenkochplan wurde erfolgreich entleert.');
+        }
+        return redirect()->action('WochenkochplanController@edit');
+    }
 }
