@@ -14,10 +14,12 @@ class CreateWochenkochplansTable extends Migration
     public function up()
     {
         Schema::create('wochenkochplans', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('users_id');
             $table->string('wochentag',10);
-            $table->unsignedFloat('portion');
+            $table->unsignedFloat('portion')->default('1.0');
+            $table->integer('rezept_rID')->nullable();
+            $table->timestamps();
         });
     }
 
