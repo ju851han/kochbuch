@@ -49,7 +49,7 @@
                 <br>
                 <button type="reset" class="normalbtn btn" value="Entleeren">Entleeren</button>
                 <!-- reset = Formulardaten werden gelöscht-->
-                <button type="submit" class="normalbtn btn" value="Speichern">Speichern</button>
+                <button type="submit" class="normalbtn btn"   onclick="window.location.href='/wochenkochplan/update'" value="Speichern">Speichern</button>
             </section>
         </div>
     </div>

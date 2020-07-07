@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/****TODO Routes for Users **************************************************************************/
+/**** Routes for Users **************************************************************************/
 //Show all Users
 Route::get('/users','UserController@index')->name('users');
 
@@ -50,7 +50,6 @@ Route::get('/kochbuecher/{kID}/destroy/','KochbuchController@destroy')->name('ko
 Route::get('/rezepte','RezeptController@index')->name('rezepte.index');
 Route::get('/rezepte_ajax','RezeptController@filterAjax');
 
-
 // Add Rezept
 Route::get('/rezepte/create','RezeptController@create')->name('rezepte.create_step1_addZutaten');
 Route::post('/rezepte/create_step2','RezeptController@create_step2')->name('rezepte.create_step2_Rezept');
@@ -68,7 +67,7 @@ Route::get('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.upd
 //Delete Rezept
 Route::get('/rezepte/{rID}/destroy/','RezeptController@destroy')->name('rezepte.destroy');
 
-/****Routes for Zutaten **************************************************************************/
+/**** Routes for Zutaten **************************************************************************/
 // Show all Zutaten
 Route::get('/zutaten','ZutatController@index')->name('zutaten.index');
 
@@ -83,16 +82,16 @@ Route::get('/zutaten/{zName}','ZutatController@show')->name('zutaten.show');
 Route::get('/api/v1/zutaten/{rID}', 'ZutatController@indexJson')->name('zutaten.indexJson');
 
 //Update Zutat
-Route::get('zutaten/{zName}/edit','ZutatController@edit')->name('zutaten.edit');
+Route::get('/zutaten/{zName}/edit','ZutatController@edit')->name('zutaten.edit');
 Route::post('/zutaten/{zName}/update','ZutatController@update')->name('zutaten.update');
 
 //Delete Zutat
 Route::get('/zutaten/{zName}/destroy/','ZutatController@destroy')->name('zutaten.destroy');
 
-/****TODO Routes for Wochenkochplan **************************************************************************/
+/**** Routes for Wochenkochplan **************************************************************************/
 //Update Wochenkochplan
 Route::get('/wochenkochplan','WochenkochplanController@edit')->name('wochenkochplan.edit');
-
+Route::post('/wochenkochplan/update','WochenkochplanController@update')->name('wochenkochplan.update');
 
 /****TODO Routes for Einkaufsliste **************************************************************************/
 
