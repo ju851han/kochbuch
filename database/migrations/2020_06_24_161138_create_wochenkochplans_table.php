@@ -18,7 +18,7 @@ class CreateWochenkochplansTable extends Migration
             $table->integer('users_id');
             $table->string('wochentag',10);
             $table->unsignedFloat('portion')->default('1.0');
-            $table->integer('rezept_rID')->nullable();
+            $table->integer('rezepts_rID')->nullable();
             $table->timestamps();
         });
     }
