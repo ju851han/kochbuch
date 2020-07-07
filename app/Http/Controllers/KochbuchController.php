@@ -279,8 +279,6 @@ class KochbuchController extends Controller
      */
     public function update(Request $request, $kID)
     {
-        /*TODO authorized Role wo festzulegen?*/
-        /*     $request->user()->authorizeRole('logged_user');*/
         $kochbuch = Kochbuch::find($kID);
 
         if (is_null($kochbuch)) {
