@@ -32,13 +32,22 @@ class RezeptController extends Controller
         return view('rezepte/index')->with('rezepte', $rezepte);
     }
 
+    /**
+     * Apply filter on view
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 
     public function filterAjax(Request $request)
     {
         return view('rezepte/index_tbody')->with('rezepte', $this->filter($request));
     }
 
-
+    /**
+     * Filter Data
+     * @param Request $request
+     * @return Rezept[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function filter(Request $request)
     {
         $pattern = $request->filter;
