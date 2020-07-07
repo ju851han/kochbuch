@@ -29,7 +29,7 @@ class ZutatController extends Controller
     public function index()
     {
         if (AUTH::user()->hasRole('admin')) {
-            $zutaten = Zutat::all();
+            $zutaten = Zutat::paginate(10);
             return view('zutaten/index')->with('zutaten', $zutaten);
         } else {
             return abort(401, 'Es ist keine Berechtigung fürs Ansehen aller Zutaten vorhanden.');

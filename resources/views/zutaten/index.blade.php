@@ -40,7 +40,8 @@
                             class="material-icons btn_i">add_circle</i>
                     Neue Zutat erstellen
                 </button>
-            </section>
-        </div>
+                <br><br>
+            {!!  $zutaten->links()  !!}
+        </section>
     </div>
 @endsection
