@@ -22,6 +22,6 @@ class Rezept extends Model
     }
 
     public function wochenkochplans() {
-        return $this->belongsToMany('App\Wochenkochplan');
+        return $this->hasMany('App\Wochenkochplan');
     }
 }
