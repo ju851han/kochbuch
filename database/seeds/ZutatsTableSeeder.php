@@ -57,6 +57,9 @@ class ZutatsTableSeeder extends Seeder
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Weichweizengrieß','0.01','g','Grundnahrungsprodukt',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zwiebel','0.10','Stk','Grundnahrungsprodukt',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zucker','0.01','g','Grundnahrungsprodukt',NOW(),NOW());");
-
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zitrone','0.01','g','Obst & Gemüse',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zimt','0.01','g','Gewürze',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zucchini','0.01','g','Obst & Gemüse',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Zucker','0.01','g','Grundnahrungsprodukt',NOW(),NOW());");
     }
 }

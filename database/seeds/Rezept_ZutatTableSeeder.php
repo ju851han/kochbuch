@@ -50,5 +50,22 @@ class Rezept_ZutatTableSeeder extends Seeder
         DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('32','6','Zucker','10');");
         DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('33','6','Salz','1');");
 
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('34','7','Olivenöl','1');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('35','7','Zitrone','50');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('36','7','Apfel','80');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('37','7','Pfeffer','1');");
+
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('38','8','Apfel','50');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('39','8','Haselnüsse','15');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('40','8','Zimt','1');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('41','8','Toast','1');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('42','8','Quark','40');");
+
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('43','9','Apfel','1');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('44','9','Erdbeeren','30');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('45','9','Wahlnüsse','5');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('46','9','Quark','100');");
+        DB::insert("INSERT INTO rezept_zutat (id, rezept_rID, zutat_zName, menge)VALUES ('47','9','Erdbeereis','1');");
+
     }
 }
