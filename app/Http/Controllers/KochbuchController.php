@@ -87,7 +87,14 @@ class KochbuchController extends Controller
 
     public function create_step2b_2(Request $request)
     {
-        /*TODO Validation */
+        $i = 1;
+        $rules=array();
+        while ($request->has('zName_' . $i)) {
+            $rules['zName_'.$i]='required|string|min:2|max:256';
+            $rules['menge_'.$i]='required|numeric';
+            $i++;
+        }
+
         $zutaten = array();
         $i = 1;
 
@@ -156,6 +163,12 @@ class KochbuchController extends Controller
     public function store(Request $request)
     {
         if (!is_null($request->session()->get('zutaten'))) { //Rezept for new Kochbuch is created
+            $validatedData = $request->validate([
+                'rName'=>'required|alpha_num|min:1|max:125',
+                'zubereitung'=>'required|string|min:20|max:5000',
+                'kategorie'=>'required|string',
+                'zeit'=>'required|numeric'
+            ]);
             $kochbuch = $request->session()->get('kochbuch');
             $rezept = $request->session()->get('rezept');
             $zutaten = $request->session()->get('zutaten');
