@@ -22,13 +22,13 @@
                                value="{{$z->mengeneinheit}}">
                     </div>
                     <div class="form-group">
-                        <label for="kostenJeEinheit">Kosten je Einheit</label>
+                        <label for="kostenjeEinheit">Kosten je Einheit</label>
                         <div class="form-row">
-                            <input class="form-control text-right col-5" id="kostenJeEinheit" name="kostenJeEinheit"
+                            <input id="kostenjeEinheit" name="kostenjeEinheit" class="form-control text-right col-5"
                                    type="number"
                                    min="0"
-                                   step="0.01" value="{{$z->kostenjeEinheit}}" placeholder="{{$z->kostenjeEinheit}}"
-                                   required>
+                                   step="0.01" placeholder="{{$z->kostenjeEinheit}}"
+                                   required value="{{$z->kostenjeEinheit}}">
                             <p class="form-group col-1 waehrung"> €</p>
                         </div>
                     </div>
