@@ -74,7 +74,7 @@ class ZutatController extends Controller
     {
         if (AUTH::user()->hasRole('admin')) {
             $validatedData = $request->validate([
-                'zName'=>'required|min:2|max:256|alpha_num|unique:zutats',
+                'zName'=>'required|min:2|max:256|alpha|unique:zutats',
                 'mengeneinheit'=>'required|string|min:1|max:20',
                 'kostenJeEinheit'=>'required|numeric',
                 'produktgruppe'=>'required|string|max:125'
@@ -140,7 +140,7 @@ class ZutatController extends Controller
     public function update(Request $request, $zName)
     {
         $validatedData = $request->validate([
-            'zName'=>'required|alpha_num|min:2|max:256',
+            'zName'=>'required|alpha|min:2|max:256',
             'mengeneinheit'=>'required|string|min:1|max:20',
             'kostenjeEinheit'=>'required|numeric',
             'produktgruppe'=>'required|string|max:125'
