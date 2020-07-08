@@ -9,8 +9,7 @@
                                type="text">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="button">
-                                <i class="fa fa-search"></i> {{--TODO Button formatting--}}
-                                {{--https://codepen.io/gungorbudak/pen/ooKNpz--}}
+                                <i class="fa fa-search"></i>
                             </button>
                         </div>
                     </div>
@@ -38,6 +37,4 @@
             </section>
         </div>
     </div>
-
-
 @endsection
