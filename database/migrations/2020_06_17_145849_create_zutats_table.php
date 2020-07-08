@@ -14,7 +14,7 @@ class CreateZutatsTable extends Migration
     public function up()
     {
         Schema::create('zutats', function (Blueprint $table) {
-            $table->string('zName',125);
+            $table->string('zName',256);
             $table->unsignedFloat('kostenjeEinheit');
             $table->string('mengeneinheit',20);
             $table->string('produktgruppe',125);
