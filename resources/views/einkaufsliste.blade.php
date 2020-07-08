@@ -6,14 +6,6 @@
             <section class="col-12 col-md-8 offset-md-2">
                 <h2><i class="fas fa-list-alt"></i> Einkaufsliste</h2>
                 <section>
-                    @if(count($backartikel)>0)
-                        <h3>Backartikel</h3>
-                        @foreach($backartikel as $b)
-                            <div class="form-check"><input type="checkbox" class="form-check-input"> <label class="form-check-label"> {{ $b}}</label> </div>
-                        @endforeach
-                    @endif
-                </section>
-                <section>
                     @if(count($backwaren)>0)
                         <h3>Backwaren</h3>
                         @foreach($backwaren as $b)
