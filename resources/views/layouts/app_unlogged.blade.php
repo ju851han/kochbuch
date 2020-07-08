@@ -108,7 +108,7 @@
                 <h4>Einstellung zu Cookies</h4>
                 <p>Wenn Sie über 16 Jahre sind, klicken Sie auf „Ich bin einverstanden“, um allen Verarbeitungszwecken zuzustimmen. Bei der Benutzung unserer Seite stimmen Sie der Verarbeitung von Cookies zu.</p>
                 <p>
-                    <a href="/privacy-statement" target="_blank">Click here to view our cookie policy</a>
+                    <a href="/datenschutz" target="_blank">Klicken Sie hier, um die Datenschutz-Einstellungen anzusehen</a>
                 </p>
             </div>
             <div class="modal-footer">
