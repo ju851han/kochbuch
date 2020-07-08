@@ -16,7 +16,7 @@
                             <th>Kosten</th>
                         </tr>
                         </thead>
-                        <tbody class="background2ndTR" onchange="sendCheckedBoxes();">
+                        <tbody class="background2ndTR">
                         @foreach ($rezepte as $r)
                             <tr>
                                 <td><label for="rID_"{{$r->rID}} type="hidden"></label>
