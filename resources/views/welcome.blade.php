@@ -136,7 +136,7 @@
         <aside class="row">
             <div class="col-xs-10 offset-xs-1 col-md-10 offset-md-1">
                 <h3>Haben Sie Fragen oder wollen Sie uns ein Feedback geben?</h3>
-                <p>Gerne sind wir über das <a href="#">Kontaktformular</a> für Sie erreichbar.</p>
+                <p>Gerne sind wir über das <a href="/kontakt">Kontaktformular</a> für Sie erreichbar.</p>
             </div>
         </aside>
         <div class="row">
