@@ -140,7 +140,7 @@ class ZutatController extends Controller
     public function update(Request $request, $zName)
     {
         $validatedData = $request->validate([
-            'zName'=>'required|string|min:2|max:256',
+            'zName'=>'required|alpha_num|min:2|max:256',
             'mengeneinheit'=>'required|string|min:1|max:20',
             'kostenjeEinheit'=>'required|numeric',
             'produktgruppe'=>'required|string|max:125'
