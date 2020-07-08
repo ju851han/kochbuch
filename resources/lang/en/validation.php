@@ -146,6 +146,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'zName' => 'Name der Zutat',
+        'mengeneinheit' => 'Mengeneinheit',
+        'kostenjeEinheit' => 'Kosten je Einheit',
+        'produktgruppe' => 'Produktgruppe',
+        'rName' =>'Name des Rezepts',
+        'zubereitung' => 'Zubereitung',
+        'kategorie'=>'Kategorien',
+        'zeit'=>'Zeit',
+        'kostenjePortion'=>'Kosten je Portion',
+        'kName'=>'Name des Kochbuches'
+    ],
 
 ];
