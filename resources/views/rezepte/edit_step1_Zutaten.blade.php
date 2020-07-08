@@ -10,6 +10,15 @@
                         <li class="breadcrumb-item active" aria-current="page">1. Zutaten bearbeiten</li>
                     </ol>
                 </nav>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="post" action="/rezepte/{{$r->rID}}/edit_step2">
                     @csrf
                     <?php

@@ -11,6 +11,15 @@
                         <li class="breadcrumb-item active" aria-current="page">2. Rezeptdaten bearbeiten</li>
                     </ol>
                 </nav>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="get" action="/rezepte/{{$r->rID}}/update">
                     @csrf
                     <div class="form-group">
