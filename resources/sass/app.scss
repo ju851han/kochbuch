@@ -368,11 +368,6 @@ a:active {
   color: $black;
 }
 
-/* TODO a:visited https://wiki.selfhtml.org/wiki/CSS/Selektoren/Pseudoklasse/any-link,_link,_visited
-a i -> visited, hover
-nav a -> hover visited
-*/
-
 a i:hover {
   color: $darkred;
 }
@@ -393,7 +388,6 @@ i {
 /****************************************
 Buttons
 ****************************************/
-/*TODO replace colors with variables*/
 .btn_i {
   font-size: 1em;
 }
