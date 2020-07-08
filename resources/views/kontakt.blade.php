@@ -7,7 +7,7 @@
                 <h2>Kontakt</h2>
                 <p>Haben Sie Fragen oder wollen Sie ein Feedback zur Web-Applikation "Kochplan" geben? <br>
                    Dann füllen Sie einfach das folgende Formularfelder aus:</p>
-                {{--TODO https://html.form.guide/email-form/html-email-form/--}}
+                {{-- https://html.form.guide/email-form/html-email-form/--}}
                 <form method="POST" action="mailto:julia.hansi@htwg-konstanz.de" enctype="text/plain" onsubmit="check_email()">
                     <div class="form-group">
                         <label for="eMail">Ihre E-Mail Adresse:</label>
