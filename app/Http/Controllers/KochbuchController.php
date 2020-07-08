@@ -55,6 +55,8 @@ class KochbuchController extends Controller
 
     public function create_step2a(Request $request)
     {
+        $validatedData = $request->validate([
+            'kName'=>'required|alpha_num|min:2|max:125']);
         $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
@@ -71,6 +73,8 @@ class KochbuchController extends Controller
 
     public function create_step2b_1(Request $request)
     {
+        $validatedData = $request->validate([
+            'kName'=>'required|alpha_num|min:2|max:125']);
         $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
