@@ -91,7 +91,6 @@ Route::get('/zutaten/{zName}/destroy/','ZutatController@destroy')->name('zutaten
 /**** Routes for Wochenkochplan **************************************************************************/
 //Update Wochenkochplan
 Route::get('/wochenkochplan','WochenkochplanController@edit')->name('wochenkochplan.edit');
-Route::post('/wochenkochplan/update','WochenkochplanController@update')->name('wochenkochplan.update');
 
 //Add Rezept to Wochenkochplan
 Route::get('/wochenkochplan/{id}/addRezept','WochenkochplanController@addRezept')->name('wochenkochplan.addRezept');
@@ -100,7 +99,7 @@ Route::post('/wochenkochplan/{id}/updateRezept','WochenkochplanController@update
 //Delete Kochbuch
 Route::get('/wochenkochplan/destroy/','WochenkochplanController@destroy')->name('wochenkochplan.destroy');
 
-/****TODO Routes for Einkaufsliste **************************************************************************/
+/**** Routes for Einkaufsliste **************************************************************************/
 Route::get('/einkaufsliste','WochenkochplanController@einkaufsliste')->name('wochenkochplan.einkaufsliste');
 
 /****Remaining Routes **************************************************************************/

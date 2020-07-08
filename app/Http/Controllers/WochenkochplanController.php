@@ -83,29 +83,6 @@ class WochenkochplanController extends Controller
         return redirect()->action('WochenkochplanController@edit');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request)
-    {
-        $wochenkochplan = Wochenkochplan::where('users_id', AUTH::user()->id)->get();
-        if (is_null($wochenkochplan)) {
-            error_log($request->input('hi'));
-        } else {
-            foreach ($wochenkochplan as $w) {
-                error_log($request->input('portion_' . $w->id));
-                if ($request->input('portion_' . $w->id) <> "") {
-                    error_log('pooooooooooortion' . $w->id);
-                    error_log($request->input('portion_' . $w->id));
-                    $w->portion = $request->input('portion_' . $w->id);
-                    $w->save();
-                }
-
-            }
-        }
-        return redirect()->action('WochenkochplanController@edit');
-    }
 
     /**
      * Emptying the Wochenkochplan
