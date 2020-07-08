@@ -41,10 +41,10 @@
                 <h3>Zubereitung</h3>
                 <p class="beschreibung">{{$rezept->zubereitung}}</p>
                 <br>
-                <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/edit_step1'"
-                        title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
-                </button>
                 @if (Auth::user()->hasRole('admin'))
+                    <button class="normalbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/edit_step1'"
+                            title="Rezept bearbeiten"><i class="material-icons btn_i">edit</i> Rezept bearbeiten
+                    </button>
                     <button class="abortbtn btn" onclick="window.location.href='/rezepte/{{$rezept->rID}}/destroy'"
                             title="Rezept löschen"><i class="fas fa-trash-alt btn_i"></i> Rezept löschen
                     </button>
