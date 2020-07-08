@@ -16,13 +16,12 @@
         </div>
     </div>
     <div class="row justify-content-center text-center">
-        <div class="col-3 finishbtn"onclick="window.location.href='/wochenkochplan'">
+        <div class="col-3 finishbtn" onclick="window.location.href='/wochenkochplan'">
             <br>
             <i class="fas fa-calendar-week"></i>
             <p>Wochenkochplan</p>
         </div>
-        <div class="col-3 bluebtn">{{--TODO href onclick="window.location.href='/einkaufsliste'"--}}
-            <br>
+        <div class="col-3 bluebtn" onclick="window.location.href='/einkaufsliste'">            <br>
             <i class="fas fa-list-alt"></i>
             <p>Einkaufsliste</p>
         </div>

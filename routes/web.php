@@ -101,7 +101,7 @@ Route::post('/wochenkochplan/{id}/updateRezept','WochenkochplanController@update
 Route::get('/wochenkochplan/destroy/','WochenkochplanController@destroy')->name('wochenkochplan.destroy');
 
 /****TODO Routes for Einkaufsliste **************************************************************************/
-
+Route::get('/einkaufsliste','WochenkochplanController@einkaufsliste')->name('wochenkochplan.einkaufsliste');
 
 /****Remaining Routes **************************************************************************/
 
