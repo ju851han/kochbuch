@@ -21,7 +21,7 @@ class ZutatsTableSeeder extends Seeder
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Curry','0.01','TL','Gewürze',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Ei(er)','0.23','Stk','Grundnahrungsprodukt',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Essig','0.01','ml','Gewürze',NOW(),NOW());");
-        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Fischstäbchen','0.15','Stk','Fisch',NOW(),NOW());");
+        DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Fischstäbchen','0.15','Stk','Fisch & Meeresfrüchte',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Frischkäsche','0.01','EL','Milchprodukt',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Garnellen','0.01','g','Fisch & Meeresfrüchte',NOW(),NOW());");
         DB::insert("INSERT INTO zutats(zName,kostenjeEinheit,mengeneinheit,produktgruppe,created_at, updated_at) VALUES ('Gnocchi','0.01','g','Teigwaren',NOW(),NOW());");
