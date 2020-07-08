@@ -79,7 +79,15 @@ class RezeptController extends Controller
 
     public function create_step2(Request $request)
     {
-        /*TODO Validation */
+        $i = 1;
+        $rules=array();
+        while ($request->has('zName_' . $i)) {
+            $rules['zName_'.$i]='required|string|min:2|max:256';
+            $rules['menge_'.$i]='required|numeric';
+            $i++;
+        }
+        $validatedData = $request->validate($rules);
+
         $zutaten = array();
         $i = 1;
 
@@ -106,7 +114,13 @@ class RezeptController extends Controller
      */
 
     public function create_step3(Request $request)
-    {/*TODO Validation */
+    {
+        $validatedData = $request->validate([
+            'rName'=>'required|alpha_num|min:1|max:125',
+            'zubereitung'=>'required|string|min:20|max:5000',
+            'kategorie'=>'required|alpha_num',
+            'zeit'=>'required|numeric'
+        ]);
         $rezept = new Rezept;
         $rezept->rName = $request->rName;
         $rezept->zubereitung = $request->zubereitung;
@@ -126,7 +140,7 @@ class RezeptController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {/*TODO Validation */
+    {
         $rezept = $request->session()->get('rezept');
         $zutaten = $request->session()->get('zutaten');
         $rezept->save();
@@ -175,6 +189,14 @@ class RezeptController extends Controller
 
     public function edit_step2(Request $request, $rID)
     {
+        $i = 1;
+        $rules=array();
+        while ($request->has('zName_' . $i)) {
+            $rules['zName_'.$i]='required|string|min:2|max:256';
+            $rules['menge_'.$i]='required|numeric';
+            $i++;
+        }
+        $validatedData = $request->validate($rules);
 
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
@@ -212,6 +234,12 @@ class RezeptController extends Controller
      */
     public function update(Request $request, $rID)
     {
+        $validatedData = $request->validate([
+            'rName'=>'required|alpha_num|min:1|max:125',
+            'zubereitung'=>'required|string|min:20|max:5000',
+            'kategorie'=>'required|string',
+            'zeit'=>'required|numeric'
+        ]);
         $rezept = Rezept::find($rID);
         if (is_null($rezept)) {
             return redirect()->action('RezeptController@index');
