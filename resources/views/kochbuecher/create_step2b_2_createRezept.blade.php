@@ -12,6 +12,15 @@
                         <li class="breadcrumb-item active" aria-current="page">3. Rezepte hinzufügen</li>
                     </ol>
                 </nav>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="post" action="/kochbuecher/create_step3">
                     @csrf
                     <div class="form-group">
