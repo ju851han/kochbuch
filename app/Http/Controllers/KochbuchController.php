@@ -56,7 +56,7 @@ class KochbuchController extends Controller
     public function create_step2a(Request $request)
     {
         $validatedData = $request->validate([
-            'kName'=>'required|alpha_num|min:2|max:125']);
+            'kName' => 'required|alpha_num|min:2|max:125']);
         $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
@@ -74,7 +74,7 @@ class KochbuchController extends Controller
     public function create_step2b_1(Request $request)
     {
         $validatedData = $request->validate([
-            'kName'=>'required|alpha_num|min:2|max:125']);
+            'kName' => 'required|alpha_num|min:2|max:125']);
         $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
@@ -92,10 +92,10 @@ class KochbuchController extends Controller
     public function create_step2b_2(Request $request)
     {
         $i = 1;
-        $rules=array();
+        $rules = array();
         while ($request->has('zName_' . $i)) {
-            $rules['zName_'.$i]='required|string|min:2|max:256';
-            $rules['menge_'.$i]='required|numeric';
+            $rules['zName_' . $i] = 'required|string|min:2|max:256';
+            $rules['menge_' . $i] = 'required|numeric';
             $i++;
         }
 
@@ -126,7 +126,6 @@ class KochbuchController extends Controller
     public function create_step3(Request $request)
     {
         if (!is_null($request->rID)) { //Rezepte will be added to Kochbuch
-            error_log($request->rIDs);
             $rIDs = explode(',', $request->rIDs); //rIDs = parse text into array
             $max = sizeof($rIDs);
 
@@ -168,10 +167,10 @@ class KochbuchController extends Controller
     {
         if (!is_null($request->session()->get('zutaten'))) { //Rezept for new Kochbuch is created
             $validatedData = $request->validate([
-                'rName'=>'required|alpha_num|min:1|max:125',
-                'zubereitung'=>'required|string|min:20|max:5000',
-                'kategorie'=>'required|string',
-                'zeit'=>'required|numeric'
+                'rName' => 'required|alpha_num|min:1|max:125',
+                'zubereitung' => 'required|string|min:20|max:5000',
+                'kategorie' => 'required|string',
+                'zeit' => 'required|numeric'
             ]);
             $kochbuch = $request->session()->get('kochbuch');
             $rezept = $request->session()->get('rezept');
@@ -221,7 +220,7 @@ class KochbuchController extends Controller
         } elseif ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             return view('kochbuecher.show', compact('kochbuch'));//->with('kochbuch', $kochbuch);
         } else {
-           return abort(401, 'Es ist keine Berechtigung fürs Anzeigen dieses Kochbuches vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Anzeigen dieses Kochbuches vorhanden.');
         }
     }
 
@@ -279,7 +278,6 @@ class KochbuchController extends Controller
             return redirect()->action('KochbuchController@index');
         } else if ($kochbuch->users_id == AUTH::user()->id || AUTH::user()->hasRole('admin')) {
             $kochbuch->rezepts()->detach($rezept);// deletes row from kochbuch_rezept table; it does not delete the rezept from rezepts table
-            /*TODO update at liefert falsche uhrzeit */
             $kochbuch->touch();// updates the updated_at column
             return view('kochbuecher/edit_step1')->with('kochbuch', $kochbuch);
         } else {
@@ -313,7 +311,6 @@ class KochbuchController extends Controller
             foreach ($rezepte as $rezept) {
                 $kochbuch->rezepts()->attach($rezept->rID); //add entry in Table kochbuch_rezept
             }
-            /*TODO update at liefert falsche uhrzeit */
             $kochbuch->touch();// updates the updated_at column
             return redirect()->action('KochbuchController@show', ['kID' => $kID]);
         } else {
