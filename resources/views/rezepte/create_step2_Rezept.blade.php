@@ -24,7 +24,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="rName">Name des Rezepts:</label>
-                        <input class="form-control" id="rName" name="rName" type="text" required>
+                        <input class="form-control" id="rName" name="rName" type="text" minlength="1" maxlength="125" required>
                     </div>
                     <div class="form-group">
                         <label for="zubereitung">Beschreibe bitte die Zubereitungschritte des Gerichts:</label><br>
