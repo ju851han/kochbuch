@@ -20,7 +20,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="get" action="/rezepte/{{$r->rID}}/update">
+                <form method="post" action="/rezepte/{{$r->rID}}/update" onsubmit="kategory()">
                     @csrf
                     <div class="form-group">
                         <label for="rName">Name des Rezepts:</label>
