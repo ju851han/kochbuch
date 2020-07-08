@@ -6,7 +6,15 @@
             <section class="col-12 col-md-8 offset-md-2">
                 <h2>Bearbeiten der Zutat</h2>
                 <p class="beschreibung">In dieser Ansicht kannst du die Zutat bearbeiten.</p>
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="post" action="/zutaten/{{$z->zName}}/update">
                     @csrf
                     <div class="form-group">

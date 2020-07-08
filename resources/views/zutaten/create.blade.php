@@ -7,10 +7,19 @@
                 <h3>Zutaten erstellen</h3>
                 <p class="beschreibung">Du bist gerade dabei eine neue Zutat zu erstellen. Bitte fülle die folgenden
                     Felder aus:</p>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="POST" action="/zutaten">
                     @csrf
                     <div class="form-group">
-                        <label for="zName">Zutat</label>
+                        <label for="zName">Name der Zutat</label>
                         <input class="form-control" id="zName" name="zName" type="text" minlength="2" maxlength="256"
                                required>
                     </div>
