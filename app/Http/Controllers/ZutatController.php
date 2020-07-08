@@ -73,7 +73,12 @@ class ZutatController extends Controller
     public function store(Request $request)
     {
         if (AUTH::user()->hasRole('admin')) {
-            /*TODO Validation */
+            $validatedData = $request->validate([
+                'zName'=>'required|min:2|max:256|alpha_num|unique:zutats',
+                'mengeneinheit'=>'required|string|min:1|max:20',
+                'kostenJeEinheit'=>'required|numeric',
+                'produktgruppe'=>'required|string|max:125'
+            ]);
             $zutat = new Zutat;
             $zutat->zName = $request->zName;
             $zutat->kostenJeEinheit = $request->kostenJeEinheit;
@@ -81,7 +86,7 @@ class ZutatController extends Controller
             $zutat->produktgruppe = $request->produktgruppe;
             $zutat->save();
 
-            return redirect()->action('zutaten/index');
+            return redirect()->action('ZutatController@index');
         } else {
             return abort(401, 'Es ist keine Berechtigung fürs Speeichern einer Zutat vorhanden.');
         }
@@ -134,7 +139,12 @@ class ZutatController extends Controller
      */
     public function update(Request $request, $zName)
     {
-
+        $validatedData = $request->validate([
+            'zName'=>'required|string|min:2|max:256',
+            'mengeneinheit'=>'required|string|min:1|max:20',
+            'kostenjeEinheit'=>'required|numeric',
+            'produktgruppe'=>'required|string|max:125'
+        ]);
         $zutat = Zutat::find($zName);
         if (is_null($zutat)) {
             return redirect()->action('ZutatController@index');
@@ -167,7 +177,7 @@ class ZutatController extends Controller
                 $zutat->rezepts()->detach($rezept); // deletes row from rezept_zutat table; it does not delete the zutats from zutat table
             }
             $zutat->delete();
-            Session::flash('alert-success', 'Rezept ' . $zutat->zName . ' wurde erfolgreich gelöscht.');
+            Session::flash('alert-success', 'Zutat ' . $zutat->zName . ' wurde erfolgreich gelöscht.');
             return redirect()->action('ZutatController@index');
         } else {
             return abort(401, 'Es ist keine Berechtigung fürs Löschen einer Zutat vorhanden.');
