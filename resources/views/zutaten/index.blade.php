@@ -1,5 +1,4 @@
 @extends('layouts.app')
-{{--TODO Pagination--}}
 @section('content')
     <div class="container">
         <div class="row">
