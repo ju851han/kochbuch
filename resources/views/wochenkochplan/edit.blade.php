@@ -50,7 +50,6 @@
                 <p id="gesamtkosten">Gesamtkosten betragen:</p>
                 <button class="normalbtn btn">Einkaufsliste erstellen</button>
                 <button type="reset" class="normalbtn btn" value="Entleeren" onclick="window.location.href='/wochenkochplan/destroy'">Entleeren</button>
-                <!-- reset = Formulardaten werden gelöscht-->
                 <button type="submit" class="normalbtn btn" onclick="window.location.href='/wochenkochplan/update'"
                         value="Speichern">Speichern
                 </button>
@@ -63,8 +62,6 @@
             var sum=0;
            @foreach($wochenkochplan as $w)
                 if($('#btn_{{$w->id}}').length===0){
-                    console.log({{$w->id}});
-                    console.log("€ "+$('#kosten_{{$w->id}}').val());
                     sum = sum + ($('#kosten_{{$w->id}}').val() * $('#portion_{{$w->id}}').val());
 
                 }
