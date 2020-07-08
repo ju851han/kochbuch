@@ -19,7 +19,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="/rezepte/{{$r->rID}}/edit_step2">
+                <form method="get" action="/rezepte/{{$r->rID}}/edit_step2">
                     @csrf
                     <?php
                     $i=1;
