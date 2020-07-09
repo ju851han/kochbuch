@@ -291,11 +291,13 @@ table {
   padding: 0;
 }
 
+table.tbl_hauptfunktionen{
+  border: none;
+}
 
 .tbl_hauptfunktionen td p {
   font-size: 80%;
   padding: 0 10px 0 10px;
-  border: none;
 }
 
 .thead_orangered {
