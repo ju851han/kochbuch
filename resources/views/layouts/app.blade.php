@@ -21,10 +21,10 @@
     <figure>
         <div class="koch_animation">
             <img class="koch zwinkert" src="img/Koch.png" alt="Koch"/>
-            <img class="koch augen_offen" src="{{asset('img/Koch_Augen_offen.png')}}" alt="Koch"/>
+            <img class="koch augen_offen" src="img/Koch_Augen_offen.png" alt="Koch"/>
         </div>
         <img id="img-header-background" src="img/Arbeitsflaeche.jpeg" alt="Arbeitsfläche"/>
-        <img id="img-header-background-large" src="{{asset('img/Arbeitsflaeche_groß.jpeg')}}" alt="Arbeitsfläche"/>
+        <img id="img-header-background-large" src="img/Arbeitsflaeche_groß.jpeg" alt="Arbeitsfläche"/>
         <h1 id="header-ueberschrift">Kochbuch</h1>
     </figure>
 </header>
