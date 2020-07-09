@@ -11,16 +11,16 @@
     <!-- Icons -->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="js/app.js" defer></script>
     <!-- Stylesheet -->
-    <link href="/css/app.css'" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 </head>
 <body>
 <header>
     <figure>
         <div class="koch_animation">
-            <img class="koch zwinkert" src="{{ asset('img/Koch.png') }}" alt="Koch"/>
-            <img class="koch augen_offen" src="{{ asset('img/Koch_Augen_offen.png') }}" alt="Koch"/>
+            <img class="koch zwinkert" src="img/Koch.png" alt="Koch"/>
+            <img class="koch augen_offen" src="img/Koch_Augen_offen.png" alt="Koch"/>
         </div>
         <img id="img-header-background" src="{{ asset('img/Arbeitsflaeche.jpeg') }}" alt="Arbeitsfläche"/>
         <img id="img-header-background-large" src="{{asset('img/Arbeitsflaeche_groß.jpeg')}}" alt="Arbeitsfläche"/>
