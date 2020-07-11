@@ -114,11 +114,9 @@ class WochenkochplanController extends Controller
         $milchprodukt = array();
         $sonstige = array();
         foreach ($wochenkochplan as $w) {
-            error_log("woche" . $w->id);
             $rezept = Rezept::find($w->rezepts_rID);
             if (!is_null($rezept)) {
                 foreach ($rezept->zutats as $zutat) {
-                    error_log("rezept: " . $rezept->rID);
                     $z = Zutat::where('zName', $zutat->zName)->first();
                     switch ($z->produktgruppe) {
                         case "Backwaren":

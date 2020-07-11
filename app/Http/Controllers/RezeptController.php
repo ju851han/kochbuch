@@ -94,7 +94,6 @@ class RezeptController extends Controller
         while ($request->has('zName_' . $i)) {
             $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
             $zutat->menge = $request->input("menge_" . $i);
-            error_log($zutat->zName);
             $zutaten[] = $zutat;
 
             $i++;
@@ -208,7 +207,6 @@ class RezeptController extends Controller
             while ($request->has('zName_' . $i)) {
                 $zutat = Zutat::where('zName', $request->input("zName_" . $i))->first();
                 $zutat->menge = $request->input("menge_" . $i);
-                error_log($zutat->zName);
                 $zutaten[] = $zutat;
 
                 $i++;
