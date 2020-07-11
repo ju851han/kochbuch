@@ -17,7 +17,7 @@ class CreateKochbuchesTable extends Migration
             $table->bigIncrements('kID');
             $table->integer('users_id');
             $table->string('kName',125);
-            $table->timestamps();/*für erstelltam und aktualisiertam*/
+            $table->timestamps();
         });
     }
 

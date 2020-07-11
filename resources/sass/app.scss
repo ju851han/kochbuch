@@ -36,14 +36,8 @@ h1,
 h2 {
   font-weight: bolder;
   text-shadow: 3px 3px 10px $grey;
-  /*padding: 40px 0 20px 0;*/
 }
 
-/*h1,
-h2,
-h3 {
-  padding: 20px 10px 0 10px;
-}*/
 
 h1 {
   font-size: 2.5em;
@@ -147,7 +141,6 @@ figure {
   display: none;
 }
 
-/*https://www.tutorialrepublic.com/faq/how-to-change-image-on-hover-with-css.php*/
 .koch_animation:hover .augen_offen {
   display: inline;
 }
@@ -159,11 +152,8 @@ figure {
   color: $white;
   text-align: center;
   text-shadow: 0 0 10px $darkred;
-  /*Schriftart Umriss https://www.html-seminar.de/outline-schrift-ueber-text-shadow.htm */
   position: absolute;
   z-index: 3;
-  /*Zentriert Text in der Mitte von der Seite:
-  https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element */
   top: 115px;
   left: 0;
   right: 0;
@@ -279,7 +269,7 @@ input.form-check-input {
 Table
 ****************************************/
 table {
-  margin: auto; /* margin: auto; zentriert Tabelle */
+  margin: auto; /* zentriert Tabelle */
   border: 1px $lightgrey solid;
 }
 
@@ -301,7 +291,6 @@ table.tbl_hauptfunktionen{
 }
 
 .thead_orangered {
-  /*  https://medium.com/@nsembo/getting-invalid-property-value-error-while-using-linear-gradient-heres-a-simple-fix-ec301effc897*/
   background: linear-gradient(top, $orange, $darkorange);
   background: -webkit-linear-gradient($orange, $darkorange);
   border: solid 1px $grey;
@@ -315,8 +304,7 @@ table.tbl_hauptfunktionen{
 Background Formatting
 ****************************************/
 .background2ndTR tr:nth-child(2n+1) {
-  /*Jedes 2. Element wird formatiert
-  https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+  /*Jedes 2. Element wird formatiert*/
   background-color: $lightyellow;
 }
 
@@ -331,8 +319,7 @@ Background Formatting
 }
 
 .background2ndSection section:nth-child(2n+1) {
-  /*Jedes 2. Element wird formatiert
-  https://developer.mozilla.org/de/docs/Web/CSS/:nth-child*/
+  /*Jedes 2. Element wird formatiert*/
   background-color: $lightyellow;
 }
 
@@ -343,7 +330,6 @@ Background Formatting
 /****************************************
 Anchor Elements
 ****************************************/
-/*https://www.w3schools.com/css/css_link.asp*/
 a {
   color: $orange;
 }
@@ -490,7 +476,6 @@ Footer
 footer {
   text-align: left;
   background: linear-gradient(to bottom, $grey 5%, $lightgrey 100%);
-  /*https://www.bestcssbuttongenerator.com/*/
   padding: 5px;
 }
 

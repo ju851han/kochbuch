@@ -17,9 +17,6 @@ class CreateKochbuchRezeptTable extends Migration
             $table->id();
             $table->integer('kochbuch_kID')->unsigned();
             $table->integer('rezept_rID')->unsigned();
-            /* TODO Spalten hinzufügen
-          $table->unsignedFloat('portion');
-          $table->integer('reihenfolge')->unsigned();*/
         });
     }
 

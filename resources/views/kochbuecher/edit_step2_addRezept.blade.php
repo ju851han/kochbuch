@@ -40,7 +40,7 @@
             </section>
         </div>
     </div>
-    <script> /*TODOValidate At least one checkbox must be activated */
+    <script>
         function sendCheckedBoxes() {
             var rIDs = "";
             @foreach ($rezepte as $r)

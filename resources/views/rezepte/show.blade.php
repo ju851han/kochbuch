@@ -28,7 +28,6 @@
                     </tr>
                     </thead>
                     <tbody id="zutaten" class="background2ndTR">
-                    {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}
                     @foreach($rezept->zutats  as $zutat )
                         <tr>
                             <td>{{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}} {{$zutat->mengeneinheit}}</td>
@@ -59,8 +58,7 @@
         }
 
         function updateMenge(val) {
-            $('#zutaten').replaceWith("<tbody id=\"zutaten\">\n" +
-                "                    {{--https://stackoverflow.com/questions/26566675/getting-the-value-of-an-extra-pivot-table-column-laravel--}}\n" +
+            $('#zutaten').replaceWith("<tbody id=\"zutaten\" class=\"background2ndTR\">\n" +
                 "                    @foreach($rezept->zutats  as $zutat )\n" +
                 "                        <tr>\n" +
                 "                            <td>" + {{$rezept->zutats()->where('zutat_zName',$zutat->zName)->first()->pivot->menge}}* val + " {{$zutat->mengeneinheit}}</td>{{--Menge * Portion--}}\n" +

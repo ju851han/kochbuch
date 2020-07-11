@@ -65,10 +65,6 @@
                                max="240"
                                step="15"
                                onchange="updateZeitOutput(this.value);" required>
-                        {{--https://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value--}}
-                        {{--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider--}}
-                        {{--https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range--}}
-                        {{--https://wiki.selfhtml.org/wiki/HTML/Formulare/Ergebnisausgabe--}}
                         <datalist id="zeiten">
                             <option value="15"></option>
                             <option value="30"></option>
@@ -129,5 +125,4 @@
         }
 
     </script>
-    <!-- Quelle https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
 @endsection

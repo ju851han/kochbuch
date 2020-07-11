@@ -258,8 +258,6 @@ class RezeptController extends Controller
             foreach ($request->session()->get('zutaten') as $zutat) {
                 $rezept->zutats()->attach($zutat->zName, ['menge' => $zutat->menge]); ////add entry in Table rezept_zutat
             }
-            /*https://laravel.com/docs/5.4/eloquent-relationships#updating-many-to-many-relationships*/
-            //  $rezept->zutats()->updateExistingPivot($zutat->zName, ['menge' => $zutat->menge]);
             return redirect()->action('RezeptController@show', ['rID' => $rID]);
         }else{
             return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
