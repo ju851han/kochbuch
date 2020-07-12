@@ -181,11 +181,17 @@ class RezeptController extends Controller
             $zutaten = Zutat::all()->sortBy('zName');
             return view('rezepte/edit_step1_Zutaten')->with('r', $rezept)->with('zutaten', $zutaten);
         }else{
-            abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
+            return abort(401, 'Es ist keine Berechtigung fürs Ändern eines Rezeptes vorhanden.');
 
         }
     }
 
+    /**
+     * Edited the Zutaten of the Rezept
+     * @param Request $request
+     * @param $rID
+     * @return \Illuminate\Http\Response
+     */
     public function edit_step2(Request $request, $rID)
     {
         $i = 1;
