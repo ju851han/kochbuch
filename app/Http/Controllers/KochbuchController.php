@@ -57,6 +57,8 @@ class KochbuchController extends Controller
     {
         $validatedData = $request->validate([
             'kName' => 'required|alpha_num|min:2|max:125']);
+
+
         $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
@@ -75,7 +77,7 @@ class KochbuchController extends Controller
     {
         $validatedData = $request->validate([
             'kName' => 'required|alpha_num|min:2|max:125']);
-        $kochbuch = new Kochbuch;
+       $kochbuch = new Kochbuch;
         $kochbuch->kName = $request->kName;
         $request->session()->put('kochbuch', $kochbuch);
 
@@ -138,6 +140,11 @@ class KochbuchController extends Controller
             $kochbuch = $request->session()->get('kochbuch');
             return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezepte', $rezepte);
         } elseif (!is_null($request->rName)) { //Rezept for new Kochbuch will be created
+            $validatedData = $request->validate([
+                'rName' => 'required|alpha_num|min:1|max:125|unique:rezepts',
+              'kategorie' => 'required|string',
+                'zeit' => 'required|numeric'
+            ]);
             $rezept = new Rezept;
             $rezept->rName = $request->rName;
             $rezept->zubereitung = $request->zubereitung;
@@ -147,12 +154,12 @@ class KochbuchController extends Controller
             $request->session()->put('rezept', $rezept);
             $zutaten = $request->session()->get('zutaten');
             $kochbuch = $request->session()->get('kochbuch');
+
             return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', $rezept)->with('zutaten', $zutaten);
         } else { //Only Kochbuch will be created
             $kochbuch = new Kochbuch;
             $kochbuch->kName = $request->kName;
             $request->session()->put('kochbuch', $kochbuch);
-
             return view('kochbuecher/create_step3_overview')->with('kochbuch', $kochbuch)->with('rezept', null);
         }
     }
@@ -165,20 +172,13 @@ class KochbuchController extends Controller
      */
     public function store(Request $request)
     {
+
         if (!is_null($request->session()->get('zutaten'))) { //Rezept for new Kochbuch is created
-            $validatedData = $request->validate([
-                'rName' => 'required|alpha_num|min:1|max:125',
-                'zubereitung' => 'required|string|min:20|max:5000',
-                'kategorie' => 'required|string',
-                'zeit' => 'required|numeric'
-            ]);
             $kochbuch = $request->session()->get('kochbuch');
             $rezept = $request->session()->get('rezept');
             $zutaten = $request->session()->get('zutaten');
-
             $kochbuch->users()->associate(Auth::user()); //add entry users_id in Table kochbuches
             $rezept->save();
-
             foreach ($zutaten as $zutat) {
                 $rezept->zutats()->attach($zutat->zName, ['menge' => $zutat->menge]); //add entry in Table rezept_zutat
             }

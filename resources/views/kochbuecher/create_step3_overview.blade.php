@@ -36,7 +36,7 @@
                                 <td>{{ $r->kostenjePortion }} €</td>
                             </tr>
                         @endforeach
-                    @else{{--if there is only one rezept --}}
+                    @elseif(isset($rezept)){{--if there is only one rezept --}}
                         <tr>
                             <td>{{ $rezept->rName}}</td>
                             <td>{{ $rezept->kategorie }}</td>
