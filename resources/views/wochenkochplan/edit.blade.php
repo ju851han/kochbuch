@@ -18,7 +18,7 @@
                     @for ($i = 0; $i < count($wochenkochplan); $i++)
                         <tr>
                             <td>{{$wochenkochplan[$i]->wochentag}}</td>
-                            @if (is_null($rezepte[$i]))
+                            @if (is_null($rezepte)||is_null($rezepte[$i]))
                                 <td colspan="3">
                                     <button class="normalbtn btn" id="btn_{{$wochenkochplan[$i]->id}}"
                                             onclick="window.location.href='/wochenkochplan/{{$wochenkochplan[$i]->id}}/addRezept'">
