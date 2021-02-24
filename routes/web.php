@@ -108,9 +108,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/kontakt', function () {
     return view('kontakt');
 });
+
+Route::post('/kontakt/send','HomeController@send')->name('kontakt.send');
+
 
 Route::get('/impressum', function () {
     return view('impressum');
