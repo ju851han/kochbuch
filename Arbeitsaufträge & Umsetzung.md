@@ -43,7 +43,7 @@ Im Terminal (cmd) von PHPStorm folgende Befehle nacheinander ausführen:
 1.  `composer require laravel/ui --dev`
 2.  `php artisan ui bootstrap --auth`
 
-*Teil 4 - Installieren der SAAS- und CSS-Datei von Bootstrap*
+*Teil 4 - Installieren der SASS- und CSS-Datei von Bootstrap*
 Diese weiteren 2 Befehle ebenso im Terminal (cmd) von PHPStorm ausführen:
 1.  `npm install`
 2.  `npm run dev`
@@ -124,7 +124,7 @@ Route::post('/rezepte/{rID}/update','RezeptController@update')->name('rezepte.up
 
 **Arbeitsauftrag6**<br>
 04.06.2020:<br>
-*TEIL 1 - SAAS *
+*TEIL 1 - SASS*
 1. [variables_.scss](https://gitlab.in.htwg-konstanz.de/lehre/meiglspe/sose20/wete/projects/kochbuch/-/blob/master/resources/sass/_variables.scss) anpassen: Variablen für primary & secondary Farben einfügen
 2. Befehl im Terminal (cmd) ausführen:
 ```
